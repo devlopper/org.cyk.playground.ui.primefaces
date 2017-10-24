@@ -7,10 +7,15 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
- 	<ui:decorate template="#{windowsPage.propertiesMap.template}">
- 		<ui:param name="page" value="#{windowsPage}" />
+ 	<ui:decorate template="#{inputsPage.propertiesMap.template}">
+ 		<ui:param name="page" value="#{inputsPage}" />
  		<ui:define name="centerCenterContent">
- 			My Custom Index Content
+ 			
+ 			<ui:decorate template="#{inputsPage.inputText.propertiesMap.template}">
+		 		<ui:param name="input" value="#{inputsPage.inputText}" />
+		 		<ui:param name="identifier" value="myinputtext"/>
+		 	</ui:decorate>
+ 			
  		</ui:define>
  	</ui:decorate>
  	

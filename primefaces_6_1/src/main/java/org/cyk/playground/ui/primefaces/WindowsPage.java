@@ -2,7 +2,6 @@ package org.cyk.playground.ui.primefaces;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -20,8 +19,7 @@ public class WindowsPage extends Page implements Serializable {
 	protected void initialisation() {
 		super.initialisation();
 		getPropertiesMap().setTitle("MyTITLE");
-		getPropertiesMap().setFullPage(Boolean.TRUE);
-		getPropertiesMap().setInclude("/org.cyk.ui.web.primefaces/include/page/default2.xhtml");
+		//getPropertiesMap().setInclude("/org.cyk.ui.web.primefaces/include/page/default.xhtml");
 	}
 	
 }

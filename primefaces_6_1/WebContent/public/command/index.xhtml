@@ -1,24 +1,107 @@
-<!DOCTYPE html>
-<html lang="fr"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:cyk="http://xmlns.jcp.org/jsf/composite/org.cyk.ui.web.primefaces/component">
-    
-    <h:head>
-        <title>Commands Page</title>
-    </h:head>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:cyk="http://xmlns.jcp.org/jsf/composite/org.cyk.ui.web.primefaces/component">
 
-    <h:body>
-    	<h:form>
-
-    		<cyk:command value="#{commandsPage.command}" />
-			<p:commandButton value="SEND" />	
-			
-    	</h:form>
-		
-    </h:body>
-
+ 	<ui:decorate template="#{commandsPage.propertiesMap.template}">
+ 		<ui:param name="page" value="#{commandsPage}" />
+ 		<ui:define name="centerCenterContent">
+ 			<h:form>
+ 				<ui:decorate template="#{commandsPage.commandClient.propertiesMap.template}">
+ 					<ui:param name="commandButton" value="#{commandsPage.commandClient}" />	
+ 				</ui:decorate>
+ 				<ui:decorate template="#{commandsPage.commandClient.propertiesMap.template}">
+ 					<ui:param name="commandButton" value="#{commandsPage.commandServer}" />
+ 				</ui:decorate>
+ 				<ui:decorate template="#{commandsPage.commandClient.propertiesMap.template}">
+ 					<ui:param name="commandButton" value="#{commandsPage.commandClientServer}" />
+ 				</ui:decorate>
+ 				<ui:decorate template="#{commandsPage.commandClient.propertiesMap.template}">
+ 					<ui:param name="commandButton" value="#{commandsPage.commandClientServerClient}" />	
+ 				</ui:decorate>
+ 				<ui:decorate template="#{commandsPage.commandClient.propertiesMap.template}">
+ 					<ui:param name="commandButton" value="#{commandsPage.commandServerClient}" />
+ 				</ui:decorate>
+ 				
+ 				<ui:decorate template="#{commandsPage.defaultCommand.propertiesMap.template}">
+ 					<ui:param name="commandButton" value="#{commandsPage.defaultCommand}" />
+ 				</ui:decorate>
+ 				
+ 				<ui:decorate template="#{commandsPage.successCommand.propertiesMap.template}">
+ 					<ui:param name="commandButton" value="#{commandsPage.successCommand}" />
+ 				</ui:decorate>
+ 				
+ 				<ui:decorate template="#{commandsPage.failureCommand.propertiesMap.template}">
+ 					<ui:param name="commandButton" value="#{commandsPage.failureCommand}" />
+ 				</ui:decorate>
+ 				
+ 				<ui:decorate template="#{commandsPage.customSuccessMessageCommand.propertiesMap.template}">
+ 					<ui:param name="commandButton" value="#{commandsPage.customSuccessMessageCommand}" />
+ 				</ui:decorate>
+ 				
+ 				<ui:decorate template="#{commandsPage.customFailureMessageCommand.propertiesMap.template}">
+ 					<ui:param name="commandButton" value="#{commandsPage.customFailureMessageCommand}" />
+ 				</ui:decorate>
+ 				
+ 				<ui:decorate template="#{commandsPage.parameterCommand.propertiesMap.template}">
+ 					<ui:param name="commandButton" value="#{commandsPage.parameterCommand}" />
+ 					<ui:param name="executeParameter" value="MyParamValue"/>
+ 				</ui:decorate>
+ 				
+ 				<ui:decorate template="#{commandsPage.successConfirmableCommand.propertiesMap.template}">
+ 					<ui:param name="commandButton" value="#{commandsPage.successConfirmableCommand}" />
+ 				</ui:decorate>
+ 				
+ 				<ui:decorate template="#{commandsPage.failureConfirmableCommand.propertiesMap.template}">
+ 					<ui:param name="commandButton" value="#{commandsPage.failureConfirmableCommand}" />
+ 				</ui:decorate>
+ 				
+	 			<!--
+	 			<cyk:command value="#{commandsPage.commandClient}" />
+	 			<cyk:command value="#{commandsPage.commandServer}" />
+	 			<cyk:command value="#{commandsPage.commandClientServer}" />
+	 			<cyk:command value="#{commandsPage.commandClientServerClient}" />
+	 			<cyk:command value="#{commandsPage.commandServerClient}" />
+	 			-->
+	 			
+	 			<p:outputPanel id="messagePanel" autoUpdate="true">
+					<p:dialog id="messageDialogId" widgetVar="#{webManager.messageDialogWidgetId}" header="#{uiManager.text('information')}" modal="true" appendTo="@(body)" 
+						visible="#{not empty facesContext.messageList}" draggable="false" resizable="false" closable="false" closeOnEscape="true" 
+						>
+						
+						<table style="margin: auto;" cellspacing="5">
+							<tr style="vertical-align: middle;">
+								<td class="ui-datalist-bordernone"><p:dataList value="#{facesContext.messageList}" var="message" rowIndexVar="index" 
+									type="#{uiManager.collectionSize(facesContext.messageList)==1?'none':'ordered'}" >
+									<ui:include src="/org.cyk.ui.web.primefaces/include/message.xhtml">
+										<ui:param name="severity" value="#{webManager.facesMessageSeverity(message)}" />
+										<ui:param name="message" value="#{message.summary}" />
+									</ui:include>
+								</p:dataList></td>
+							</tr>
+							<tr>
+								<td colspan="1">
+									<p:separator/>
+									<div align="center">
+										<p:commandButton id="messageDialogIdOkButton" value="OK" type="button" icon="ui-icon-check" 
+											onclick="PF('#{webManager.messageDialogWidgetId}').hide();" styleClass="messageDialogStyleClassOkButton"/>
+									</div>
+								</td>
+							</tr>
+						</table>
+						<!--p:hotkey bind="esc" handler="alert('ESCAPE');"/-->
+					</p:dialog>
+				</p:outputPanel>
+	 			
+	 			
+ 			</h:form>
+ 			
+ 		</ui:define>
+ 	</ui:decorate>
+ 	
 </html>

@@ -7,10 +7,17 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
- 	<ui:decorate template="#{windowsPage.propertiesMap.template}">
- 		<ui:param name="page" value="#{windowsPage}" />
+ 	<ui:decorate template="#{notificationsPage.propertiesMap.template}">
+ 		<ui:param name="page" value="#{notificationsPage}" />
  		<ui:define name="centerCenterContent">
- 			My Custom Index Content
+ 			
+ 			<p:messages />
+ 			
+ 			<p:separator/>
+ 			
+ 			<p:commandButton value="One Message" action="#{notificationsPage.oneMessage}" />
+ 			<p:commandButton value="Many Messages" action="#{notificationsPage.manyMessages}" />
+ 			
  		</ui:define>
  	</ui:decorate>
  	
