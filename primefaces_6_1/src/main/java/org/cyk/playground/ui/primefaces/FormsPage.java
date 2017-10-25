@@ -6,9 +6,11 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import org.cyk.ui.web.primefaces.resources.page.Page;
+import org.cyk.utility.common.helper.CommandHelper;
 import org.cyk.utility.common.userinterface.Layout;
 import org.cyk.utility.common.userinterface.command.Menu;
 import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.input.Input;
 import org.cyk.utility.common.userinterface.input.InputText;
 import org.primefaces.extensions.model.dynaform.DynaFormModel;
 
@@ -20,6 +22,7 @@ public class FormsPage extends Page implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Form.Master form;
+	private Form.Detail formDetail;
 	private DynaFormModel model;  
 	
 	@Override
@@ -29,7 +32,8 @@ public class FormsPage extends Page implements Serializable {
 		form = new Form.Master();
 		form.setLabelFromIdentifier("myformlabel");
 		
-		Form.Detail formDetail = new Form.Detail();
+		/*
+		formDetail = new Form.Detail();
 		formDetail.getLayout().setType(Layout.Type.VERTICAL);
 		
 		InputText c1 = new InputText();
@@ -43,16 +47,30 @@ public class FormsPage extends Page implements Serializable {
 		
 		formDetail.add(c1,c2,c3,c4);
 		form.setDetail(formDetail);
-		
-		
+		*/
 		form.setMenu(new Menu());
-		
 		model = createModel();
+		form.setDetail(formDetail);
 		formDetail.getPropertiesMap().setValue(model);
+		
+		form.getSubmitCommand().setAction(new CommandHelper.Command.Adapter.Default(){
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected Object __execute__() {
+				for(Object object : formDetail.getLayout().getChildren().getElements())
+					System.out.println( ((Input<?>)object).getLabel().getPropertiesMap().getValue()+" = "+((Input<?>)object).getValue() );
+				return null;
+			}
+		});
+		
+		form.getSubmitCommand().getAction().setIsNotifiableOnStatusSuccess(Boolean.TRUE);
+		//form.getSubmitCommand().setConfirm(new Confirm());
+		
 	}
 	
 	private DynaFormModel createModel(){
-    	Form.Detail formDetail = new Form.Detail();
+    	formDetail = new Form.Detail();
     	InputText c1 = new InputText();
     	c1.setLabelFromIdentifier("f1");
     	InputText c2 = new InputText();

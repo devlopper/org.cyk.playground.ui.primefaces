@@ -10,50 +10,17 @@
  	<ui:decorate template="#{notificationsPage.propertiesMap.template}">
  		<ui:param name="page" value="#{notificationsPage}" />
  		<ui:define name="centerCenterContent">
- 			<h:form>
- 			<p:messages autoUpdate="true" />
  			
- 			<p:separator/>
+ 			<p:commandButton value="One Message Default" action="#{notificationsPage.oneMessageDefault}" />
+ 			<p:commandButton value="Many Messages Default" action="#{notificationsPage.manyMessagesDefault}" />
+ 			<p:commandButton value="One Message Inline" action="#{notificationsPage.oneMessageInline}" />
+ 			<p:commandButton value="Many Messages Inline" action="#{notificationsPage.manyMessagesInline}" />
+ 			<p:commandButton value="One Message Growl" action="#{notificationsPage.oneMessageGrowl}" />
+ 			<p:commandButton value="Many Messages Growl" action="#{notificationsPage.manyMessagesGrowl}" />
+ 			<p:commandButton value="One Message Dialog" action="#{notificationsPage.oneMessageDialog}" />
+ 			<p:commandButton value="Many Messages Dialog" action="#{notificationsPage.manyMessagesDialog}" />
  			
- 			<p:commandButton value="One Message" action="#{notificationsPage.oneMessageError}" />
- 			<p:commandButton value="Many Messages" action="#{notificationsPage.manyMessagesError}" />
- 			
- 			<p:outputPanel id="messagePanel" autoUpdate="true">
-					<!--p:dialog id="messageDialogId" widgetVar="#{webManager.messageDialogWidgetId}" header="#{uiManager.text('information')}" modal="true" appendTo="@(body)" 
-						visible="#{not empty facesContext.messageList}" draggable="false" resizable="false" closable="false" closeOnEscape="true" 
-						>
-						
-						<table style="margin: auto;" cellspacing="5">
-							<tr style="vertical-align: middle;">
-								<td class="ui-datalist-bordernone"><p:dataList value="#{facesContext.messageList}" var="message" rowIndexVar="index" 
-									type="#{uiManager.collectionSize(facesContext.messageList)==1?'none':'ordered'}" >
-									<ui:include src="/org.cyk.ui.web.primefaces/include/message.xhtml">
-										<ui:param name="severity" value="#{webManager.facesMessageSeverity(message)}" />
-										<ui:param name="message" value="#{message.summary}" />
-									</ui:include>
-								</p:dataList></td>
-							</tr>
-							<tr>
-								<td colspan="1">
-									<p:separator/>
-									<div align="center">
-										<p:commandButton id="messageDialogIdOkButton" value="OK" type="button" icon="ui-icon-check" 
-											onclick="PF('#{webManager.messageDialogWidgetId}').hide();" styleClass="messageDialogStyleClassOkButton"/>
-									</div>
-								</td>
-							</tr>
-						</table>
-					</p:dialog-->
-					
-					<ui:decorate template="#{notificationsPage.notificationsDialog.propertiesMap.template}">
-						<ui:param name="dialog" value="#{notificationsPage.notificationsDialog}"/>
-					</ui:decorate>
-					
-				</p:outputPanel>
- 			</h:form>
- 			
- 			
- 			
+ 		
  		</ui:define>
  	</ui:decorate>
  	

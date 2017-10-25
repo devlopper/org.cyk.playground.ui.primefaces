@@ -84,14 +84,7 @@ public class CommandsPage extends Page implements Serializable {
 		
 		defaultCommand = new Command();
 		defaultCommand.getPropertiesMap().setValue("Default").setIcon("ui-icon-trash");
-		defaultCommand.setAction(new CommandHelper.Command.Adapter.Default(){
-			private static final long serialVersionUID = 1L;
-			@Override
-			protected Object __execute__() {
-				System.out.println("CommandsPage.initialisation().new Default() {...}.__execute__() 0");
-				return super.__execute__();
-			}
-		});
+		defaultCommand.setAction(new CommandHelper.Command.Adapter.Default());
 		
 		successCommand = new Command();
 		successCommand.getPropertiesMap().setValue("Success").setIcon("ui-icon-trash");
@@ -99,12 +92,10 @@ public class CommandsPage extends Page implements Serializable {
 			private static final long serialVersionUID = 1L;
 			@Override
 			protected Object __execute__() {
-				System.out.println("CommandsPage.initialisation().new Default() {...}.__execute__()");
-				return super.__execute__();
+				return null;
 			}
 		});
 		successCommand.getAction().setIsNotifiableOnStatusSuccess(Boolean.TRUE);
-		successCommand.setConfirm(new Confirm());
 		
 		failureCommand = new Command();
 		failureCommand.setAction(new CommandHelper.Command.Adapter.Default(){
