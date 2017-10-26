@@ -10,9 +10,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.cyk.ui.web.primefaces.resources.page.Page;
 import org.cyk.utility.common.userinterface.container.Form;
-import org.cyk.utility.common.userinterface.event.Confirm;
 import org.cyk.utility.common.userinterface.input.InputText;
-import org.primefaces.extensions.model.dynaform.DynaFormModel;
+import org.cyk.utility.common.userinterface.input.InputTextarea;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,23 +23,23 @@ public class FormsPage extends Page implements Serializable {
 	
 	private Form.Master form;
 	private DataModel dataModel = new DataModel();
-	private DynaFormModel model;  
 	
 	@Override
 	protected void initialisation() {
 		super.initialisation();
 		getPropertiesMap().setTitle("Forms");
-		form = new Form.Master(SubmitCommandActionAdapter.class).setObject(dataModel);
-		form.setLabelFromIdentifier("myformlabel");
-		form.getSubmitCommand().setConfirm(new Confirm());
 		
-		model = createModel();
+		form = new Form.Master(SubmitCommandActionAdapter.class).setObject(dataModel).setLabelFromIdentifier("myformlabel");
+		
+		createModel();
+		
+		form.build();
+		
+		
 	}
 	
-	private DynaFormModel createModel(){
-    	Form.Detail formDetail = new Form.Detail();
-    	form.setDetail(formDetail);
-    	
+	private void createModel(){
+    	Form.Detail formDetail = form.instanciateDetail(org.cyk.utility.common.userinterface.Layout.Type.ADAPTIVE);
     	InputText c1 = new InputText();
     	c1.setLabelFromIdentifier("f1").setField(dataModel, "firstName");
     	InputText c2 = new InputText();
@@ -53,19 +52,13 @@ public class FormsPage extends Page implements Serializable {
     	c5.setLabelFromIdentifier("f5");
     	InputText c6 = new InputText();
     	c6.setLabelFromIdentifier("f6");
-    	InputText c7 = new InputText();
+    	InputTextarea c7 = new InputTextarea();
     	c7.setLabelFromIdentifier("f7").setField(dataModel, "otherDetails");
     	c7.getArea().getWidth().setDistance(2);
     	InputText c8 = new InputText();
     	c8.setLabelFromIdentifier("f8");
     	
-    	formDetail.getLayout().setType( org.cyk.utility.common.userinterface.Layout.Type.ADAPTIVE);
-    	formDetail.layOut(c1).layOut(c2).layOutBreak().layOut(c3).layOutBreak().layOut(c4).layOut(c5).layOutBreak().layOut(c6).layOut(c7).layOutBreak().layOut(c8).layOutBreak();
-		
-    	DynaFormModel model = (DynaFormModel) Form.Detail.buildTarget(formDetail);
-		formDetail.getPropertiesMap().setValue(model);
-		
-        return model;
+    	formDetail.layOut(c1).layOut(c2).layOutBreak().layOut(c3).layOutBreak().layOut(c4).layOut(c5).layOutBreak().layOut(c6).layOut(c7).layOutBreak().layOut(c8).layOutBreak();		
     }
 	
 	@Getter @Setter
@@ -91,6 +84,11 @@ public class FormsPage extends Page implements Serializable {
 			super.__execute__();
 			System.out.println("FormsPage.SubmitCommandActionAdapter.__execute__() : CALL BUSINESS SERVICE to handle data : "+form.getObject());
 			return null;
+		}
+		
+		@Override
+		public Boolean getIsConfirmable() {
+			return Boolean.TRUE;
 		}
 		
 	}
