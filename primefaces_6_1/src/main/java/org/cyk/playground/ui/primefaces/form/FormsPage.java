@@ -1,4 +1,4 @@
-package org.cyk.playground.ui.primefaces;
+package org.cyk.playground.ui.primefaces.form;
 
 import java.io.Serializable;
 import java.util.Date;
