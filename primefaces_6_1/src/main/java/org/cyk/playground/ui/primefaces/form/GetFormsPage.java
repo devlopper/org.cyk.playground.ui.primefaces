@@ -7,8 +7,11 @@ import javax.inject.Named;
 
 import org.cyk.playground.ui.primefaces.model.Location;
 import org.cyk.playground.ui.primefaces.model.Person;
+import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
 import org.cyk.ui.web.primefaces.resources.page.Page;
 import org.cyk.utility.common.Constant;
+import org.cyk.utility.common.helper.TimeHelper;
+import org.cyk.utility.common.userinterface.InteractivityBlocker;
 import org.cyk.utility.common.userinterface.container.Form;
 
 import lombok.Getter;
@@ -38,6 +41,16 @@ public class GetFormsPage extends Page implements Serializable {
 				.setLabelFromIdentifier("myformlabel").build();
 		locationFormFull = Form.Master.get(new Location(), Constant.Action.CREATE,"full").setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
 				.setLabelFromIdentifier("myformlabel").build();
+		
+		PrimefacesResourcesManager.setInteractivityBlocker(personFormSimple, Boolean.FALSE);
+		PrimefacesResourcesManager.setInteractivityBlocker(personFormFull, Boolean.FALSE);
+		
+		personFormSimple.getSubmitCommand().getPropertiesMap().setAsync(Boolean.TRUE);
+		personFormFull.getSubmitCommand().getPropertiesMap().setAsync(Boolean.TRUE);
+		
+		//personFormSimple.getSubmitCommand().getPropertiesMap().setGlobal(Boolean.FALSE);
+		//personFormSimple.getPropertiesMap().setInteractivityBlocker(new InteractivityBlocker());
+		//((InteractivityBlocker)personFormSimple.getPropertiesMap().getInteractivityBlocker()).getPropertiesMap().setw
 	}
 
 	@Getter @Setter @Accessors(chain=true)
@@ -46,15 +59,18 @@ public class GetFormsPage extends Page implements Serializable {
 
 		@Override
 		protected Object __execute__() {
-			super.__execute__();
-			System.out.println("FormsPage.SubmitCommandActionAdapter.__execute__() : CALL BUSINESS SERVICE to handle data : "+form.getObject());
+			//super.__execute__();
+			System.out.println("FormsPage.SubmitCommandActionAdapter.__execute__() : CALL BUSINESS SERVICE to handle data : "+getInput());
+			TimeHelper.getInstance().pause(1000 * 5);
+			System.out.println("DONE!!!");
 			return null;
 		}
 		
-		@Override
+		/*@Override
 		public Boolean getIsConfirmable() {
 			return Boolean.TRUE;
-		}
+		}*/
+		
 		
 	}
 }

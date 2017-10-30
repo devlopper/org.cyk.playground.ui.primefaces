@@ -9,7 +9,6 @@ import org.cyk.ui.web.primefaces.resources.page.Page;
 import org.cyk.utility.common.helper.CommandHelper;
 import org.cyk.utility.common.helper.ThrowableHelper;
 import org.cyk.utility.common.userinterface.command.Command;
-import org.cyk.utility.common.userinterface.event.Confirm;
 import org.cyk.utility.common.userinterface.panel.ConfirmationDialog;
 
 import lombok.Getter;
