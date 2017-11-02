@@ -19,4 +19,8 @@ public class Country {
 	
 	private String code,name;
 	
+	@Override
+	public String toString() {
+		return name;
+	}
 }

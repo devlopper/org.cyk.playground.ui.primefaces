@@ -7,11 +7,14 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import org.cyk.playground.ui.primefaces.model.AllInputs;
+import org.cyk.playground.ui.primefaces.model.Forms;
 import org.cyk.playground.ui.primefaces.model.Location;
 import org.cyk.playground.ui.primefaces.model.LocationForms;
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.playground.ui.primefaces.model.PersonForms;
 import org.cyk.utility.common.Constant;
+import org.cyk.utility.common.helper.InstanceHelper;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.input.Input;
 import org.cyk.utility.common.userinterface.input.InputTextarea;
@@ -28,7 +31,11 @@ public class ContextListener implements ServletContextListener , Serializable {
 		Form.Master.setClass(Location.class, Constant.Action.CREATE, LocationForms.Simple.class);
 		Form.Master.setClass(Location.class, Constant.Action.CREATE,"full", LocationForms.Full.class);
 		
+		Form.Master.setClass(AllInputs.class, Constant.Action.CREATE, Forms.Simple.class);
+		
 		Input.Listener.Adapter.Default.DEFAULT_CLASS = InputAdapter.class;
+		
+		InstanceHelper.Listener.Adapter.Default.DEFAULT_CLASS = org.cyk.playground.ui.primefaces.InstanceHelper.Listener.class;
 	}
 
 	@Override

@@ -11,7 +11,6 @@ import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
 import org.cyk.ui.web.primefaces.resources.page.Page;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.TimeHelper;
-import org.cyk.utility.common.userinterface.InteractivityBlocker;
 import org.cyk.utility.common.userinterface.container.Form;
 
 import lombok.Getter;
@@ -48,9 +47,6 @@ public class GetFormsPage extends Page implements Serializable {
 		personFormSimple.getSubmitCommand().getPropertiesMap().setAsync(Boolean.TRUE);
 		personFormFull.getSubmitCommand().getPropertiesMap().setAsync(Boolean.TRUE);
 		
-		//personFormSimple.getSubmitCommand().getPropertiesMap().setGlobal(Boolean.FALSE);
-		//personFormSimple.getPropertiesMap().setInteractivityBlocker(new InteractivityBlocker());
-		//((InteractivityBlocker)personFormSimple.getPropertiesMap().getInteractivityBlocker()).getPropertiesMap().setw
 	}
 
 	@Getter @Setter @Accessors(chain=true)

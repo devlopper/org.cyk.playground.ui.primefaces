@@ -11,11 +11,160 @@
  		<ui:param name="page" value="#{inputsPage}" />
  		<ui:define name="centerCenterContent">
  			
- 			<ui:decorate template="#{inputsPage.inputText.propertiesMap.template}">
-		 		<ui:param name="input" value="#{inputsPage.inputText}" />
-		 		<ui:param name="identifier" value="myinputtext"/>
-		 	</ui:decorate>
- 			
+ 			<p:panelGrid  columns="4">
+ 				
+ 				<h:outputText value="Text" />
+ 				<h:panelGroup>
+ 					<ui:decorate template="#{inputsPage.inputText.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputText}" />
+				 		<ui:param name="identifier" value="myinputtext"/>
+				 	</ui:decorate>
+ 				</h:panelGroup>
+ 						 	
+			 	<h:outputText value="Boolean button" />
+			 	<h:panelGroup>
+				 	<ui:decorate template="#{inputsPage.inputBooleanButton.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputBooleanButton}" />
+				 		<ui:param name="identifier" value="mybooleanbutton"/>
+			 	</ui:decorate>
+			 	</h:panelGroup>
+			 	
+			 	<h:outputText value="Boolean check box" />
+				<h:panelGroup>
+					<ui:decorate template="#{inputsPage.inputBooleanCheckBox.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputBooleanCheckBox}" />
+				 		<ui:param name="identifier" value="mybooleancheckbox"/>
+				 	</ui:decorate>
+				</h:panelGroup>
+					 	
+			 	<h:outputText value="One Combos" />
+			 	<h:panelGroup>
+					 <ui:decorate template="#{inputsPage.inputChoiceOneComboString.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceOneComboString}" />
+				 		<ui:param name="identifier" value="myinputonechoicecombostring"/>
+				 	</ui:decorate>
+		 			<p:separator/>
+		 			
+		 			<ui:decorate template="#{inputsPage.inputChoiceOneComboInteger.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceOneComboInteger}" />
+				 		<ui:param name="identifier" value="myinputonechoicecomboint"/>
+				 	</ui:decorate>
+		 			<p:separator/>
+		 			
+		 			<ui:decorate template="#{inputsPage.inputChoiceOneComboBigDecimal.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceOneComboBigDecimal}" />
+				 		<ui:param name="identifier" value="myinputonechoicecombobig"/>
+				 	</ui:decorate>
+				 	<p:separator/>
+		 			
+				 	<ui:decorate template="#{inputsPage.inputChoiceOneComboEnum.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceOneComboEnum}" />
+				 		<ui:param name="identifier" value="myinputonechoicecomboenum"/>
+				 	</ui:decorate>
+				 	<p:separator/>
+		 			
+				 	<ui:decorate template="#{inputsPage.inputChoiceOneComboBoolean.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceOneComboBoolean}" />
+				 		<ui:param name="identifier" value="myinputonechoicecombobool"/>
+				 	</ui:decorate>
+				 	<p:separator/>
+		 			
+				 	<ui:decorate template="#{inputsPage.inputChoiceOneComboMyType.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceOneComboMyType}" />
+				 		<ui:param name="identifier" value="myinputonechoicecombomt"/>
+				 	</ui:decorate>
+		 			<p:separator/>
+			 	</h:panelGroup>
+			 	
+			 	<h:outputText value="One List" />
+				<h:panelGroup>
+					<ui:decorate template="#{inputsPage.inputChoiceOneListBox.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceOneListBox}" />
+				 		<ui:param name="identifier" value="myinputonechoicelb"/>
+				 	</ui:decorate>
+				</h:panelGroup>
+						 	
+			 	<h:outputText value="One Radio" />
+				<h:panelGroup>
+					<ui:decorate template="#{inputsPage.inputChoiceOneRadio.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceOneRadio}" />
+				 		<ui:param name="identifier" value="myinputonechoiceradio"/>
+				 	</ui:decorate>
+				</h:panelGroup>
+							 	
+			 	<h:outputText value="One Button" />
+				<h:panelGroup>
+					<ui:decorate template="#{inputsPage.inputChoiceOneButton.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceOneButton}" />
+				 		<ui:param name="identifier" value="myinputonechoicebutton"/>
+				 	</ui:decorate>
+				</h:panelGroup>
+						 	
+			 	<h:outputText value="One Autocomplete" />
+				<h:panelGroup>
+					<ui:decorate template="#{inputsPage.inputChoiceOneAutoComplete.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceOneAutoComplete}" />
+				 		<ui:param name="identifier" value="myinputonechoiceautocomplete"/>
+				 	</ui:decorate>
+				</h:panelGroup>
+						 	
+			 	<h:outputText value="One Cascade list" />
+			 	<h:panelGroup>
+					<ui:decorate template="#{inputsPage.inputChoiceOneCascadeList.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceOneCascadeList}" />
+				 		<ui:param name="identifier" value="myinputonechoicecascadelist"/>
+				 	</ui:decorate>
+				</h:panelGroup>
+				
+				<h:outputText value="Many Autocomplete" />
+			 	<h:panelGroup>
+					<ui:decorate template="#{inputsPage.inputChoiceManyAutoComplete.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceManyAutoComplete}" />
+				 		<ui:param name="identifier" value="i001"/>
+				 	</ui:decorate>
+				</h:panelGroup>
+				
+				<h:outputText value="Many button" />
+			 	<h:panelGroup>
+					<ui:decorate template="#{inputsPage.inputChoiceManyButton.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceManyButton}" />
+				 		<ui:param name="identifier" value="i002"/>
+				 	</ui:decorate>
+				</h:panelGroup>
+				
+				<h:outputText value="Many check" />
+			 	<h:panelGroup>
+					<ui:decorate template="#{inputsPage.inputChoiceManyCheck.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceManyCheck}" />
+				 		<ui:param name="identifier" value="i003"/>
+				 	</ui:decorate>
+				</h:panelGroup>
+				
+				<h:outputText value="Many list" />
+			 	<h:panelGroup>
+					<ui:decorate template="#{inputsPage.inputChoiceManyList.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceManyList}" />
+				 		<ui:param name="identifier" value="i004"/>
+				 	</ui:decorate>
+				</h:panelGroup>
+				
+				<h:outputText value="Many combo" />
+			 	<h:panelGroup>
+					<ui:decorate template="#{inputsPage.inputChoiceManyCombo.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceManyCombo}" />
+				 		<ui:param name="identifier" value="i005"/>
+				 	</ui:decorate>
+				</h:panelGroup>
+				
+				<h:outputText value="Many picklist" />
+			 	<h:panelGroup>
+					<ui:decorate template="#{inputsPage.inputChoiceManyPickList.propertiesMap.template}">
+				 		<ui:param name="input" value="#{inputsPage.inputChoiceManyPickList}" />
+				 		<ui:param name="identifier" value="i006"/>
+				 	</ui:decorate>
+				</h:panelGroup>
+ 			</p:panelGrid>
+		 	
  		</ui:define>
  	</ui:decorate>
  	
