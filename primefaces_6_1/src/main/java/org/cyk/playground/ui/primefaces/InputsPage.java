@@ -11,8 +11,10 @@ import javax.inject.Named;
 
 import org.cyk.playground.ui.primefaces.model.Country;
 import org.cyk.ui.web.primefaces.resources.page.Page;
+import org.cyk.utility.common.helper.FileHelper.File;
 import org.cyk.utility.common.userinterface.input.InputBooleanButton;
 import org.cyk.utility.common.userinterface.input.InputBooleanCheckBox;
+import org.cyk.utility.common.userinterface.input.InputFile;
 import org.cyk.utility.common.userinterface.input.InputText;
 import org.cyk.utility.common.userinterface.input.choice.InputChoiceManyAutoComplete;
 import org.cyk.utility.common.userinterface.input.choice.InputChoiceManyButton;
@@ -60,6 +62,8 @@ public class InputsPage extends Page implements Serializable {
 	private InputChoiceManyPickList inputChoiceManyPickList;
 	private InputChoiceManyList inputChoiceManyList;
 	
+	private InputFile inputFile;
+	
 	@Override
 	protected void initialisation() {
 		super.initialisation();
@@ -94,6 +98,8 @@ public class InputsPage extends Page implements Serializable {
 		inputChoiceManyCombo = new InputChoiceManyCombo().setField(new Model(), "myInputChoiceManyCombo");
 		inputChoiceManyList = new InputChoiceManyList().setField(new Model(), "myInputChoiceManyPickList");
 		inputChoiceManyPickList = new InputChoiceManyPickList().setField(new Model(), "myInputChoiceManyList");
+		 
+		inputFile = new InputFile().setField(new Model(), "myInputFile");
 	}
 	
 	public void submit(){
@@ -125,6 +131,8 @@ public class InputsPage extends Page implements Serializable {
 		private Country myInputChoiceManyCombo;
 		private MyType myInputChoiceManyPickList;
 		private Country myInputChoiceManyList;
+		
+		private File myInputFile;
 	}
 	
 	public static enum MyEnum{

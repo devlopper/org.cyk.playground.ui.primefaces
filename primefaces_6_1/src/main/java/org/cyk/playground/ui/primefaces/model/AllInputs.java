@@ -11,6 +11,7 @@ import org.cyk.utility.common.annotation.user.interfaces.InputBooleanCheck;
 import org.cyk.utility.common.annotation.user.interfaces.InputCalendar;
 import org.cyk.utility.common.annotation.user.interfaces.InputCalendar.Format;
 import org.cyk.utility.common.annotation.user.interfaces.InputEditor;
+import org.cyk.utility.common.annotation.user.interfaces.InputFile;
 import org.cyk.utility.common.annotation.user.interfaces.InputManyAutoComplete;
 import org.cyk.utility.common.annotation.user.interfaces.InputManyButton;
 import org.cyk.utility.common.annotation.user.interfaces.InputManyCheck;
@@ -27,6 +28,7 @@ import org.cyk.utility.common.annotation.user.interfaces.InputOneRadio;
 import org.cyk.utility.common.annotation.user.interfaces.InputPassword;
 import org.cyk.utility.common.annotation.user.interfaces.InputText;
 import org.cyk.utility.common.annotation.user.interfaces.InputTextarea;
+import org.cyk.utility.common.helper.FileHelper.File;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -71,6 +73,7 @@ public class AllInputs {
 	@Input @InputManyPickList private Country inputChoiceManyPickList;
 	@Input @InputManyList private Country inputChoiceManyList;
 	
+	@Input @InputFile private File inputFile;
 	/*
 	@Input @InputChoice @InputOneChoice @InputOneCombo  private MyEnum enumeration;
 	
