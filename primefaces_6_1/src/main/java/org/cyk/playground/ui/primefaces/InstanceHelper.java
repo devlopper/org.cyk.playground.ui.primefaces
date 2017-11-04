@@ -1,8 +1,11 @@
 package org.cyk.playground.ui.primefaces;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.cyk.playground.ui.primefaces.model.Country;
 import org.cyk.utility.common.computation.DataReadConfiguration;
 import org.cyk.utility.common.helper.FilterHelper;
@@ -16,11 +19,30 @@ public class InstanceHelper implements Serializable {
 		@SuppressWarnings("unchecked")
 		@Override
 		public <T> Collection<T> get(Class<T> aClass,FilterHelper.Filter<T> filter, DataReadConfiguration dataReadConfiguration) {
-			if(InputsPage.MyType.class.equals(aClass))
-				return (Collection<T>) InputsPage.MyType.COLLECTION;
-			if(Country.class.equals(aClass)){
-				return (Collection<T>) Country.LIST;
+			if(filter==null){
+				if(InputsPage.MyType.class.equals(aClass))
+					return (Collection<T>) InputsPage.MyType.COLLECTION;
+				if(Country.class.equals(aClass)){
+					return (Collection<T>) Country.LIST;
+				}	
+			}else {
+				if(InputsPage.MyType.class.equals(aClass))
+					return (Collection<T>) InputsPage.MyType.COLLECTION;
+				if(Country.class.equals(aClass)){
+					List<Country> list;
+					String query = (String)filter.getCriterias().get(0).getPreparedValue();
+					if(StringUtils.isBlank(query))
+						list =  Country.LIST;
+					else{
+						list = new ArrayList<>();
+						for(Country country : Country.LIST)
+							if(StringUtils.containsIgnoreCase(country.getCode(), query))
+								list.add(country);
+					}
+					return (Collection<T>) list;
+				}	
 			}
+			
 			return super.get(aClass,filter, dataReadConfiguration);
 		}
 		

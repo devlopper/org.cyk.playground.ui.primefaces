@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.cyk.playground.ui.primefaces.model.AllInputs;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.userinterface.container.Form;
@@ -36,6 +38,8 @@ public class FormAllInputsPage extends Window implements Serializable {
 		@Override
 		protected Object __execute__() {
 			System.out.println("FormAllInputsPage.SubmitCommandActionAdapter.__execute__()");
+			super.__execute__();
+			System.out.println(ToStringBuilder.reflectionToString(form.getObject(), ToStringStyle.MULTI_LINE_STYLE));
 			return null;
 		}
 		
