@@ -5,10 +5,12 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @Accessors(chain=true)
-public class Location {
+public class Location extends AbstractIdentified {
 
 	private Country country;
 	private String address;
-	private String otherDetails;
+	
+	public static final String FIELD_COUNTRY = "country";
+	public static final String FIELD_ADDRESS = "address";
 	
 }

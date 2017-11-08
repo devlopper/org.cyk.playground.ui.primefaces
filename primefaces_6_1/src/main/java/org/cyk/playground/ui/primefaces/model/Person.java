@@ -1,23 +1,22 @@
 package org.cyk.playground.ui.primefaces.model;
 
-import javax.validation.constraints.NotNull;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @Accessors(chain=true)
-public class Person {
+public class Person extends AbstractIdentified {
 
-	@NotNull 
-	private String code;
-	private String image;
-	@NotNull 
-	private String firstname;
-	private String lastname;
-	private /*Date*/String birthDate;
-	private String birthLocation;
+	private String lastnames;
 	private Sex sex;
-	private Country country;
+	private Country nationality;
+	
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+	}
 	
 }

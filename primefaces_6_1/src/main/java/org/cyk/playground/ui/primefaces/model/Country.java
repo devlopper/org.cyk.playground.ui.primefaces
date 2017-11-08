@@ -8,7 +8,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @Accessors(chain=true)
-public class Country {
+public class Country extends AbstractIdentified {
 	
 	public static final List<Country> LIST = new ArrayList<>();
 	static {
@@ -30,10 +30,14 @@ public class Country {
 		LIST.add(new Country().setCode("SA").setName("Afrique de sud"));
 	}
 	
-	private String code,name;
+	@Override
+	public Country setName(String name) {
+		return (Country) super.setName(name);
+	}
 	
 	@Override
-	public String toString() {
-		return name;
+	public Country setCode(String code) {
+		return (Country) super.setCode(code);
 	}
+
 }

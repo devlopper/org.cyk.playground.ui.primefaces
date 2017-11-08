@@ -1,4 +1,4 @@
-package org.cyk.playground.ui.primefaces;
+package org.cyk.playground.ui.primefaces.page.model;
 
 import java.io.Serializable;
 
@@ -11,14 +11,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Named @ViewScoped @Getter @Setter
-public class WindowsPage extends Window implements Serializable {
+public class ListGlobalIdentifierPage extends Window implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void initialisation() {
 		super.initialisation();
-		getPropertiesMap().setTitle("MyTITLE");
+		getPropertiesMap().setTitle("List Global Identifier");
 	}
 	
 }

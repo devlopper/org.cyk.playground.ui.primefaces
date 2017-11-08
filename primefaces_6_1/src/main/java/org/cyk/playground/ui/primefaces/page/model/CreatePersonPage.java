@@ -1,4 +1,4 @@
-package org.cyk.playground.ui.primefaces.form;
+package org.cyk.playground.ui.primefaces.page.model;
 
 import java.io.Serializable;
 
@@ -7,17 +7,17 @@ import javax.inject.Named;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.cyk.playground.ui.primefaces.model.AllInputs;
-import org.cyk.utility.common.Constant;
+import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.Window;
+import org.cyk.utility.common.userinterface.input.Input;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Named @ViewScoped @Getter @Setter
-public class FormAllInputsPage extends Window implements Serializable {
+public class CreatePersonPage extends Window implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Form.Master form;
@@ -25,10 +25,24 @@ public class FormAllInputsPage extends Window implements Serializable {
 	@Override
 	protected void initialisation() {
 		super.initialisation();
-		getPropertiesMap().setTitle("Form All Inputs");
+		getPropertiesMap().setTitle("Create person");
 		
-		form = Form.Master.get(new AllInputs(), Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
-				.setLabelFromIdentifier("myformlabel").build();
+		form = new Form.Master(new Person(),SubmitCommandActionAdapter.class);
+		
+		Form.Detail detail = form.getDetail();
+		detail.setFieldsObjectFromMaster("globalIdentifier");
+		detail.add("code");
+		detail.add("image");
+		detail.add("name");
+		detail.setFieldsObjectFromMaster();
+		detail.add("lastnames");
+		detail.add("nationality");
+		detail.add("sex");
+		detail.setFieldsObjectFromMaster("globalIdentifier");
+		detail.add("description");
+		detail.add("otherDetails");
+		
+		form.build();
 		
 		form.getSubmitCommand().getPropertiesMap().setAjax(Boolean.FALSE);//because of file upload
 		//form.getSubmitCommand().getPropertiesMap().setPartialSubmit(Boolean.FALSE);
@@ -40,7 +54,7 @@ public class FormAllInputsPage extends Window implements Serializable {
 
 		@Override
 		protected Object __execute__() {
-			System.out.println("FormAllInputsPage.SubmitCommandActionAdapter.__execute__()");
+			System.out.println("CreatePersonPage.SubmitCommandActionAdapter.__execute__()");
 			super.__execute__();
 			System.out.println(ToStringBuilder.reflectionToString(form.getObject(), ToStringStyle.MULTI_LINE_STYLE));
 			return null;

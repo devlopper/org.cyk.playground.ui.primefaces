@@ -7,7 +7,7 @@ import javax.inject.Named;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.cyk.playground.ui.primefaces.model.AllInputs;
+import org.cyk.playground.ui.primefaces.model.ModelWithoutInputAnnotation;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.Window;
@@ -17,9 +17,10 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Named @ViewScoped @Getter @Setter
-public class FormAllInputsPage extends Window implements Serializable {
+public class FormModelWithoutInputAnnotationPage extends Window implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	private ModelWithoutInputAnnotation model = new ModelWithoutInputAnnotation();
 	private Form.Master form;
 	
 	@Override
@@ -27,7 +28,7 @@ public class FormAllInputsPage extends Window implements Serializable {
 		super.initialisation();
 		getPropertiesMap().setTitle("Form All Inputs");
 		
-		form = Form.Master.get(new AllInputs(), Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
+		form = Form.Master.get(model, Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
 				.setLabelFromIdentifier("myformlabel").build();
 		
 		form.getSubmitCommand().getPropertiesMap().setAjax(Boolean.FALSE);//because of file upload
@@ -40,7 +41,7 @@ public class FormAllInputsPage extends Window implements Serializable {
 
 		@Override
 		protected Object __execute__() {
-			System.out.println("FormAllInputsPage.SubmitCommandActionAdapter.__execute__()");
+			System.out.println("FormModelWithoutInputAnnotationPage.SubmitCommandActionAdapter.__execute__()");
 			super.__execute__();
 			System.out.println(ToStringBuilder.reflectionToString(form.getObject(), ToStringStyle.MULTI_LINE_STYLE));
 			return null;
