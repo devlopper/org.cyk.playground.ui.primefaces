@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import org.cyk.playground.ui.primefaces.model.File;
@@ -16,11 +15,10 @@ import org.cyk.playground.ui.primefaces.model.LocationForms;
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.playground.ui.primefaces.model.PersonForms;
 import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
+import org.cyk.ui.web.primefaces.resources.ServletContextListener;
 import org.cyk.ui.web.primefaces.resources.input.InputFile;
 import org.cyk.utility.common.Constant;
-import org.cyk.utility.common.cdi.AbstractBean;
 import org.cyk.utility.common.helper.ClassHelper;
-import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.helper.InstanceHelper;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.Form.Detail;
@@ -32,11 +30,12 @@ import org.cyk.utility.common.userinterface.input.choice.InputChoiceOneCombo;
 import org.cyk.utility.common.userinterface.input.choice.InputChoiceOneRadio;
 
 @WebListener
-public class ContextListener extends AbstractBean implements ServletContextListener , Serializable {
+public class ContextListener extends ServletContextListener implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
+		super.contextInitialized(servletContextEvent);
 		inject(PrimefacesResourcesManager.class).initialize();
 		
 		Form.Master.setClass(Person.class, Constant.Action.CREATE, PersonForms.Simple.class);
@@ -51,12 +50,12 @@ public class ContextListener extends AbstractBean implements ServletContextListe
 
 	@Override
 	public void contextDestroyed(ServletContextEvent servletContextEvent) {
-		
+		super.contextDestroyed(servletContextEvent);
 	}
 	
 	/**/
 	
-	public static class InputAdapter extends Input.Listener.Adapter.Default {
+	public static class InputAdapter extends org.cyk.ui.web.primefaces.resources.InputAdapter {
 		private static final long serialVersionUID = 1L;
 		
 		@Override
@@ -95,6 +94,21 @@ public class ContextListener extends AbstractBean implements ServletContextListe
 		}
 		
 		@Override
+		public Object getReadableValue(Input<?> input) {
+			// TODO Auto-generated method stub
+			return super.getReadableValue(input);
+		}
+		
+		@Override
+		public Object getWritableValue(Input<?> input) {
+			Object value = super.getWritableValue(input);
+			if(input instanceof InputFile && input.getField().getType().equals(File.class)){
+				
+			}
+			return value;
+		}
+		/*
+		@Override
 		public Object getReadableValue(Object object, Field field) {
 			Object value = super.getReadableValue(object, field);
 			if(value instanceof File){
@@ -116,6 +130,7 @@ public class ContextListener extends AbstractBean implements ServletContextListe
 			}
 			return super.getWritableValue(object);
 		}
+		*/
 	}
 
 }
