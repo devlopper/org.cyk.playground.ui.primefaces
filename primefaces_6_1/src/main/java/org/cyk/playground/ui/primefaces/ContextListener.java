@@ -18,6 +18,7 @@ import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
 import org.cyk.ui.web.primefaces.resources.ServletContextListener;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.ClassHelper;
+import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.helper.InstanceHelper;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.Form.Detail;
@@ -92,39 +93,25 @@ public class ContextListener extends ServletContextListener implements Serializa
 			}
 			return super.getClass(detail, object, field);
 		}
-				
+		
+		public Class<?> getFileClass(){
+			return File.class;
+		}		
+		
 		@Override
-		public Object getWritableValue(Input<?> input) {
-			Object value = super.getWritableValue(input);
-			if(input instanceof InputFile && input.getField().getType().equals(File.class)){
-				
-			}
-			return value;
-		}
-		/*
-		@Override
-		public Object getReadableValue(Object object, Field field) {
-			Object value = super.getReadableValue(object, field);
+		public Object getReadableValue(Input<?> input) {
+			Object value = super.getReadableValue(input);
 			if(value instanceof File){
 				File file = (File) value;
 				value = new FileHelper.File();
 				((FileHelper.File)value).setBytes(file.getBytes());
 				((FileHelper.File)value).setMime(file.getMime());
+				((FileHelper.File)value).setName(file.getName());
+				((FileHelper.File)value).setExtension(file.getExtension());
 			}	
 			return value;
 		}
-		
-		@Override
-		public Object getWritableValue(Object object) {
-			if(object instanceof FileHelper.File){
-				File file = new File();
-				file.setBytes( ((FileHelper.File)object).getBytes() );
-				file.setMime( ((FileHelper.File)object).getMime() );
-				return file;
-			}
-			return super.getWritableValue(object);
-		}
-		*/
+
 	}
 
 }

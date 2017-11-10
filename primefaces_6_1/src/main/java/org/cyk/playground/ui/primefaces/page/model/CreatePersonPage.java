@@ -7,10 +7,12 @@ import javax.inject.Named;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.cyk.playground.ui.primefaces.ContextListener;
+import org.cyk.playground.ui.primefaces.model.File;
 import org.cyk.playground.ui.primefaces.model.Person;
+import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.Window;
-import org.cyk.utility.common.userinterface.input.Input;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +29,10 @@ public class CreatePersonPage extends Window implements Serializable {
 		super.initialisation();
 		getPropertiesMap().setTitle("Create person");
 		
-		form = new Form.Master(new Person(),SubmitCommandActionAdapter.class);
+		Person person = new Person();
+		//person.getGlobalIdentifier().setImage(new File(FileHelper.getInstance().get(ContextListener.class, "image001.png")));
+		//System.out.println("CreatePersonPage.initialisation() : "+person.getGlobalIdentifier().getImage());
+		form = new Form.Master(person,SubmitCommandActionAdapter.class);
 		
 		Form.Detail detail = form.getDetail();
 		detail.setFieldsObjectFromMaster("globalIdentifier");
@@ -40,7 +45,7 @@ public class CreatePersonPage extends Window implements Serializable {
 		detail.add("sex");
 		detail.setFieldsObjectFromMaster("globalIdentifier");
 		detail.add("description");
-		detail.add("otherDetails");
+		//detail.add("otherDetails");
 		
 		form.build();
 		

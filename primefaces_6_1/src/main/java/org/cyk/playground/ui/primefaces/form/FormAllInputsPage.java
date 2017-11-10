@@ -30,7 +30,8 @@ public class FormAllInputsPage extends Window implements Serializable {
 		getPropertiesMap().setTitle("Form All Inputs");
 		
 		AllInputs allInputs = new AllInputs();
-		allInputs.setInputFile2(FileHelper.getInstance().get(ContextListener.class, "image001.png"));
+		allInputs.setInputFile3(FileHelper.getInstance().get(ContextListener.class, "image001.png"));
+		allInputs.setInputFile4(FileHelper.getInstance().get(ContextListener.class, "image002.png"));
 	
 		form = Form.Master.get(allInputs, Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
 				.setLabelFromIdentifier("myformlabel").build();

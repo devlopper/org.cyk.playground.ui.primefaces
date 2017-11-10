@@ -37,7 +37,7 @@ import lombok.experimental.Accessors;
 
 @Getter @Setter @Accessors(chain=true)
 public class AllInputs {
-	/*
+	
 	@Input @InputText private String inputText;
 
 	@Input @InputTextarea private String inputTextarea;
@@ -78,10 +78,10 @@ public class AllInputs {
 	@Input @InputManyPickList private List<Country> inputChoiceManyPickList;
 	@Input @InputManyList private List<Country> inputChoiceManyList;
 	
-	*/
 	@Input @InputFile private File inputFile1;
 	@Input @InputFile private File inputFile2;
 	@Input @InputFile private File inputFile3;
+	@Input @InputFile private File inputFile4;
 	
 	/*
 	@Input @InputChoice @InputOneChoice @InputOneCombo  private MyEnum enumeration;
