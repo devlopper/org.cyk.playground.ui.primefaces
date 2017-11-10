@@ -16,6 +16,11 @@
  			<p:graphicImage value="/playground-primefaces-6_1/javax.faces.resource/images/icons/128/video.png.jsf?ln=org.cyk.ui.web.primefaces.resources" />
  			<img src="/playground-primefaces-6_1/javax.faces.resource/images/icons/128/video.png.jsf?ln=org.cyk.ui.web.primefaces.resources" width="150px" height="150px"/>
  			-->
+ 			<!--
+ 			#{formAllInputsPage.form.detail.getInputByFieldName('inputFile1').streamedContent}
+ 			<p:graphicImage value="#{formAllInputsPage.form.detail.getInputByFieldName('inputFile1').propertiesMap.imageComponent.propertiesMap.streamedContent}" alt="INITIAL" stream="false"/>
+ 			-->
+ 			
  			<ui:decorate template="#{formAllInputsPage.form.propertiesMap.template}">
 				<ui:param name="form" value="#{formAllInputsPage.form}" />
 			</ui:decorate>

@@ -16,7 +16,6 @@ import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.playground.ui.primefaces.model.PersonForms;
 import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
 import org.cyk.ui.web.primefaces.resources.ServletContextListener;
-import org.cyk.ui.web.primefaces.resources.input.InputFile;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.ClassHelper;
 import org.cyk.utility.common.helper.InstanceHelper;
@@ -24,6 +23,7 @@ import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.Form.Detail;
 import org.cyk.utility.common.userinterface.input.Input;
 import org.cyk.utility.common.userinterface.input.InputEditor;
+import org.cyk.utility.common.userinterface.input.InputFile;
 import org.cyk.utility.common.userinterface.input.InputText;
 import org.cyk.utility.common.userinterface.input.InputTextarea;
 import org.cyk.utility.common.userinterface.input.choice.InputChoiceOneCombo;
@@ -92,13 +92,7 @@ public class ContextListener extends ServletContextListener implements Serializa
 			}
 			return super.getClass(detail, object, field);
 		}
-		
-		@Override
-		public Object getReadableValue(Input<?> input) {
-			// TODO Auto-generated method stub
-			return super.getReadableValue(input);
-		}
-		
+				
 		@Override
 		public Object getWritableValue(Input<?> input) {
 			Object value = super.getWritableValue(input);

@@ -7,8 +7,10 @@ import javax.inject.Named;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.cyk.playground.ui.primefaces.ContextListener;
 import org.cyk.playground.ui.primefaces.model.AllInputs;
 import org.cyk.utility.common.Constant;
+import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.Window;
 
@@ -27,9 +29,12 @@ public class FormAllInputsPage extends Window implements Serializable {
 		super.initialisation();
 		getPropertiesMap().setTitle("Form All Inputs");
 		
-		form = Form.Master.get(new AllInputs(), Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
+		AllInputs allInputs = new AllInputs();
+		allInputs.setInputFile2(FileHelper.getInstance().get(ContextListener.class, "image001.png"));
+	
+		form = Form.Master.get(allInputs, Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
 				.setLabelFromIdentifier("myformlabel").build();
-		
+				
 		form.getSubmitCommand().getPropertiesMap().setAjax(Boolean.FALSE);//because of file upload
 		//form.getSubmitCommand().getPropertiesMap().setPartialSubmit(Boolean.FALSE);
 	}
