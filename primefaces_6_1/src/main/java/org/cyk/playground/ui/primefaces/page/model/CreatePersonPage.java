@@ -7,10 +7,8 @@ import javax.inject.Named;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.cyk.playground.ui.primefaces.ContextListener;
-import org.cyk.playground.ui.primefaces.model.File;
 import org.cyk.playground.ui.primefaces.model.Person;
-import org.cyk.utility.common.helper.FileHelper;
+import org.cyk.utility.common.userinterface.Layout;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.Window;
 
@@ -35,16 +33,17 @@ public class CreatePersonPage extends Window implements Serializable {
 		form = new Form.Master(person,SubmitCommandActionAdapter.class);
 		
 		Form.Detail detail = form.getDetail();
+		detail.getLayout().setType(Layout.Type.ADAPTIVE);
 		detail.setFieldsObjectFromMaster("globalIdentifier");
 		detail.add("code");
-		detail.add("image");
-		detail.add("name");
+		detail.add("image",1,3).addBreak();
+		detail.add("name").addBreak();
 		detail.setFieldsObjectFromMaster();
-		detail.add("lastnames");
+		detail.add("lastnames").addBreak();
 		detail.add("nationality");
-		detail.add("sex");
+		detail.add("sex").addBreak();
 		detail.setFieldsObjectFromMaster("globalIdentifier");
-		detail.add("description");
+		detail.add("description").addBreak();
 		//detail.add("otherDetails");
 		
 		form.build();
