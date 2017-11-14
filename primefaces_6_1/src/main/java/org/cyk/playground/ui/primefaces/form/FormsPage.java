@@ -8,8 +8,8 @@ import javax.inject.Named;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.cyk.ui.web.primefaces.resources.page.Page;
 import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.container.Window;
 import org.cyk.utility.common.userinterface.input.InputText;
 import org.cyk.utility.common.userinterface.input.InputTextarea;
 
@@ -18,7 +18,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Named @ViewScoped @Getter @Setter
-public class FormsPage extends Page implements Serializable {
+public class FormsPage extends Window implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Form.Master form;

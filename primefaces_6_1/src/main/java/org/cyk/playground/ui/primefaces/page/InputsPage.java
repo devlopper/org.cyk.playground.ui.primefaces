@@ -10,8 +10,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import org.cyk.playground.ui.primefaces.model.Country;
-import org.cyk.ui.web.primefaces.resources.page.Page;
 import org.cyk.utility.common.helper.FileHelper.File;
+import org.cyk.utility.common.userinterface.container.Window;
 import org.cyk.utility.common.userinterface.input.InputBooleanButton;
 import org.cyk.utility.common.userinterface.input.InputBooleanCheckBox;
 import org.cyk.utility.common.userinterface.input.InputFile;
@@ -35,7 +35,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Named @ViewScoped @Getter @Setter
-public class InputsPage extends Page implements Serializable {
+public class InputsPage extends Window implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

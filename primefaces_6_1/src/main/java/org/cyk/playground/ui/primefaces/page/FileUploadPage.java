@@ -2,20 +2,19 @@ package org.cyk.playground.ui.primefaces.page;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
-import org.cyk.ui.web.primefaces.resources.page.Page;
 import org.cyk.utility.common.helper.FileHelper.File;
+import org.cyk.utility.common.userinterface.container.Window;
 import org.cyk.utility.common.userinterface.input.InputFile;
 import org.primefaces.model.UploadedFile;
 
 import lombok.Getter;
 import lombok.Setter;
 
-//@Named @ViewScoped 
-@ManagedBean
-@Getter @Setter
-public class FileUploadPage extends Page implements Serializable {
+@Named @ViewScoped @Getter @Setter
+public class FileUploadPage extends Window implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

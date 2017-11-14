@@ -8,17 +8,17 @@ import javax.inject.Named;
 import org.cyk.playground.ui.primefaces.model.Location;
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
-import org.cyk.ui.web.primefaces.resources.page.Page;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.TimeHelper;
 import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.container.Window;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Named @ViewScoped @Getter @Setter
-public class GetFormsPage extends Page implements Serializable {
+public class GetFormsPage extends Window implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Form.Master personFormSimple;

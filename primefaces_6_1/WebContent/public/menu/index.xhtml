@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+ 	<ui:decorate template="#{menusPage.propertiesMap.template}">
+ 		<ui:param name="page" value="#{menusPage}" />
+ 		<ui:define name="centerCenterContent">
+ 			<p:panelGrid columns="2">
+ 				<h:panelGroup>
+ 					<h:outputText value="Menu bar" />
+ 				</h:panelGroup>
+ 				<h:panelGroup>
+ 					<ui:composition template="#{menusPage.menuBar.propertiesMap.template}">
+						<ui:param name="menu" value="#{menusPage.menuBar}"/>
+					</ui:composition>
+ 				</h:panelGroup>
+ 				
+ 				<h:panelGroup>
+ 					<h:outputText value="Tab Menu" />
+ 				</h:panelGroup>
+ 				<h:panelGroup>
+ 					<ui:composition template="#{menusPage.tabMenu.propertiesMap.template}">
+						<ui:param name="menu" value="#{menusPage.tabMenu}"/>
+					</ui:composition>	
+ 				</h:panelGroup>
+ 				
+ 				<h:panelGroup>
+ 					<h:outputText value="Panel Menu" />
+ 				</h:panelGroup>
+ 				<h:panelGroup>
+ 					<ui:composition template="#{menusPage.panelMenu.propertiesMap.template}">
+						<ui:param name="menu" value="#{menusPage.panelMenu}"/>
+					</ui:composition>
+ 				</h:panelGroup>
+ 				
+ 				<h:panelGroup>
+ 					<h:outputText value="Slide Menu" />
+ 				</h:panelGroup>
+ 				<h:panelGroup>
+ 					<!--ui:fragment rendered="#{menusPage.slideMenu!=null}">
+	 					<ui:composition template="#{menusPage.slideMenu.propertiesMap.template}">
+							<ui:param name="menu" value="#{menusPage.slideMenu}"/>
+						</ui:composition>
+ 					</ui:fragment-->
+ 					
+ 				</h:panelGroup>
+ 				
+ 			</p:panelGrid>
+ 		</ui:define>
+ 	</ui:decorate>
+ 	
+</html>
