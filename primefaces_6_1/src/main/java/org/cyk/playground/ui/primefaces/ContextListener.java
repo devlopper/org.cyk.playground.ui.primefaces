@@ -14,12 +14,14 @@ import org.cyk.playground.ui.primefaces.model.Location;
 import org.cyk.playground.ui.primefaces.model.LocationForms;
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.playground.ui.primefaces.model.PersonForms;
+
 import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
 import org.cyk.ui.web.primefaces.resources.ServletContextListener;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.ClassHelper;
 import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.helper.InstanceHelper;
+import org.cyk.utility.common.userinterface.command.Menu;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.Form.Detail;
 import org.cyk.utility.common.userinterface.input.Input;
@@ -46,7 +48,10 @@ public class ContextListener extends ServletContextListener implements Serializa
 		Form.Master.setClass(Location.class, Constant.Action.CREATE,"full", LocationForms.Full.class);
 		
 		ClassHelper.getInstance().map(Input.Listener.Adapter.Default.class, InputAdapter.class);
+		ClassHelper.getInstance().map(Menu.Builder.Adapter.Default.class,MenuBuilder.class);
+		
 		InstanceHelper.Listener.Adapter.Default.DEFAULT_CLASS = org.cyk.playground.ui.primefaces.InstanceHelper.Listener.class;
+		
 	}
 
 	@Override

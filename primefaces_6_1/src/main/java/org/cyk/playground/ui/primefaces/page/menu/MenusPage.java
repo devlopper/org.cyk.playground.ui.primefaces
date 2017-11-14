@@ -27,6 +27,7 @@ public class MenusPage extends Window implements Serializable {
 		createMenuBar();
 		createTabMenu();
 		createPanelMenu();
+	
 	}
 	
 	private void createMenuBar(){

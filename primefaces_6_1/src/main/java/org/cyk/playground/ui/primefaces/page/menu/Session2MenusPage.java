@@ -19,7 +19,7 @@ public class Session2MenusPage extends Window implements Serializable {
 	protected void initialisation() {
 		super.initialisation();
 		getPropertiesMap().setTitle("Session 2 Menus");
-
+		
 	}
 	
 }
