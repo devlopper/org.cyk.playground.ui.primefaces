@@ -1,4 +1,4 @@
-package org.cyk.playground.ui.primefaces.page;
+package org.cyk.playground.ui.primefaces.page.menu;
 
 import java.io.Serializable;
 
