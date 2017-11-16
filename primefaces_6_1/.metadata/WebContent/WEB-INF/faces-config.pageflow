@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15099254306730" configfile="/playground-primefaces-6_1/WebContent/WEB-INF/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15099254306730" configfile="/playground-primefaces-6_1/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf15107707111380" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15107708390357 pf15107708390358" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/navigation/2.jsf" id="pf15107708390359" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15107708390357" path="/public/navigation/2.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/navigation/3.jsf" id="pf151077083903510" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15107708390358" path="/public/navigation/3.jsf"/>
+  <links id="pf15107708390357" target="pf15107708390359" source="pf15107707111380" outcome="gotogivenprevious" redirect="true"/>
+  <links id="pf15107708390358" target="pf151077083903510" source="pf15107707111380" outcome="gotospecificprevious" redirect="true"/>
+</pageflow:Pageflow>

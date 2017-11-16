@@ -19,8 +19,6 @@ public class WindowsPage extends Window implements Serializable {
 	protected void initialisation() {
 		super.initialisation();
 		getPropertiesMap().setTitle("My page");
-		
-		
 	}
 	
 }

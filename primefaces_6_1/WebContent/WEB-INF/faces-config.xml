@@ -3,5 +3,25 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
 	version="2.2">
-
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>gotogivenprevious</from-outcome>
+			<to-view-id>/public/navigation/2.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>gotospecificprevious</from-outcome>
+			<to-view-id>/public/navigation/3.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>gotopage4</from-outcome>
+			<to-view-id>/public/navigation/4.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+	
+	</navigation-rule>
+	
 </faces-config>
