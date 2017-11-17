@@ -21,7 +21,37 @@
 			<to-view-id>/public/navigation/4.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>datatableedit</from-outcome>
+			<to-view-id>/public/datatable/edit.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>datatableconsult</from-outcome>
+			<to-view-id>/public/datatable/consult.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
 	
+		<navigation-case>
+			<from-outcome>personListView</from-outcome>
+			<to-view-id>/public/crud/person/list.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>personEditView</from-outcome>
+			<to-view-id>/public/crud/person/edit.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>personConsultView</from-outcome>
+			<to-view-id>/public/crud/person/consult.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>personReadView</from-outcome>
+			<to-view-id>/public/crud/person/consult.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
 	</navigation-rule>
 	
 </faces-config>

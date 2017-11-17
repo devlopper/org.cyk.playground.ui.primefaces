@@ -20,6 +20,7 @@ import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.ClassHelper;
 import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.helper.InstanceHelper;
+import org.cyk.utility.common.helper.MapHelper;
 import org.cyk.utility.common.helper.UniformResourceLocatorHelper;
 import org.cyk.utility.common.userinterface.command.Menu;
 import org.cyk.utility.common.userinterface.container.Form;
@@ -51,10 +52,14 @@ public class ContextListener extends ServletContextListener implements Serializa
 		ClassHelper.getInstance().map(Menu.Builder.Adapter.Default.class,MenuBuilder.class);
 		
 		InstanceHelper.Listener.Adapter.Default.DEFAULT_CLASS = org.cyk.playground.ui.primefaces.InstanceHelper.Listener.class;
+		InstanceHelper.Listener.COLLECTION.add(new org.cyk.playground.ui.primefaces.InstanceHelper.Listener());
 		
 		PrimefacesResourcesManager.LOGO_FILE = FileHelper.getInstance().get(ContextListener.class, "cyksystems.png");
 		
 		UniformResourceLocatorHelper.getInstance().linkPathIdentifier("gotospecificprevious", "gotopage4");
+		
+		MapHelper.Stringifier.Adapter.Default.DEFAULT_MAP_LISTENER_CLASS = org.cyk.playground.ui.primefaces.MapHelper.Listener.class;
+		MapHelper.Stringifier.Entry.Adapter.Default.DEFAULT_MAP_LISTENER_CLASS = org.cyk.playground.ui.primefaces.MapHelper.Listener.class;
 	}
 
 	@Override

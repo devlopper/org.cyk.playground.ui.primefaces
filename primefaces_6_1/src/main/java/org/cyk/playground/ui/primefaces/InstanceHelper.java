@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.cyk.playground.ui.primefaces.model.Country;
+import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.playground.ui.primefaces.page.InputsPage;
 import org.cyk.utility.common.computation.DataReadConfiguration;
 import org.cyk.utility.common.helper.FilterHelper;
@@ -21,6 +22,8 @@ public class InstanceHelper implements Serializable {
     	public Object getIdentifier(Object instance) {
     		if(instance instanceof Country)
     			return ((Country)instance).getCode();
+    		if(instance instanceof Person)
+    			return ((Person)instance).getGlobalIdentifier().getCode();
     		return super.getIdentifier(instance);
     	}
     	

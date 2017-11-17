@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15099254306730" configfile="/playground-primefaces-6_1/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" id="pf15107707111380" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15107708390357 pf15107708390358" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="public/navigation/2.jsf" id="pf15107708390359" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15107708390357" path="/public/navigation/2.jsf"/>
-  <nodes xsi:type="pageflow:PFPage" name="public/navigation/3.jsf" id="pf151077083903510" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15107708390358" path="/public/navigation/3.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="946" id="pf15107707111380" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15107708390357 pf15107708390358 pf151086063003111 pf151091426643313 pf151091426643314" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/navigation/2.jsf" x="338" y="178" id="pf15107708390359" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15107708390357" path="/public/navigation/2.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/navigation/3.jsf" x="338" y="562" id="pf151077083903510" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15107708390358" path="/public/navigation/3.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/navigation/4.jsf" x="338" y="946" id="pf151086063003112" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf151086063003111" path="/public/navigation/4.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/datatable/edit.jsf" x="338" y="1330" id="pf151091426643315" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf151091426643313" path="/public/datatable/edit.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/datatable/consult.jsf" x="338" y="1714" id="pf151091426643316" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf151091426643314" path="/public/datatable/consult.jsf"/>
   <links id="pf15107708390357" target="pf15107708390359" source="pf15107707111380" outcome="gotogivenprevious" redirect="true"/>
   <links id="pf15107708390358" target="pf151077083903510" source="pf15107707111380" outcome="gotospecificprevious" redirect="true"/>
+  <links id="pf151086063003111" target="pf151086063003112" source="pf15107707111380" outcome="gotopage4" redirect="true"/>
+  <links id="pf151091426643313" target="pf151091426643315" source="pf15107707111380" outcome="datatableedit" redirect="true"/>
+  <links id="pf151091426643314" target="pf151091426643316" source="pf15107707111380" outcome="datatableconsult" redirect="true"/>
 </pageflow:Pageflow>
