@@ -68,38 +68,38 @@ public class InputsPage extends Window implements Serializable {
 	protected void initialisation() {
 		super.initialisation();
 		inputText = new InputText();
-		inputText.setField(new Model(), "myInputText");
+		inputText._setField(new Model(), "myInputText");
 	
 		//inputText.getPropertiesMap().setOnChange("alert('it has changed')");
 		//inputText.getPropertiesMap().setOnClick("alert('it has been clicked')");
 		
 		inputBooleanButton = new InputBooleanButton();
-		inputBooleanButton.setField(new Model(), "myInputBooleanButton");
+		inputBooleanButton._setField(new Model(), "myInputBooleanButton");
 		
 		inputBooleanCheckBox = new InputBooleanCheckBox();
-		inputBooleanCheckBox.setField(new Model(), "myInputBooleanCheckBox");
+		inputBooleanCheckBox._setField(new Model(), "myInputBooleanCheckBox");
 		
 		inputChoiceOneComboString = new InputChoiceOneCombo().setField(new Model(), "myInputChoiceOneComboString",STRINGS);
 		inputChoiceOneComboInteger = new InputChoiceOneCombo().setField(new Model(), "myInputChoiceOneComboInteger",INTEGERS);
 		inputChoiceOneComboBigDecimal = new InputChoiceOneCombo().setField(new Model(), "myInputChoiceOneComboBigDecimal",BIG_DECIMALS);
-		inputChoiceOneComboEnum = new InputChoiceOneCombo().setField(new Model(), "myInputChoiceOneComboEnum");
-		inputChoiceOneComboBoolean = new InputChoiceOneCombo().setField(new Model(), "myInputChoiceOneComboBoolean");
-		inputChoiceOneComboMyType = new InputChoiceOneCombo().setField(new Model(), "myInputChoiceOneComboMyType");
+		inputChoiceOneComboEnum = new InputChoiceOneCombo()._setField(new Model(), "myInputChoiceOneComboEnum");
+		inputChoiceOneComboBoolean = new InputChoiceOneCombo()._setField(new Model(), "myInputChoiceOneComboBoolean");
+		inputChoiceOneComboMyType = new InputChoiceOneCombo()._setField(new Model(), "myInputChoiceOneComboMyType");
 		
-		inputChoiceOneListBox = new InputChoiceOneList().setField(new Model(), "myInputChoiceOneListBox");
-		inputChoiceOneRadio = new InputChoiceOneRadio().setField(new Model(), "myInputChoiceOneRadio");
-		inputChoiceOneButton = new InputChoiceOneButton().setField(new Model(), "myInputChoiceOneButton");
-		inputChoiceOneAutoComplete = new InputChoiceOneAutoComplete().setField(new Model(), "myInputChoiceOneAutoComplete");
-		inputChoiceOneCascadeList = new InputChoiceOneCascadeList().setField(new Model(), "myInputChoiceOneCascadeList");
+		inputChoiceOneListBox = new InputChoiceOneList()._setField(new Model(), "myInputChoiceOneListBox");
+		inputChoiceOneRadio = new InputChoiceOneRadio()._setField(new Model(), "myInputChoiceOneRadio");
+		inputChoiceOneButton = new InputChoiceOneButton()._setField(new Model(), "myInputChoiceOneButton");
+		inputChoiceOneAutoComplete = new InputChoiceOneAutoComplete()._setField(new Model(), "myInputChoiceOneAutoComplete");
+		inputChoiceOneCascadeList = new InputChoiceOneCascadeList()._setField(new Model(), "myInputChoiceOneCascadeList");
 		
-		inputChoiceManyAutoComplete = new InputChoiceManyAutoComplete().setField(new Model(), "myInputChoiceManyAutoComplete");
-		inputChoiceManyButton = new InputChoiceManyButton().setField(new Model(), "myInputChoiceManyButton");
-		inputChoiceManyCheck = new InputChoiceManyCheck().setField(new Model(), "myInputChoiceManyCheck");
-		inputChoiceManyCombo = new InputChoiceManyCombo().setField(new Model(), "myInputChoiceManyCombo");
-		inputChoiceManyList = new InputChoiceManyList().setField(new Model(), "myInputChoiceManyPickList");
-		inputChoiceManyPickList = new InputChoiceManyPickList().setField(new Model(), "myInputChoiceManyList");
+		inputChoiceManyAutoComplete = new InputChoiceManyAutoComplete()._setField(new Model(), "myInputChoiceManyAutoComplete");
+		inputChoiceManyButton = new InputChoiceManyButton()._setField(new Model(), "myInputChoiceManyButton");
+		inputChoiceManyCheck = new InputChoiceManyCheck()._setField(new Model(), "myInputChoiceManyCheck");
+		inputChoiceManyCombo = new InputChoiceManyCombo()._setField(new Model(), "myInputChoiceManyCombo");
+		inputChoiceManyList = new InputChoiceManyList()._setField(new Model(), "myInputChoiceManyPickList");
+		inputChoiceManyPickList = new InputChoiceManyPickList()._setField(new Model(), "myInputChoiceManyList");
 		 
-		inputFile = new InputFile().setField(new Model(), "myInputFile");
+		inputFile = new InputFile()._setField(new Model(), "myInputFile");
 	}
 	
 	public void submit(){

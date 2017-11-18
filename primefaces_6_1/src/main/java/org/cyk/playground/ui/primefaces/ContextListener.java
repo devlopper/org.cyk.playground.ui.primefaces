@@ -107,6 +107,16 @@ public class ContextListener extends ServletContextListener implements Serializa
 			return super.getClass(detail, object, field);
 		}
 		
+		@Override
+		public void listenGet(Input<?> input) {
+			if(input.getObject() instanceof GlobalIdentifier){
+				if(input.getField().getName().equals("code")){
+					input.getPropertiesMap().setRequired(Boolean.TRUE);
+				}	
+			}
+			
+		}
+		
 		public Class<?> getFileClass(){
 			return File.class;
 		}		

@@ -2,9 +2,11 @@ package org.cyk.playground.ui.primefaces;
 
 import java.io.Serializable;
 
+import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.playground.ui.primefaces.page.menu.Session1MenusPage;
 import org.cyk.playground.ui.primefaces.page.menu.Session2MenusPage;
 import org.cyk.playground.ui.primefaces.page.menu.Session3MenusPage;
+import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.userinterface.command.Menu;
 import org.cyk.utility.common.userinterface.command.MenuNode;
 
@@ -16,8 +18,12 @@ public class MenuBuilder extends org.cyk.ui.web.primefaces.resources.MenuBuilder
 		Menu menu = super.__execute__();
 		
 		if(Menu.Type.MAIN.equals(menu.getType())){
+			menu.addNode("person.list")._setPropertyUrl(Constant.Action.LIST, Person.class);
+			
+			MenuNode menuNode = null;
+			
 			if(componentParent instanceof Session1MenusPage || componentParent instanceof Session2MenusPage || componentParent instanceof Session3MenusPage){
-				MenuNode menuNode = new MenuNode();
+				menuNode = new MenuNode();
 				menuNode.setLabelFromIdentifier("Session Item 1");
 				menu.addOneChild(menuNode);
 				

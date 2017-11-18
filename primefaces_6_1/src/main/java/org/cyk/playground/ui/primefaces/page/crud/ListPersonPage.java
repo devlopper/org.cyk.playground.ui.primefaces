@@ -1,8 +1,6 @@
 package org.cyk.playground.ui.primefaces.page.crud;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -19,22 +17,20 @@ public class ListPersonPage extends Window implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private DataTable dataTable = new DataTable();
-	private List<Person> persons = new ArrayList<>(Person.COLLECTION);
+	private DataTable dataTable = new DataTable(Person.class);
 	
 	@Override
 	protected void initialisation() {
 		super.initialisation();
 		getPropertiesMap().setTitle("Person list");
 		
-		DataTable.Columns columns = new DataTable.Columns();
-		DataTable.Column column = new DataTable.Column();
-		column.getPropertiesMap().setName("c1");
-		columns.addOneChild(new DataTable.Column());
-		column.getPropertiesMap().setName("c2");
-		columns.addOneChild(new DataTable.Column());
+		dataTable.addColumn("code", "globalIdentifier.code");
+		dataTable.addColumn("name", "globalIdentifier.name");
+		dataTable.addColumn("lastnames", "lastnames");
 		
-		dataTable.getPropertiesMap().setColumns(columns);
+		dataTable.addManyRow(Person.COLLECTION);
+		
+		dataTable.build();
 	}
 	
 }

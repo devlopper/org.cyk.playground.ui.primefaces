@@ -18,7 +18,7 @@ public class LocationForms {
 		
 		public Simple(Object object) {
 			Form.Detail formDetail = instanciateDetail(org.cyk.utility.common.userinterface.Layout.Type.ADAPTIVE);
-			formDetail.add(new InputTextarea().setField(object, "address"));
+			formDetail.add(new InputTextarea()._setField(object, "address"));
 			//formDetail.normalize();
 		}
 		
@@ -30,8 +30,8 @@ public class LocationForms {
 		
 		public Full(Object object) {
 			Form.Detail formDetail = instanciateDetail(org.cyk.utility.common.userinterface.Layout.Type.ADAPTIVE);
-			formDetail.add(new InputText().setField(object, "country"),new InputText().setField(object, "address")).addBreak()
-			.add(new InputText().setField(object, "otherDetails"));
+			formDetail.add(new InputText()._setField(object, "country"),new InputText()._setField(object, "address")).addBreak()
+			.add(new InputText()._setField(object, "otherDetails"));
 		}
 		
 	}

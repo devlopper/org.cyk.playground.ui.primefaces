@@ -10,7 +10,9 @@
  	<ui:decorate template="#{editPersonPage.propertiesMap.template}">
  		<ui:param name="page" value="#{editPersonPage}" />
  		<ui:define name="centerCenterContent">
- 			
+ 			<ui:decorate template="#{editPersonPage.form.propertiesMap.template}">
+				<ui:param name="form" value="#{editPersonPage.form}" />
+			</ui:decorate>
  			
  		</ui:define>
  	</ui:decorate>

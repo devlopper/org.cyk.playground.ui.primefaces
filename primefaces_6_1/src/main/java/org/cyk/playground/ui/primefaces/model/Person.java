@@ -38,4 +38,11 @@ public class Person extends AbstractIdentified {
 		person.setLastnames(lastnames);
 		COLLECTION.add(person);
 	}
+
+	public static Person get(String code) {
+		for(Person person : COLLECTION)
+			if(person.getCode().equals(code))
+				return person;
+		return null;
+	}
 }

@@ -29,7 +29,7 @@ public class FormsPage extends Window implements Serializable {
 		super.initialisation();
 		getPropertiesMap().setTitle("Forms");
 		
-		form = new Form.Master(SubmitCommandActionAdapter.class).setObject(dataModel).setLabelFromIdentifier("myformlabel");
+		form = new Form.Master(this,SubmitCommandActionAdapter.class).setObject(dataModel).setLabelFromIdentifier("myformlabel");
 		
 		createModel();
 		
@@ -41,9 +41,9 @@ public class FormsPage extends Window implements Serializable {
 	private void createModel(){
     	Form.Detail formDetail = form.instanciateDetail(org.cyk.utility.common.userinterface.Layout.Type.ADAPTIVE);
     	InputText c1 = new InputText();
-    	c1.setLabelFromIdentifier("f1").setField(dataModel, "firstName");
+    	c1.setLabelFromIdentifier("f1")._setField(dataModel, "firstName");
     	InputText c2 = new InputText();
-    	c2.setLabelFromIdentifier("f2").setField(dataModel, "lastName");
+    	c2.setLabelFromIdentifier("f2")._setField(dataModel, "lastName");
     	InputText c3 = new InputText();
     	c3.setLabelFromIdentifier("f3");
     	InputText c4 = new InputText();
@@ -53,7 +53,7 @@ public class FormsPage extends Window implements Serializable {
     	InputText c6 = new InputText();
     	c6.setLabelFromIdentifier("f6");
     	InputTextarea c7 = new InputTextarea();
-    	c7.setLabelFromIdentifier("f7").setField(dataModel, "otherDetails");
+    	c7.setLabelFromIdentifier("f7")._setField(dataModel, "otherDetails");
     	c7.getArea().getWidth().setDistance(2);
     	InputText c8 = new InputText();
     	c8.setLabelFromIdentifier("f8");
