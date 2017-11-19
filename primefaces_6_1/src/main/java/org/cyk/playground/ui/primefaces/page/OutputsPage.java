@@ -11,13 +11,15 @@ import javax.inject.Named;
 
 import org.cyk.playground.ui.primefaces.ContextListener;
 import org.cyk.playground.ui.primefaces.model.Country;
+import org.cyk.utility.common.annotation.user.interfaces.Input;
+import org.cyk.utility.common.annotation.user.interfaces.InputFile;
+import org.cyk.utility.common.helper.FieldHelper;
 import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.helper.FileHelper.File;
-import org.cyk.utility.common.userinterface.Image;
+import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.Window;
 import org.cyk.utility.common.userinterface.output.OutputFile;
 import org.cyk.utility.common.userinterface.output.OutputText;
-import org.primefaces.model.ByteArrayContent;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,17 +37,14 @@ public class OutputsPage extends Window implements Serializable {
 	@Override
 	protected void initialisation() {
 		super.initialisation();
-		outputText = new OutputText();
-		outputText.getPropertiesMap().setValue("My val");
-		//inputText._setField(new Model(), "myInputText");
-	
-		outputFile = new OutputFile();
-		FileHelper.File file = FileHelper.getInstance().get(ContextListener.class, "image001.png");
-		//outputFile.getPropertiesMap().setValue(new ByteArrayContent(file.getBytes(), file.getMime()));
-		//outputFile.getPropertiesMap().setStream(Boolean.FALSE);
+		Model model = new Model();
+		model.setMyInputText("hello world!!!");
+		model.setMyInputFile(FileHelper.getInstance().get(ContextListener.class, "image001.png"));
 		
-		((Image)outputFile.getPropertiesMap().getThumbnail()).getPropertiesMap().setValue(new ByteArrayContent(file.getBytes(), file.getMime()));
-		((Image)outputFile.getPropertiesMap().getThumbnail()).getPropertiesMap().setStream(Boolean.FALSE);
+		outputText = (OutputText) OutputText.getListener().get(new Form.Detail(), model, FieldHelper.getInstance().get(Model.class, "myInputText"));
+		outputFile = (OutputFile) OutputText.getListener().get(new Form.Detail(), model, FieldHelper.getInstance().get(Model.class, "myInputFile"));
+		
+		
 	}
 	
 	public void submit(){
@@ -55,8 +54,8 @@ public class OutputsPage extends Window implements Serializable {
 	@Getter @Setter
 	public static class Model {
 		
-		private String myInputText;
-		private Boolean myInputBooleanButton;
+		@Input private String myInputText;
+		@Input private Boolean myInputBooleanButton;
 		private Boolean myInputBooleanCheckBox;
 		private String myInputChoiceOneComboString;
 		private Integer myInputChoiceOneComboInteger;
@@ -78,7 +77,7 @@ public class OutputsPage extends Window implements Serializable {
 		private MyType myInputChoiceManyPickList;
 		private Country myInputChoiceManyList;
 		
-		private File myInputFile;
+		@Input @InputFile private File myInputFile;
 	}
 	
 	public static enum MyEnum{
