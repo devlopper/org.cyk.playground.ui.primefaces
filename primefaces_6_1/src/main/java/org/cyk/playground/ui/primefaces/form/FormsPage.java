@@ -29,7 +29,7 @@ public class FormsPage extends Window implements Serializable {
 		super.initialisation();
 		getPropertiesMap().setTitle("Forms");
 		
-		form = new Form.Master(this,SubmitCommandActionAdapter.class).setObject(dataModel).setLabelFromIdentifier("myformlabel");
+		form = new Form.Master(this,dataModel,action,SubmitCommandActionAdapter.class).setLabelFromIdentifier("myformlabel");
 		
 		createModel();
 		

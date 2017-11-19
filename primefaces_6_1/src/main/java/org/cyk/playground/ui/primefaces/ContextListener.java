@@ -49,6 +49,7 @@ public class ContextListener extends ServletContextListener implements Serializa
 		Form.Master.setClass(Location.class, Constant.Action.CREATE,"full", LocationForms.Full.class);
 		
 		ClassHelper.getInstance().map(Input.Listener.Adapter.Default.class, InputAdapter.class);
+		ClassHelper.getInstance().map(FileHelper.Listener.class, FileAdapter.class);
 		ClassHelper.getInstance().map(Menu.Builder.Adapter.Default.class,MenuBuilder.class);
 		
 		InstanceHelper.Listener.Adapter.Default.DEFAULT_CLASS = org.cyk.playground.ui.primefaces.InstanceHelper.Listener.class;
@@ -134,6 +135,17 @@ public class ContextListener extends ServletContextListener implements Serializa
 			}	
 			return value;
 		}
+
+	}
+	
+	public static class FileAdapter extends FileHelper.Listener.Adapter.Default {
+		private static final long serialVersionUID = 1L;
+				
+		public Class<?> getModelClass(){
+			return File.class;
+		}		
+		
+		
 
 	}
 
