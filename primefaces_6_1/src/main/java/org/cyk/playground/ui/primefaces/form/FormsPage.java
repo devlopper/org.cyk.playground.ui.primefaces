@@ -9,7 +9,7 @@ import javax.inject.Named;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.cyk.utility.common.userinterface.container.Form;
-import org.cyk.utility.common.userinterface.container.Window;
+import org.cyk.utility.common.userinterface.container.window.Window;
 import org.cyk.utility.common.userinterface.input.InputText;
 import org.cyk.utility.common.userinterface.input.InputTextarea;
 

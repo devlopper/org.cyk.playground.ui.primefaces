@@ -17,7 +17,7 @@ import org.cyk.utility.common.helper.FieldHelper;
 import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.helper.FileHelper.File;
 import org.cyk.utility.common.userinterface.container.Form;
-import org.cyk.utility.common.userinterface.container.Window;
+import org.cyk.utility.common.userinterface.container.window.Window;
 import org.cyk.utility.common.userinterface.output.OutputFile;
 import org.cyk.utility.common.userinterface.output.OutputText;
 

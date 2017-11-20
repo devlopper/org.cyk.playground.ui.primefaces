@@ -8,7 +8,7 @@ import javax.inject.Named;
 import org.cyk.utility.common.helper.CommandHelper;
 import org.cyk.utility.common.helper.ThrowableHelper;
 import org.cyk.utility.common.userinterface.command.Command;
-import org.cyk.utility.common.userinterface.container.Window;
+import org.cyk.utility.common.userinterface.container.window.Window;
 import org.cyk.utility.common.userinterface.panel.ConfirmationDialog;
 
 import lombok.Getter;

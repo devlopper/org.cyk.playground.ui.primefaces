@@ -12,7 +12,7 @@ import org.cyk.playground.ui.primefaces.model.AllInputs;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.userinterface.container.Form;
-import org.cyk.utility.common.userinterface.container.Window;
+import org.cyk.utility.common.userinterface.container.window.Window;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,7 +33,7 @@ public class FormAllInputsPage extends Window implements Serializable {
 		allInputs.setInputFile3(FileHelper.getInstance().get(ContextListener.class, "image001.png"));
 		allInputs.setInputFile4(FileHelper.getInstance().get(ContextListener.class, "image002.png"));
 	
-		form = Form.Master.get(allInputs, Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
+		form = Form.Master.get(this,allInputs, Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
 				.setLabelFromIdentifier("myformlabel").build();
 				
 		form.getSubmitCommand().getPropertiesMap().setAjax(Boolean.FALSE);//because of file upload

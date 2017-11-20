@@ -11,7 +11,7 @@ import org.cyk.utility.common.helper.JavaScriptHelper;
 import org.cyk.utility.common.helper.JavaScriptHelper.Script.Window.Navigate;
 import org.cyk.utility.common.helper.UniformResourceLocatorHelper;
 import org.cyk.utility.common.userinterface.command.Command;
-import org.cyk.utility.common.userinterface.container.Window;
+import org.cyk.utility.common.userinterface.container.window.Window;
 import org.cyk.utility.common.userinterface.panel.ConfirmationDialog;
 
 import lombok.Getter;

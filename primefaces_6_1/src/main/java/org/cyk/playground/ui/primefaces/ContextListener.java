@@ -13,7 +13,7 @@ import org.cyk.playground.ui.primefaces.model.GlobalIdentifier;
 import org.cyk.playground.ui.primefaces.model.Location;
 import org.cyk.playground.ui.primefaces.model.LocationForms;
 import org.cyk.playground.ui.primefaces.model.Person;
-import org.cyk.playground.ui.primefaces.model.PersonForms;
+import org.cyk.playground.ui.primefaces.page.crud.EditPersonPage;
 import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
 import org.cyk.ui.web.primefaces.resources.ServletContextListener;
 import org.cyk.utility.common.Constant;
@@ -42,8 +42,10 @@ public class ContextListener extends ServletContextListener implements Serializa
 		super.contextInitialized(servletContextEvent);
 		inject(PrimefacesResourcesManager.class).initialize();
 		
-		Form.Master.setClass(Person.class, Constant.Action.CREATE, PersonForms.Simple.class);
-		Form.Master.setClass(Person.class, Constant.Action.CREATE,"full", PersonForms.Full.class);
+		Form.Master.setClass(Person.class, Constant.Action.CREATE, EditPersonPage.FormMaster.class);
+		Form.Master.setClass(Person.class, Constant.Action.READ, EditPersonPage.FormMaster.class);
+		Form.Master.setClass(Person.class, Constant.Action.UPDATE, EditPersonPage.FormMaster.class);
+		Form.Master.setClass(Person.class, Constant.Action.DELETE, EditPersonPage.FormMaster.class);
 		
 		Form.Master.setClass(Location.class, Constant.Action.CREATE, LocationForms.Simple.class);
 		Form.Master.setClass(Location.class, Constant.Action.CREATE,"full", LocationForms.Full.class);

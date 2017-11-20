@@ -10,7 +10,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.utility.common.userinterface.Layout;
 import org.cyk.utility.common.userinterface.container.Form;
-import org.cyk.utility.common.userinterface.container.Window;
+import org.cyk.utility.common.userinterface.container.window.Window;
 
 import lombok.Getter;
 import lombok.Setter;

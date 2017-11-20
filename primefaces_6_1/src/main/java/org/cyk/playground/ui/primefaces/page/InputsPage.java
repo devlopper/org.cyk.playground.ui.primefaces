@@ -11,7 +11,7 @@ import javax.inject.Named;
 
 import org.cyk.playground.ui.primefaces.model.Country;
 import org.cyk.utility.common.helper.FileHelper.File;
-import org.cyk.utility.common.userinterface.container.Window;
+import org.cyk.utility.common.userinterface.container.window.Window;
 import org.cyk.utility.common.userinterface.input.InputBooleanButton;
 import org.cyk.utility.common.userinterface.input.InputBooleanCheckBox;
 import org.cyk.utility.common.userinterface.input.InputFile;

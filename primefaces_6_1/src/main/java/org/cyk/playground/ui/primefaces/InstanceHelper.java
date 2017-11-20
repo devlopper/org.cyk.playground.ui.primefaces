@@ -57,6 +57,14 @@ public class InstanceHelper implements Serializable {
 			return super.get(aClass,filter, dataReadConfiguration);
 		}
 		
+		@SuppressWarnings("unchecked")
+		@Override
+		public <T> T getByIdentifier(Class<T> aClass, Object identifier) {
+			if(Person.class.equals(aClass))
+				return (T) Person.get((String)identifier);
+			return super.getByIdentifier(aClass, identifier);
+		}
+		
 		/*@SuppressWarnings("unchecked")
 		@Override
 		public <T> Long count(Class<T> aClass,FilterHelper.Filter<T> filter, DataReadConfiguration dataReadConfiguration) {

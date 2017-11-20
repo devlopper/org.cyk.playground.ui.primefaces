@@ -11,7 +11,7 @@ import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.TimeHelper;
 import org.cyk.utility.common.userinterface.container.Form;
-import org.cyk.utility.common.userinterface.container.Window;
+import org.cyk.utility.common.userinterface.container.window.Window;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -31,14 +31,14 @@ public class GetFormsPage extends Window implements Serializable {
 		super.initialisation();
 		getPropertiesMap().setTitle("Get Forms");
 		
-		personFormSimple = Form.Master.get(new Person(), Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
+		personFormSimple = Form.Master.get(this,new Person(), Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
 				.setLabelFromIdentifier("myformlabel").build();
-		personFormFull = Form.Master.get(new Person(), Constant.Action.CREATE,"full").setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
+		personFormFull = Form.Master.get(this,new Person(), Constant.Action.CREATE,"full").setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
 				.setLabelFromIdentifier("myformlabel").build();
 		
-		locationFormSimple = Form.Master.get(new Location(), Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
+		locationFormSimple = Form.Master.get(this,new Location(), Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
 				.setLabelFromIdentifier("myformlabel").build();
-		locationFormFull = Form.Master.get(new Location(), Constant.Action.CREATE,"full").setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
+		locationFormFull = Form.Master.get(this,new Location(), Constant.Action.CREATE,"full").setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
 				.setLabelFromIdentifier("myformlabel").build();
 		
 		PrimefacesResourcesManager.setInteractivityBlocker(personFormSimple, Boolean.FALSE);
