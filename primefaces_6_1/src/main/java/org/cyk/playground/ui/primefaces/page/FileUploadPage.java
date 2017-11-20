@@ -25,7 +25,7 @@ public class FileUploadPage extends Window implements Serializable {
 	protected void initialisation() {
 		super.initialisation();
 
-		inputFile = new InputFile()._setField(new Model(), "myInputFile");
+		inputFile = new InputFile().__setField__(new Model(), "myInputFile");
 	}
 	
 	public void submit(){

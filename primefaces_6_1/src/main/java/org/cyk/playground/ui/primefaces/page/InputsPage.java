@@ -68,38 +68,38 @@ public class InputsPage extends Window implements Serializable {
 	protected void initialisation() {
 		super.initialisation();
 		inputText = new InputText();
-		inputText._setField(new Model(), "myInputText");
+		inputText.__setField__(new Model(), "myInputText");
 	
 		//inputText.getPropertiesMap().setOnChange("alert('it has changed')");
 		//inputText.getPropertiesMap().setOnClick("alert('it has been clicked')");
 		
 		inputBooleanButton = new InputBooleanButton();
-		inputBooleanButton._setField(new Model(), "myInputBooleanButton");
+		inputBooleanButton.__setField__(new Model(), "myInputBooleanButton");
 		
 		inputBooleanCheckBox = new InputBooleanCheckBox();
-		inputBooleanCheckBox._setField(new Model(), "myInputBooleanCheckBox");
+		inputBooleanCheckBox.__setField__(new Model(), "myInputBooleanCheckBox");
 		
 		inputChoiceOneComboString = new InputChoiceOneCombo().setField(new Model(), "myInputChoiceOneComboString",STRINGS);
 		inputChoiceOneComboInteger = new InputChoiceOneCombo().setField(new Model(), "myInputChoiceOneComboInteger",INTEGERS);
 		inputChoiceOneComboBigDecimal = new InputChoiceOneCombo().setField(new Model(), "myInputChoiceOneComboBigDecimal",BIG_DECIMALS);
-		inputChoiceOneComboEnum = new InputChoiceOneCombo()._setField(new Model(), "myInputChoiceOneComboEnum");
-		inputChoiceOneComboBoolean = new InputChoiceOneCombo()._setField(new Model(), "myInputChoiceOneComboBoolean");
-		inputChoiceOneComboMyType = new InputChoiceOneCombo()._setField(new Model(), "myInputChoiceOneComboMyType");
+		inputChoiceOneComboEnum = new InputChoiceOneCombo().__setField__(new Model(), "myInputChoiceOneComboEnum");
+		inputChoiceOneComboBoolean = new InputChoiceOneCombo().__setField__(new Model(), "myInputChoiceOneComboBoolean");
+		inputChoiceOneComboMyType = new InputChoiceOneCombo().__setField__(new Model(), "myInputChoiceOneComboMyType");
 		
-		inputChoiceOneListBox = new InputChoiceOneList()._setField(new Model(), "myInputChoiceOneListBox");
-		inputChoiceOneRadio = new InputChoiceOneRadio()._setField(new Model(), "myInputChoiceOneRadio");
-		inputChoiceOneButton = new InputChoiceOneButton()._setField(new Model(), "myInputChoiceOneButton");
-		inputChoiceOneAutoComplete = new InputChoiceOneAutoComplete()._setField(new Model(), "myInputChoiceOneAutoComplete");
-		inputChoiceOneCascadeList = new InputChoiceOneCascadeList()._setField(new Model(), "myInputChoiceOneCascadeList");
+		inputChoiceOneListBox = new InputChoiceOneList().__setField__(new Model(), "myInputChoiceOneListBox");
+		inputChoiceOneRadio = new InputChoiceOneRadio().__setField__(new Model(), "myInputChoiceOneRadio");
+		inputChoiceOneButton = new InputChoiceOneButton().__setField__(new Model(), "myInputChoiceOneButton");
+		inputChoiceOneAutoComplete = new InputChoiceOneAutoComplete().__setField__(new Model(), "myInputChoiceOneAutoComplete");
+		inputChoiceOneCascadeList = new InputChoiceOneCascadeList().__setField__(new Model(), "myInputChoiceOneCascadeList");
 		
-		inputChoiceManyAutoComplete = new InputChoiceManyAutoComplete()._setField(new Model(), "myInputChoiceManyAutoComplete");
-		inputChoiceManyButton = new InputChoiceManyButton()._setField(new Model(), "myInputChoiceManyButton");
-		inputChoiceManyCheck = new InputChoiceManyCheck()._setField(new Model(), "myInputChoiceManyCheck");
-		inputChoiceManyCombo = new InputChoiceManyCombo()._setField(new Model(), "myInputChoiceManyCombo");
-		inputChoiceManyList = new InputChoiceManyList()._setField(new Model(), "myInputChoiceManyPickList");
-		inputChoiceManyPickList = new InputChoiceManyPickList()._setField(new Model(), "myInputChoiceManyList");
+		inputChoiceManyAutoComplete = new InputChoiceManyAutoComplete().__setField__(new Model(), "myInputChoiceManyAutoComplete");
+		inputChoiceManyButton = new InputChoiceManyButton().__setField__(new Model(), "myInputChoiceManyButton");
+		inputChoiceManyCheck = new InputChoiceManyCheck().__setField__(new Model(), "myInputChoiceManyCheck");
+		inputChoiceManyCombo = new InputChoiceManyCombo().__setField__(new Model(), "myInputChoiceManyCombo");
+		inputChoiceManyList = new InputChoiceManyList().__setField__(new Model(), "myInputChoiceManyPickList");
+		inputChoiceManyPickList = new InputChoiceManyPickList().__setField__(new Model(), "myInputChoiceManyList");
 		 
-		inputFile = new InputFile()._setField(new Model(), "myInputFile");
+		inputFile = new InputFile().__setField__(new Model(), "myInputFile");
 	}
 	
 	public void submit(){
