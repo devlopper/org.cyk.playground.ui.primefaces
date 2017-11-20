@@ -46,7 +46,6 @@ public class EditPersonPage extends Window implements Serializable {
 		
 		form.build();
 		
-		//form.getSubmitCommand().getPropertiesMap().setAjax(!Constant.Action.isCreateOrUpdate(form.getAction()));//because of file upload
 	}
 	
 	@Getter @Setter @Accessors(chain=true)
