@@ -14,6 +14,7 @@ import org.cyk.playground.ui.primefaces.model.Location;
 import org.cyk.playground.ui.primefaces.model.LocationForms;
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.playground.ui.primefaces.page.crud.EditPersonPage;
+import org.cyk.playground.ui.primefaces.page.crud.ListPersonPage;
 import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
 import org.cyk.ui.web.primefaces.resources.ServletContextListener;
 import org.cyk.utility.common.Constant;
@@ -22,6 +23,7 @@ import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.helper.InstanceHelper;
 import org.cyk.utility.common.helper.MapHelper;
 import org.cyk.utility.common.helper.UniformResourceLocatorHelper;
+import org.cyk.utility.common.userinterface.Component;
 import org.cyk.utility.common.userinterface.command.Menu;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.Form.Detail;
@@ -42,13 +44,17 @@ public class ContextListener extends ServletContextListener implements Serializa
 		super.contextInitialized(servletContextEvent);
 		inject(PrimefacesResourcesManager.class).initialize();
 		
-		Form.Master.setClass(Person.class, Constant.Action.CREATE, EditPersonPage.FormMaster.class);
+		/*Form.Master.setClass(Person.class, Constant.Action.CREATE, EditPersonPage.FormMaster.class);
 		Form.Master.setClass(Person.class, Constant.Action.READ, EditPersonPage.FormMaster.class);
 		Form.Master.setClass(Person.class, Constant.Action.UPDATE, EditPersonPage.FormMaster.class);
 		Form.Master.setClass(Person.class, Constant.Action.DELETE, EditPersonPage.FormMaster.class);
-		
+		*/
 		Form.Master.setClass(Location.class, Constant.Action.CREATE, LocationForms.Simple.class);
 		Form.Master.setClass(Location.class, Constant.Action.CREATE,"full", LocationForms.Full.class);
+		
+		Component.setClass(null,new Constant.Action[]{Constant.Action.CREATE,Constant.Action.READ,Constant.Action.UPDATE,Constant.Action.DELETE}
+			, Person.class, null, EditPersonPage.FormMaster.class);
+		Component.setClass(null,Constant.Action.LIST, Person.class, null, ListPersonPage.DataTable.class);
 		
 		ClassHelper.getInstance().map(Input.Listener.Adapter.Default.class, InputAdapter.class);
 		ClassHelper.getInstance().map(FileHelper.Listener.class, FileAdapter.class);
