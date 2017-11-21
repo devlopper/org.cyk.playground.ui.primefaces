@@ -22,8 +22,6 @@ import lombok.experimental.Accessors;
 public class FormAllInputsPage extends Window implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Form.Master form;
-	
 	@Override
 	protected void initialisation() {
 		super.initialisation();

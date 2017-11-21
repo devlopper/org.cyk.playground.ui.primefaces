@@ -17,13 +17,11 @@ public class DataTablesPage extends Window implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private DataTable dataTable = new DataTable(Person.class);
-	
 	@Override
 	protected void initialisation() {
 		super.initialisation();
 		getPropertiesMap().setTitle("Data tables");
-		
+		dataTable = new DataTable(Person.class);
 		dataTable.addColumn("code", "globalIdentifier.code");
 		dataTable.addColumn("name", "globalIdentifier.name");
 		dataTable.addColumn("lastnames", "lastnames");

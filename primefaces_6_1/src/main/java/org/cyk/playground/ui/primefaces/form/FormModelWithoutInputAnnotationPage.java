@@ -21,8 +21,7 @@ public class FormModelWithoutInputAnnotationPage extends Window implements Seria
 	private static final long serialVersionUID = 1L;
 	
 	private ModelWithoutInputAnnotation model = new ModelWithoutInputAnnotation();
-	private Form.Master form;
-	
+
 	@Override
 	protected void initialisation() {
 		super.initialisation();

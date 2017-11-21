@@ -21,7 +21,6 @@ import lombok.experimental.Accessors;
 public class FormsPage extends Window implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Form.Master form;
 	private DataModel dataModel = new DataModel();
 	
 	@Override

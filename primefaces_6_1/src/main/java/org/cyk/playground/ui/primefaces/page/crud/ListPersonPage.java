@@ -17,20 +17,26 @@ public class ListPersonPage extends Window implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private DataTable dataTable = new DataTable(Person.class);
-	
 	@Override
 	protected void initialisation() {
 		super.initialisation();
 		getPropertiesMap().setTitle("Person list");
 		
+		dataTable = new DataTable(Person.class);
+		
 		dataTable.addColumn("code", "globalIdentifier.code");
 		dataTable.addColumn("name", "globalIdentifier.name");
 		dataTable.addColumn("lastnames", "lastnames");
+		dataTable.addColumn("nationality", "nationality");
 		
 		dataTable.addManyRow(Person.COLLECTION);
 		
 		dataTable.build();
 	}
 	
+	@Override
+	protected Boolean getIsAutomaticallySetForm() {
+		// TODO Auto-generated method stub
+		return Boolean.FALSE;
+	}
 }
