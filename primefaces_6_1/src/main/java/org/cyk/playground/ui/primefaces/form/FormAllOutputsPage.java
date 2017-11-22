@@ -30,7 +30,7 @@ public class FormAllOutputsPage extends Window implements Serializable {
 		allOutputs.setOutputFile1(FileHelper.getInstance().get(ContextListener.class, "image001.png"));
 		//allOutputs.setOutputFile4(FileHelper.getInstance().get(ContextListener.class, "image002.png"));
 	
-		form = Form.Master.get(this,allOutputs, Constant.Action.READ).build();
+		//form = Form.Master.get(this,allOutputs, Constant.Action.READ).build();
 				
 		
 	}

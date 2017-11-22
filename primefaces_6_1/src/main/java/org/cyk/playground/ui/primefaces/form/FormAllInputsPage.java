@@ -30,11 +30,12 @@ public class FormAllInputsPage extends Window implements Serializable {
 		AllInputs allInputs = new AllInputs();
 		allInputs.setInputFile3(FileHelper.getInstance().get(ContextListener.class, "image001.png"));
 		allInputs.setInputFile4(FileHelper.getInstance().get(ContextListener.class, "image002.png"));
-	
+		/*
 		form = Form.Master.get(this,allInputs, Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
 				.setLabelFromIdentifier("myformlabel").build();
 				
 		form.getSubmitCommand().getPropertiesMap().setAjax(Boolean.FALSE);//because of file upload
+		*/
 		//form.getSubmitCommand().getPropertiesMap().setPartialSubmit(Boolean.FALSE);
 	}
 

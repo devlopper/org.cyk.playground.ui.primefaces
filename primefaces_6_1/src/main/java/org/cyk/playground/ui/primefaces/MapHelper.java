@@ -2,7 +2,7 @@ package org.cyk.playground.ui.primefaces;
 
 import java.io.Serializable;
 
-import org.cyk.playground.ui.primefaces.model.Person;
+import org.cyk.playground.ui.primefaces.model.AbstractIdentified;
 import org.cyk.utility.common.cdi.AbstractBean;
 import org.cyk.utility.common.helper.MapHelper.EntryComponent;
 
@@ -15,8 +15,8 @@ public class MapHelper extends AbstractBean implements Serializable {
 
 		@Override
 		public Object getAs(EntryComponent entryComponent, Object object) {
-			if(object instanceof Person)
-				return ((Person)object).getGlobalIdentifier().getCode();
+			if(object instanceof AbstractIdentified)
+				return ((AbstractIdentified)object).getGlobalIdentifier().getCode();
 			return super.getAs(entryComponent, object);
 		}
 		

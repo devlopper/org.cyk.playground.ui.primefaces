@@ -2,7 +2,10 @@ package org.cyk.playground.ui.primefaces;
 
 import java.io.Serializable;
 
+import org.cyk.playground.ui.primefaces.model.Location;
+import org.cyk.playground.ui.primefaces.model.LocationType;
 import org.cyk.playground.ui.primefaces.model.Person;
+import org.cyk.playground.ui.primefaces.model.PhoneNumberType;
 import org.cyk.playground.ui.primefaces.page.menu.Session1MenusPage;
 import org.cyk.playground.ui.primefaces.page.menu.Session2MenusPage;
 import org.cyk.playground.ui.primefaces.page.menu.Session3MenusPage;
@@ -19,6 +22,9 @@ public class MenuBuilder extends org.cyk.ui.web.primefaces.resources.MenuBuilder
 		
 		if(Menu.Type.MAIN.equals(menu.getType())){
 			menu.addNode("person.list")._setPropertyUrl(Constant.Action.LIST, Person.class);
+			menu.addNode("phonenumbertype.list")._setPropertyUrl(Constant.Action.LIST, PhoneNumberType.class);
+			menu.addNode("locationtype.list")._setPropertyUrl(Constant.Action.LIST, LocationType.class);
+			menu.addNode("location.list")._setPropertyUrl(Constant.Action.LIST, Location.class);
 			
 			MenuNode menuNode = null;
 			

@@ -6,8 +6,12 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.cyk.playground.ui.primefaces.model.AbstractIdentified;
 import org.cyk.playground.ui.primefaces.model.Country;
+import org.cyk.playground.ui.primefaces.model.Location;
+import org.cyk.playground.ui.primefaces.model.LocationType;
 import org.cyk.playground.ui.primefaces.model.Person;
+import org.cyk.playground.ui.primefaces.model.PhoneNumberType;
 import org.cyk.playground.ui.primefaces.page.InputsPage;
 import org.cyk.utility.common.computation.DataReadConfiguration;
 import org.cyk.utility.common.helper.FilterHelper;
@@ -20,10 +24,8 @@ public class InstanceHelper implements Serializable {
 		
     	@Override
     	public Object getIdentifier(Object instance) {
-    		if(instance instanceof Country)
-    			return ((Country)instance).getCode();
-    		if(instance instanceof Person)
-    			return ((Person)instance).getGlobalIdentifier().getCode();
+    		if(instance instanceof AbstractIdentified)
+    			return ((AbstractIdentified)instance).getGlobalIdentifier().getCode();
     		return super.getIdentifier(instance);
     	}
     	
@@ -35,6 +37,9 @@ public class InstanceHelper implements Serializable {
 					return (Collection<T>) InputsPage.MyType.COLLECTION;
 				if(Country.class.equals(aClass)){
 					return (Collection<T>) Country.LIST;
+				}	
+				if(LocationType.class.equals(aClass)){
+					return (Collection<T>) LocationType.COLLECTION;
 				}	
 			}else {
 				if(InputsPage.MyType.class.equals(aClass))
@@ -51,7 +56,19 @@ public class InstanceHelper implements Serializable {
 								list.add(country);
 					}
 					return (Collection<T>) list;
-				}	
+				}else if(LocationType.class.equals(aClass)){
+					List<LocationType> list;
+					String query = (String)filter.getCriterias().get(0).getPreparedValue();
+					if(StringUtils.isBlank(query))
+						list =  LocationType.COLLECTION;
+					else{
+						list = new ArrayList<>();
+						for(LocationType locationType : LocationType.COLLECTION)
+							if(StringUtils.containsIgnoreCase(locationType.getCode(), query) || StringUtils.containsIgnoreCase(locationType.getName(), query))
+								list.add(locationType);
+					}
+					return (Collection<T>) list;
+				}		
 			}
 			
 			return super.get(aClass,filter, dataReadConfiguration);
@@ -62,6 +79,12 @@ public class InstanceHelper implements Serializable {
 		public <T> T getByIdentifier(Class<T> aClass, Object identifier) {
 			if(Person.class.equals(aClass))
 				return (T) Person.get((String)identifier);
+			if(PhoneNumberType.class.equals(aClass))
+				return (T) PhoneNumberType.get((String)identifier);
+			if(LocationType.class.equals(aClass))
+				return (T) LocationType.get((String)identifier);
+			if(Location.class.equals(aClass))
+				return (T) Location.get((String)identifier);
 			return super.getByIdentifier(aClass, identifier);
 		}
 		

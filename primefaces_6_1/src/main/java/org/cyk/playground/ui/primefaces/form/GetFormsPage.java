@@ -31,15 +31,15 @@ public class GetFormsPage extends Window implements Serializable {
 		super.initialisation();
 		getPropertiesMap().setTitle("Get Forms");
 		
-		personFormSimple = Form.Master.get(this,new Person(), Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
-				.setLabelFromIdentifier("myformlabel").build();
-		personFormFull = Form.Master.get(this,new Person(), Constant.Action.CREATE,"full").setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
-				.setLabelFromIdentifier("myformlabel").build();
+		//personFormSimple = Form.Master.get(this,new Person(), Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
+		//		.setLabelFromIdentifier("myformlabel").build();
+		//personFormFull = Form.Master.get(this,new Person(), Constant.Action.CREATE,"full").setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
+		//		.setLabelFromIdentifier("myformlabel").build();
 		
-		locationFormSimple = Form.Master.get(this,new Location(), Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
-				.setLabelFromIdentifier("myformlabel").build();
-		locationFormFull = Form.Master.get(this,new Location(), Constant.Action.CREATE,"full").setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
-				.setLabelFromIdentifier("myformlabel").build();
+		//locationFormSimple = Form.Master.get(this,new Location(), Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
+		//		.setLabelFromIdentifier("myformlabel").build();
+		//locationFormFull = Form.Master.get(this,new Location(), Constant.Action.CREATE,"full").setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
+		//		.setLabelFromIdentifier("myformlabel").build();
 		
 		PrimefacesResourcesManager.setInteractivityBlocker(personFormSimple, Boolean.FALSE);
 		PrimefacesResourcesManager.setInteractivityBlocker(personFormFull, Boolean.FALSE);

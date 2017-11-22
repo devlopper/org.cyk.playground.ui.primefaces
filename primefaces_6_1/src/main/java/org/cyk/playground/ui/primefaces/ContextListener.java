@@ -11,22 +11,19 @@ import javax.servlet.annotation.WebListener;
 import org.cyk.playground.ui.primefaces.model.File;
 import org.cyk.playground.ui.primefaces.model.GlobalIdentifier;
 import org.cyk.playground.ui.primefaces.model.Location;
-import org.cyk.playground.ui.primefaces.model.LocationForms;
 import org.cyk.playground.ui.primefaces.model.Person;
-import org.cyk.playground.ui.primefaces.page.crud.EditPersonPage;
-import org.cyk.playground.ui.primefaces.page.crud.ListPersonPage;
 import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
 import org.cyk.ui.web.primefaces.resources.ServletContextListener;
-import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.ClassHelper;
 import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.helper.InstanceHelper;
 import org.cyk.utility.common.helper.MapHelper;
 import org.cyk.utility.common.helper.UniformResourceLocatorHelper;
-import org.cyk.utility.common.userinterface.Component;
 import org.cyk.utility.common.userinterface.command.Menu;
-import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.Form.Detail;
+import org.cyk.utility.common.userinterface.container.window.ConsultWindow;
+import org.cyk.utility.common.userinterface.container.window.EditWindow;
+import org.cyk.utility.common.userinterface.container.window.ListWindow;
 import org.cyk.utility.common.userinterface.input.Input;
 import org.cyk.utility.common.userinterface.input.InputEditor;
 import org.cyk.utility.common.userinterface.input.InputFile;
@@ -44,21 +41,24 @@ public class ContextListener extends ServletContextListener implements Serializa
 		super.contextInitialized(servletContextEvent);
 		inject(PrimefacesResourcesManager.class).initialize();
 		
+		ClassHelper.getInstance().map(Input.Listener.Adapter.Default.class, InputAdapter.class);
+		ClassHelper.getInstance().map(FileHelper.Listener.class, FileAdapter.class);
+		ClassHelper.getInstance().map(Menu.Builder.Adapter.Default.class,MenuBuilder.class);
+		ClassHelper.getInstance().map(EditWindow.FormMaster.ClassLocator.class, EditFormMasterClassLocator.class);
+		ClassHelper.getInstance().map(ConsultWindow.FormMaster.ClassLocator.class, ConsultFormMasterClassLocator.class);
+		ClassHelper.getInstance().map(ListWindow.DataTable.ClassLocator.class, ListDataTableClassLocator.class);
+		
 		/*Form.Master.setClass(Person.class, Constant.Action.CREATE, EditPersonPage.FormMaster.class);
 		Form.Master.setClass(Person.class, Constant.Action.READ, EditPersonPage.FormMaster.class);
 		Form.Master.setClass(Person.class, Constant.Action.UPDATE, EditPersonPage.FormMaster.class);
 		Form.Master.setClass(Person.class, Constant.Action.DELETE, EditPersonPage.FormMaster.class);
-		*/
+		
 		Form.Master.setClass(Location.class, Constant.Action.CREATE, LocationForms.Simple.class);
 		Form.Master.setClass(Location.class, Constant.Action.CREATE,"full", LocationForms.Full.class);
-		
-		Component.__setClass__(null,Constant.Action.CREATE, Person.class, null, EditPersonPage.FormMaster.class);
-		Component.__setClass__(null,Constant.Action.LIST, Person.class, null, ListPersonPage.DataTable.class);
+		*/
+		//Component.__setClass__(null,Constant.Action.CREATE, Person.class, null, EditPersonPage.FormMaster.class);
+		//Component.__setClass__(null,Constant.Action.LIST, Person.class, null, ListPersonPage.DataTable.class);
 		 
-		ClassHelper.getInstance().map(Input.Listener.Adapter.Default.class, InputAdapter.class);
-		ClassHelper.getInstance().map(FileHelper.Listener.class, FileAdapter.class);
-		ClassHelper.getInstance().map(Menu.Builder.Adapter.Default.class,MenuBuilder.class);
-		
 		InstanceHelper.Listener.Adapter.Default.DEFAULT_CLASS = org.cyk.playground.ui.primefaces.InstanceHelper.Listener.class;
 		InstanceHelper.Listener.COLLECTION.add(new org.cyk.playground.ui.primefaces.InstanceHelper.Listener());
 		
@@ -110,6 +110,9 @@ public class ContextListener extends ServletContextListener implements Serializa
 				if(field.getName().equals("sex"))
 					return InputChoiceOneRadio.class;
 				if(field.getName().equals("nationality"))
+					return InputChoiceOneCombo.class;
+			}else if(object instanceof Location){
+				if(field.getName().equals("type"))
 					return InputChoiceOneCombo.class;
 			}
 			return super.getClass(detail, object, field);

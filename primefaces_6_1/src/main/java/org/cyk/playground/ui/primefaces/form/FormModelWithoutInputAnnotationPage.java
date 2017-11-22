@@ -27,9 +27,9 @@ public class FormModelWithoutInputAnnotationPage extends Window implements Seria
 		super.initialisation();
 		getPropertiesMap().setTitle("Form All Inputs");
 		
-		form = Form.Master.get(this,model, Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
+		/*form = Form.Master.get(this,model, Constant.Action.CREATE).setSubmitCommandActionAdapterClass(SubmitCommandActionAdapter.class)
 				.setLabelFromIdentifier("myformlabel").build();
-		
+		*/
 		form.getSubmitCommand().getPropertiesMap().setAjax(Boolean.FALSE);//because of file upload
 		//form.getSubmitCommand().getPropertiesMap().setPartialSubmit(Boolean.FALSE);
 	}

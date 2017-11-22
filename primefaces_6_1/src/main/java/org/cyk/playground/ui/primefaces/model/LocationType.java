@@ -25,5 +25,12 @@ public class LocationType extends AbstractIdentified {
 	public LocationType setCode(String code) {
 		return (LocationType) super.setCode(code);
 	}
+	
+	public static LocationType get(String code) {
+		for(LocationType locationType : COLLECTION)
+			if(locationType.getCode().equals(code))
+				return locationType;
+		return null;
+	}
 
 }

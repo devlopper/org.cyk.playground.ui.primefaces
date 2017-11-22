@@ -25,5 +25,12 @@ public class PhoneNumberType extends AbstractIdentified {
 	public PhoneNumberType setCode(String code) {
 		return (PhoneNumberType) super.setCode(code);
 	}
+	
+	public static PhoneNumberType get(String code) {
+		for(PhoneNumberType phoneNumberType : COLLECTION)
+			if(phoneNumberType.getCode().equals(code))
+				return phoneNumberType;
+		return null;
+	}
 
 }
