@@ -52,10 +52,9 @@ public class ContextListener extends ServletContextListener implements Serializa
 		Form.Master.setClass(Location.class, Constant.Action.CREATE, LocationForms.Simple.class);
 		Form.Master.setClass(Location.class, Constant.Action.CREATE,"full", LocationForms.Full.class);
 		
-		Component.setClass(null,new Constant.Action[]{Constant.Action.CREATE,Constant.Action.READ,Constant.Action.UPDATE,Constant.Action.DELETE}
-			, Person.class, null, EditPersonPage.FormMaster.class);
-		Component.setClass(null,Constant.Action.LIST, Person.class, null, ListPersonPage.DataTable.class);
-		
+		Component.__setClass__(null,Constant.Action.CREATE, Person.class, null, EditPersonPage.FormMaster.class);
+		Component.__setClass__(null,Constant.Action.LIST, Person.class, null, ListPersonPage.DataTable.class);
+		 
 		ClassHelper.getInstance().map(Input.Listener.Adapter.Default.class, InputAdapter.class);
 		ClassHelper.getInstance().map(FileHelper.Listener.class, FileAdapter.class);
 		ClassHelper.getInstance().map(Menu.Builder.Adapter.Default.class,MenuBuilder.class);
