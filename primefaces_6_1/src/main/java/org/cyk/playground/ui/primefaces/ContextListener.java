@@ -40,7 +40,7 @@ public class ContextListener extends ServletContextListener implements Serializa
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
 		super.contextInitialized(servletContextEvent);
 	
-		ClassHelper.getInstance().map(Input.Listener.Adapter.Default.class, InputAdapter.class);
+		ClassHelper.getInstance().map(Input.Listener.class, InputAdapter.class);
 		ClassHelper.getInstance().map(FileHelper.Listener.class, FileAdapter.class);
 		ClassHelper.getInstance().map(Menu.Builder.Adapter.Default.class,MenuBuilder.class);
 		ClassHelper.getInstance().map(EditWindow.FormMaster.ClassLocator.class, EditFormMasterClassLocator.class);
