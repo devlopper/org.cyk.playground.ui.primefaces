@@ -39,8 +39,7 @@ public class ContextListener extends ServletContextListener implements Serializa
 	@Override
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
 		super.contextInitialized(servletContextEvent);
-		inject(PrimefacesResourcesManager.class).initialize();
-		
+	
 		ClassHelper.getInstance().map(Input.Listener.Adapter.Default.class, InputAdapter.class);
 		ClassHelper.getInstance().map(FileHelper.Listener.class, FileAdapter.class);
 		ClassHelper.getInstance().map(Menu.Builder.Adapter.Default.class,MenuBuilder.class);
@@ -59,8 +58,8 @@ public class ContextListener extends ServletContextListener implements Serializa
 		//Component.__setClass__(null,Constant.Action.CREATE, Person.class, null, EditPersonPage.FormMaster.class);
 		//Component.__setClass__(null,Constant.Action.LIST, Person.class, null, ListPersonPage.DataTable.class);
 		 
-		InstanceHelper.Listener.Adapter.Default.DEFAULT_CLASS = org.cyk.playground.ui.primefaces.InstanceHelper.Listener.class;
-		InstanceHelper.Listener.COLLECTION.add(new org.cyk.playground.ui.primefaces.InstanceHelper.Listener());
+		//InstanceHelper.Listener.Adapter.Default.DEFAULT_CLASS = org.cyk.playground.ui.primefaces.InstanceHelper.Listener.class;
+		ClassHelper.getInstance().map(InstanceHelper.Listener.class,org.cyk.playground.ui.primefaces.InstanceHelper.Listener.class);
 		
 		PrimefacesResourcesManager.LOGO_FILE = FileHelper.getInstance().get(ContextListener.class, "cyksystems.png");
 		
@@ -70,11 +69,6 @@ public class ContextListener extends ServletContextListener implements Serializa
 		MapHelper.Stringifier.Entry.Adapter.Default.DEFAULT_MAP_LISTENER_CLASS = org.cyk.playground.ui.primefaces.MapHelper.Listener.class;
 	}
 
-	@Override
-	public void contextDestroyed(ServletContextEvent servletContextEvent) {
-		super.contextDestroyed(servletContextEvent);
-	}
-	
 	/**/
 	
 	public static class InputAdapter extends org.cyk.ui.web.primefaces.resources.InputAdapter {
