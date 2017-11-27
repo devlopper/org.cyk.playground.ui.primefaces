@@ -2,16 +2,12 @@ package org.cyk.playground.ui.primefaces;
 
 import java.io.Serializable;
 
+import org.cyk.playground.ui.primefaces.model.LocalityType;
 import org.cyk.playground.ui.primefaces.model.Location;
 import org.cyk.playground.ui.primefaces.model.LocationType;
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.playground.ui.primefaces.model.PhoneNumberType;
-import org.cyk.playground.ui.primefaces.page.menu.Session1MenusPage;
-import org.cyk.playground.ui.primefaces.page.menu.Session2MenusPage;
-import org.cyk.playground.ui.primefaces.page.menu.Session3MenusPage;
-import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.userinterface.command.Menu;
-import org.cyk.utility.common.userinterface.command.MenuNode;
 
 public class MenuBuilder extends org.cyk.ui.web.primefaces.resources.MenuBuilder implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -21,6 +17,8 @@ public class MenuBuilder extends org.cyk.ui.web.primefaces.resources.MenuBuilder
 		Menu menu = super.__execute__();
 		
 		if(Menu.Type.MAIN.equals(menu.getType())){
+			//menu.addNode("person.list")._setPropertyUrl(Constant.Action.LIST, Person.class);
+		/*
 			menu.addNode("person.list")._setPropertyUrl(Constant.Action.LIST, Person.class);
 			menu.addNode("phonenumbertype.list")._setPropertyUrl(Constant.Action.LIST, PhoneNumberType.class);
 			menu.addNode("locationtype.list")._setPropertyUrl(Constant.Action.LIST, LocationType.class);
@@ -56,8 +54,10 @@ public class MenuBuilder extends org.cyk.ui.web.primefaces.resources.MenuBuilder
 					menuNode.setLabelFromIdentifier("Session III Item");
 					menu.addOneChild(menuNode);
 				}
-			}	
+			}
+			*/
 		}else if(Menu.Type.CONTEXT.equals(menu.getType())){
+			/*
 			if(componentParent instanceof Session2MenusPage){
 				MenuNode menuNode1 = new MenuNode();
 				menuNode1.setLabelFromIdentifier("SCI A ");
@@ -71,9 +71,27 @@ public class MenuBuilder extends org.cyk.ui.web.primefaces.resources.MenuBuilder
 				menuNode.setLabelFromIdentifier("A2");
 				menuNode1.addOneChild(menuNode);
 			}
+			*/
 		}
 		
 		return menu;
+	}
+	
+	@Override
+	protected void addNodeIdentifiablesManage(Menu menu) {
+		super.addNodeIdentifiablesManage(menu);
+		menu.addNode("ui.menu.controlpanel.identifiables.manage.person")
+			.addNodeActionListMany(Person.class)
+		;
+		
+		menu.addNode("ui.menu.controlpanel.identifiables.manage.contact")
+			.addNodeActionListMany(PhoneNumberType.class,LocationType.class,LocalityType.class)
+		;
+		
+		menu.addNode("ui.menu.controlpanel.identifiables.manage.other")
+			.addNodeActionListMany(Location.class)
+		;
+		
 	}
 	
 }

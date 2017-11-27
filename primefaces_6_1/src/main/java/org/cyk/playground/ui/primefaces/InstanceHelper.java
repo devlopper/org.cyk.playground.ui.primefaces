@@ -8,11 +8,14 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.cyk.playground.ui.primefaces.model.AbstractIdentified;
 import org.cyk.playground.ui.primefaces.model.Country;
+import org.cyk.playground.ui.primefaces.model.LocalityType;
 import org.cyk.playground.ui.primefaces.model.Location;
 import org.cyk.playground.ui.primefaces.model.LocationType;
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.playground.ui.primefaces.model.PhoneNumberType;
 import org.cyk.playground.ui.primefaces.page.InputsPage;
+import org.cyk.utility.common.Constant;
+import org.cyk.utility.common.Constant.Action;
 import org.cyk.utility.common.computation.DataReadConfiguration;
 import org.cyk.utility.common.helper.FilterHelper;
 
@@ -36,10 +39,19 @@ public class InstanceHelper implements Serializable {
 				if(InputsPage.MyType.class.equals(aClass))
 					return (Collection<T>) InputsPage.MyType.COLLECTION;
 				if(Country.class.equals(aClass)){
-					return (Collection<T>) Country.LIST;
+					return (Collection<T>) Country.COLLECTION;
 				}	
 				if(LocationType.class.equals(aClass)){
 					return (Collection<T>) LocationType.COLLECTION;
+				}	
+				if(PhoneNumberType.class.equals(aClass)){
+					return (Collection<T>) PhoneNumberType.COLLECTION;
+				}	
+				if(LocalityType.class.equals(aClass)){
+					return (Collection<T>) LocalityType.COLLECTION;
+				}	
+				if(Person.class.equals(aClass)){
+					return (Collection<T>) Person.COLLECTION;
 				}	
 			}else {
 				if(InputsPage.MyType.class.equals(aClass))
@@ -48,10 +60,10 @@ public class InstanceHelper implements Serializable {
 					List<Country> list;
 					String query = (String)filter.getCriterias().get(0).getPreparedValue();
 					if(StringUtils.isBlank(query))
-						list =  Country.LIST;
+						list =  Country.COLLECTION;
 					else{
 						list = new ArrayList<>();
-						for(Country country : Country.LIST)
+						for(Country country : Country.COLLECTION)
 							if(StringUtils.containsIgnoreCase(country.getCode(), query) || StringUtils.containsIgnoreCase(country.getName(), query))
 								list.add(country);
 					}
@@ -85,6 +97,8 @@ public class InstanceHelper implements Serializable {
 				return (T) LocationType.get((String)identifier);
 			if(Location.class.equals(aClass))
 				return (T) Location.get((String)identifier);
+			if(LocalityType.class.equals(aClass))
+				return (T) LocalityType.get((String)identifier);
 			return super.getByIdentifier(aClass, identifier);
 		}
 		
@@ -95,6 +109,39 @@ public class InstanceHelper implements Serializable {
 				return inject(BusinessInterfaceLocator.class).injectTyped((Class<AbstractIdentifiable>)aClass).countByFilter((Filter<AbstractIdentifiable>) filter, dataReadConfiguration);
 			return super.count(aClass,filter, dataReadConfiguration);
 		}*/
+		
+		@Override
+		public Object act(Action action, Object instance) {
+			if(instance instanceof Person){
+				if(Constant.Action.CREATE.equals(action))
+					Person.COLLECTION.add((Person)instance);
+				else if(Constant.Action.DELETE.equals(action))
+					Person.COLLECTION.remove((Person)instance);
+			}else if(instance instanceof PhoneNumberType){
+				if(Constant.Action.CREATE.equals(action))
+					PhoneNumberType.COLLECTION.add((PhoneNumberType)instance);
+				else if(Constant.Action.DELETE.equals(action))
+					PhoneNumberType.COLLECTION.remove((PhoneNumberType)instance);
+			}else if(instance instanceof LocationType){
+				if(Constant.Action.CREATE.equals(action))
+					LocationType.COLLECTION.add((LocationType)instance);
+				else if(Constant.Action.DELETE.equals(action))
+					LocationType.COLLECTION.remove((LocationType)instance);
+			}else if(instance instanceof Location){
+				if(Constant.Action.CREATE.equals(action))
+					Location.COLLECTION.add((Location)instance);
+				else if(Constant.Action.DELETE.equals(action))
+					Location.COLLECTION.remove((Location)instance);
+			}else if(instance instanceof Country){
+				
+			}else if(instance instanceof LocalityType){
+				if(Constant.Action.CREATE.equals(action))
+					LocalityType.COLLECTION.add((LocalityType)instance);
+				else if(Constant.Action.DELETE.equals(action))
+					LocalityType.COLLECTION.remove((LocalityType)instance);
+			}
+			return super.act(action, instance);
+		}
     }
 	
 	public static class Label extends org.cyk.utility.common.helper.InstanceHelper.Stringifier.Label.Adapter.Default implements Serializable {
