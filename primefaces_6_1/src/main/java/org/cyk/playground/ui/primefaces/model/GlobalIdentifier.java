@@ -1,7 +1,10 @@
 package org.cyk.playground.ui.primefaces.model;
 
+import java.util.Date;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.cyk.utility.common.helper.RandomHelper;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +22,8 @@ public class GlobalIdentifier {
 	private Location birthLocation;
 	private Location deathLocation;
 
+	private Date creationDate = RandomHelper.getInstance().getDate();
+	private String owner = RandomHelper.getInstance().getAlphabetic(5);
 	
 	@Override
 	public String toString() {

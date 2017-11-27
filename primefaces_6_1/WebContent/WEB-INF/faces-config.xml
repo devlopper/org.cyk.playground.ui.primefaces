@@ -54,27 +54,6 @@
 		</navigation-case>
 		
 		<navigation-case>
-			<from-outcome>phoneNumberTypeListView</from-outcome>
-			<to-view-id>/public/crud/phonenumbertype/list.jsf</to-view-id>
-			<redirect />
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>phoneNumberTypeEditView</from-outcome>
-			<to-view-id>/public/crud/phonenumbertype/edit.jsf</to-view-id>
-			<redirect />
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>phoneNumberTypeConsultView</from-outcome>
-			<to-view-id>/public/crud/phonenumbertype/consult.jsf</to-view-id>
-			<redirect />
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>phoneNumberTypeReadView</from-outcome>
-			<to-view-id>/public/crud/phonenumbertype/consult.jsf</to-view-id>
-			<redirect />
-		</navigation-case>
-		
-		<navigation-case>
 			<from-outcome>locationTypeListView</from-outcome>
 			<to-view-id>/public/crud/locationtype/list.jsf</to-view-id>
 			<redirect />
