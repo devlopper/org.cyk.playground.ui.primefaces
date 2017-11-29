@@ -19,7 +19,7 @@ public class EditLocationPage extends EditWindow implements Serializable {
 	private static final long serialVersionUID = 1L;
 		
 	@Getter @Setter @Accessors(chain=true)
-	public static class FormMaster extends Form.Master.Web implements Serializable {
+	public static class FormMaster extends Form.Master implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
 		@Override

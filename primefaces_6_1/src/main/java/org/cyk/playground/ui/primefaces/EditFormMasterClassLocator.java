@@ -32,7 +32,7 @@ public class EditFormMasterClassLocator extends EditWindow.FormMaster.ClassLocat
 	}
 	
 	@Getter @Setter @Accessors(chain=true)
-	public static class EnumerationForm extends Form.Master.Web implements Serializable {
+	public static class EnumerationForm extends Form.Master implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
 		@Override

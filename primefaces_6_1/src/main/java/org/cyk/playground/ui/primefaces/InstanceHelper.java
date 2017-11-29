@@ -18,6 +18,8 @@ import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.Constant.Action;
 import org.cyk.utility.common.computation.DataReadConfiguration;
 import org.cyk.utility.common.helper.FilterHelper;
+import org.cyk.utility.common.userinterface.container.window.LoginWindow;
+import org.cyk.utility.common.userinterface.container.window.LoginWindow.Credentials;
 
 public class InstanceHelper implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -112,6 +114,15 @@ public class InstanceHelper implements Serializable {
 		
 		@Override
 		public Object act(Action action, Object instance) {
+			if(Action.LOGIN.equals(action)){
+				LoginWindow.Credentials credentials = (Credentials) instance;
+				
+				return null;
+			}
+			if(Action.LOGOUT.equals(action)){
+				
+				return null;
+			}
 			if(instance instanceof Person){
 				if(Constant.Action.CREATE.equals(action))
 					Person.COLLECTION.add((Person)instance);
