@@ -2,6 +2,7 @@ package org.cyk.playground.ui.primefaces;
 
 import java.io.Serializable;
 
+import org.cyk.playground.ui.primefaces.model.Locality;
 import org.cyk.playground.ui.primefaces.model.LocalityType;
 import org.cyk.playground.ui.primefaces.model.Location;
 import org.cyk.playground.ui.primefaces.model.LocationType;
@@ -85,7 +86,7 @@ public class MenuBuilder extends org.cyk.ui.web.primefaces.resources.MenuBuilder
 		;
 		
 		menu.addNode("ui.menu.controlpanel.identifiables.manage.contact")
-			.addNodeActionListMany(PhoneNumberType.class,LocationType.class,LocalityType.class)
+			.addNodeActionListMany(PhoneNumberType.class,LocationType.class,LocalityType.class,Locality.class)
 		;
 		
 		menu.addNode("ui.menu.controlpanel.identifiables.manage.other")

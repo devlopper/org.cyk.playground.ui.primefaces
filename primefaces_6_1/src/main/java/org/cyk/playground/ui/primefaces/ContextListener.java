@@ -19,6 +19,7 @@ import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.helper.InstanceHelper;
 import org.cyk.utility.common.helper.MapHelper;
 import org.cyk.utility.common.helper.UniformResourceLocatorHelper;
+import org.cyk.utility.common.security.Shiro;
 import org.cyk.utility.common.userinterface.Component;
 import org.cyk.utility.common.userinterface.command.Menu;
 import org.cyk.utility.common.userinterface.container.Form.Detail;
@@ -43,6 +44,7 @@ public class ContextListener extends ServletContextListener implements Serializa
 	
 		ClassHelper.getInstance().map(Input.Listener.class, InputAdapter.class);
 		ClassHelper.getInstance().map(FileHelper.Listener.class, FileAdapter.class);
+		ClassHelper.getInstance().map(ClassHelper.Listener.class, org.cyk.playground.ui.primefaces.ClassHelper.Listener.class);
 		ClassHelper.getInstance().map(Menu.Builder.Adapter.Default.class,MenuBuilder.class);
 		ClassHelper.getInstance().map(EditWindow.FormMaster.ClassLocator.class, EditFormMasterClassLocator.class);
 		ClassHelper.getInstance().map(ConsultWindow.FormMaster.ClassLocator.class, ConsultFormMasterClassLocator.class);
@@ -72,6 +74,24 @@ public class ContextListener extends ServletContextListener implements Serializa
 		Component.ClassLocator.GetOrgCykSystem.MODULE_PREFIXES = new String[]{"playground.ui.primefaces.page"};
 		Component.ClassLocator.GetOrgCykSystem.NAME_TOKEN_TO_REPLACE = "org.cyk.system.playground.";
 		Component.ClassLocator.GetOrgCykSystem.NAME_TOKEN_REPLACEMENT = "org.cyk.playground.";
+		/*
+		IniWebEnvironment.INI.setRealmClass(Shiro.Realm.Jdbc.class);
+		IniWebEnvironment.INI.getDatasource().getService().setDriver("com.mysql.jdbc.jdbc2.optional.MysqlDataSource");
+		IniWebEnvironment.INI.getDatasource().getService().setScheme("jdbc:mysql");
+		IniWebEnvironment.INI.getDatasource().getService().getNode().setName("localhost");
+		IniWebEnvironment.INI.getDatasource().getService().setPort(3306l);
+		IniWebEnvironment.INI.getDatasource().setDatabaseName("mydb");
+		IniWebEnvironment.INI.getDatasource().getCredentials().setUsername("admin");
+		IniWebEnvironment.INI.getDatasource().getCredentials().setPassword("123");
+		IniWebEnvironment.INI.setCacheManagerClass(org.apache.shiro.cache.MemoryConstrainedCacheManager.class);
+		*/
+		
+		Shiro.Ini ini = Shiro.Ini.getInstance().clean();
+		ini.addUsers("admin", "123","user1","123","user2","123");
+		ini.addFoldersForUser("private1");
+		ini.addLoginUrl("/public/security/login.jsf");
+		//ini.addRoles("admin", "*","schwartz", "lightsaber:*","goodguy", "winnebago:drive:eagle5");
+		
 	}
 
 	/**/

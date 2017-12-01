@@ -28,6 +28,7 @@ public class EditFormMasterClassLocator extends EditWindow.FormMaster.ClassLocat
 			return EditLocationTypePage.FormMaster.class;
 		if(Location.class.equals(basedClass))
 			return EditLocationPage.FormMaster.class;
+		
 		return super.locate(basedClass);
 	}
 	

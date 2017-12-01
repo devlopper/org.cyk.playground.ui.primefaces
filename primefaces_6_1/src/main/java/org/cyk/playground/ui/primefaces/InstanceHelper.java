@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.cyk.playground.ui.primefaces.model.AbstractIdentified;
 import org.cyk.playground.ui.primefaces.model.Country;
+import org.cyk.playground.ui.primefaces.model.Locality;
 import org.cyk.playground.ui.primefaces.model.LocalityType;
 import org.cyk.playground.ui.primefaces.model.Location;
 import org.cyk.playground.ui.primefaces.model.LocationType;
@@ -18,13 +19,11 @@ import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.Constant.Action;
 import org.cyk.utility.common.computation.DataReadConfiguration;
 import org.cyk.utility.common.helper.FilterHelper;
-import org.cyk.utility.common.userinterface.container.window.LoginWindow;
-import org.cyk.utility.common.userinterface.container.window.LoginWindow.Credentials;
 
 public class InstanceHelper implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	public static class Listener extends org.cyk.utility.common.helper.InstanceHelper.Listener.Adapter.Default{
+	public static class Listener extends org.cyk.ui.web.api.resources.helper.InstanceHelper.Listener{
     	private static final long serialVersionUID = 1L;
 		
     	@Override
@@ -51,6 +50,9 @@ public class InstanceHelper implements Serializable {
 				}	
 				if(LocalityType.class.equals(aClass)){
 					return (Collection<T>) LocalityType.COLLECTION;
+				}	
+				if(Locality.class.equals(aClass)){
+					return (Collection<T>) Locality.COLLECTION;
 				}	
 				if(Person.class.equals(aClass)){
 					return (Collection<T>) Person.COLLECTION;
@@ -101,6 +103,8 @@ public class InstanceHelper implements Serializable {
 				return (T) Location.get((String)identifier);
 			if(LocalityType.class.equals(aClass))
 				return (T) LocalityType.get((String)identifier);
+			if(Locality.class.equals(aClass))
+				return (T) Locality.get((String)identifier);
 			return super.getByIdentifier(aClass, identifier);
 		}
 		
@@ -114,15 +118,6 @@ public class InstanceHelper implements Serializable {
 		
 		@Override
 		public Object act(Action action, Object instance) {
-			if(Action.LOGIN.equals(action)){
-				LoginWindow.Credentials credentials = (Credentials) instance;
-				
-				return null;
-			}
-			if(Action.LOGOUT.equals(action)){
-				
-				return null;
-			}
 			if(instance instanceof Person){
 				if(Constant.Action.CREATE.equals(action))
 					Person.COLLECTION.add((Person)instance);
@@ -150,6 +145,11 @@ public class InstanceHelper implements Serializable {
 					LocalityType.COLLECTION.add((LocalityType)instance);
 				else if(Constant.Action.DELETE.equals(action))
 					LocalityType.COLLECTION.remove((LocalityType)instance);
+			}else if(instance instanceof Locality){
+				if(Constant.Action.CREATE.equals(action))
+					Locality.COLLECTION.add((Locality)instance);
+				else if(Constant.Action.DELETE.equals(action))
+					Locality.COLLECTION.remove((Locality)instance);
 			}
 			return super.act(action, instance);
 		}
