@@ -153,6 +153,7 @@ public class InstanceHelper implements Serializable {
 			}
 			return super.act(action, instance);
 		}
+		
     }
 	
 	public static class Label extends org.cyk.utility.common.helper.InstanceHelper.Stringifier.Label.Adapter.Default implements Serializable {
