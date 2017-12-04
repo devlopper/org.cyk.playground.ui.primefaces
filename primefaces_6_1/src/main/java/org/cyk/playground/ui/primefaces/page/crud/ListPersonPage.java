@@ -28,7 +28,7 @@ public class ListPersonPage extends ListWindow implements Serializable {
 			addColumn("sex", "sex");
 			addColumn("nationality", "nationality");
 			//rows
-			addManyRow(Person.COLLECTION);
+			//addManyRow(Person.COLLECTION);
 		}
 		
 	}

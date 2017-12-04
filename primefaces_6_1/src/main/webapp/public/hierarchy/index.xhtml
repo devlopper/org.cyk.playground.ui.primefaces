@@ -14,37 +14,37 @@
  			<p:panelGrid columns="2" >
  				
  				<h:panelGroup>
-	 				<ui:decorate template="#{hierarchiesPage.tree.propertiesMap.template}">
+	 				<ui:decorate template="#{primefacesResourcesManager.getTemplate(hierarchiesPage.tree)}">
 				 		<ui:param name="tree" value="#{hierarchiesPage.tree}" />
 				 	</ui:decorate>
  				</h:panelGroup>
  				
  				<h:panelGroup>
-	 				<ui:decorate template="#{hierarchiesPage.table.propertiesMap.template}">
+	 				<ui:decorate template="#{primefacesResourcesManager.getTemplate(hierarchiesPage.table)}">
 				 		<ui:param name="treeTable" value="#{hierarchiesPage.table}" />
 				 	</ui:decorate>
  				</h:panelGroup>
  				
  				<h:panelGroup>
-	 				<ui:decorate template="#{hierarchiesPage.treeLocalityType.propertiesMap.template}">
+	 				<ui:decorate template="#{primefacesResourcesManager.getTemplate(hierarchiesPage.treeLocalityType)}">
 				 		<ui:param name="tree" value="#{hierarchiesPage.treeLocalityType}" />
 				 	</ui:decorate>
  				</h:panelGroup>
  				
  				<h:panelGroup>
-	 				<ui:decorate template="#{hierarchiesPage.tableLocalityType.propertiesMap.template}">
+	 				<ui:decorate template="#{primefacesResourcesManager.getTemplate(hierarchiesPage.tableLocalityType)}">
 				 		<ui:param name="treeTable" value="#{hierarchiesPage.tableLocalityType}" />
 				 	</ui:decorate>
  				</h:panelGroup>
  				
  				<h:panelGroup>
-	 				<ui:decorate template="#{hierarchiesPage.treeLocality.propertiesMap.template}">
+	 				<ui:decorate template="#{primefacesResourcesManager.getTemplate(hierarchiesPage.treeLocality)}">
 				 		<ui:param name="tree" value="#{hierarchiesPage.treeLocality}" />
 				 	</ui:decorate>
  				</h:panelGroup>
  				
  				<h:panelGroup>
-	 				<ui:decorate template="#{hierarchiesPage.tableLocality.propertiesMap.template}">
+	 				<ui:decorate template="#{primefacesResourcesManager.getTemplate(hierarchiesPage.tableLocality)}">
 				 		<ui:param name="treeTable" value="#{hierarchiesPage.tableLocality}" />
 				 	</ui:decorate>
  				</h:panelGroup>
