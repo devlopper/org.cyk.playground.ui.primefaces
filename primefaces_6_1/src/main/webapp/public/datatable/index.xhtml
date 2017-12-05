@@ -11,9 +11,89 @@
  		<ui:param name="page" value="#{dataTablesPage}" />
  		<ui:define name="centerCenterContent">
  			
- 			<ui:decorate template="#{dataTablesPage.dataTable.propertiesMap.template}">
-		 		<ui:param name="dataTable" value="#{dataTablesPage.dataTable}" />
-		 	</ui:decorate>
+ 			<p:tabView>
+ 				<p:tab title="Persons">
+ 					<table>
+ 						<tr style="vertical-align: top;">
+ 							<td>
+ 								
+ 							</td>
+ 							<td>
+ 								Simple
+ 							</td>
+ 							<td>
+ 								Paginated
+ 							</td>
+ 							<td>
+ 								Lazy
+ 							</td>
+ 						</tr>
+ 						<tr style="vertical-align: top;">
+ 							<td>
+ 								Empty
+ 							</td>
+ 							<td>
+ 								<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesPage.emptyPersons)}">
+							 		<ui:param name="dataTable" value="#{dataTablesPage.emptyPersons}" />
+							 	</ui:decorate>
+ 							</td>
+ 							<td>
+ 								<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesPage.emptyPersonsPaginated)}">
+							 		<ui:param name="dataTable" value="#{dataTablesPage.emptyPersonsPaginated}" />
+							 	</ui:decorate>
+ 							</td>
+ 							<td>
+ 								<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesPage.emptyPersonsLazy)}">
+							 		<ui:param name="dataTable" value="#{dataTablesPage.emptyPersonsLazy}" />
+							 	</ui:decorate>
+ 							</td>
+ 						</tr>
+ 						<tr style="vertical-align: top;">
+ 							<td>
+ 								Three
+ 							</td>
+ 							<td>
+ 								<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesPage.threePersons)}">
+							 		<ui:param name="dataTable" value="#{dataTablesPage.threePersons}" />
+							 	</ui:decorate>
+ 							</td>
+ 							<td>
+ 								<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesPage.threePersonsPaginated)}">
+							 		<ui:param name="dataTable" value="#{dataTablesPage.threePersonsPaginated}" />
+							 	</ui:decorate>
+ 							</td>
+ 							<td>
+ 								<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesPage.threePersonsLazy)}">
+							 		<ui:param name="dataTable" value="#{dataTablesPage.threePersonsLazy}" />
+							 	</ui:decorate>
+ 							</td>
+ 						</tr>
+ 						<tr style="vertical-align: top;">
+ 							<td>
+ 								Hundred
+ 							</td>
+ 							<td>
+ 								<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesPage.hundredPersons)}">
+							 		<ui:param name="dataTable" value="#{dataTablesPage.hundredPersons}" />
+							 	</ui:decorate>
+ 							</td>
+ 							<td>
+ 								<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesPage.hundredPersonsPaginated)}">
+							 		<ui:param name="dataTable" value="#{dataTablesPage.hundredPersonsPaginated}" />
+							 	</ui:decorate>
+ 							</td>
+ 							<td>
+ 								<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesPage.hundredPersonsLazy)}">
+							 		<ui:param name="dataTable" value="#{dataTablesPage.hundredPersonsLazy}" />
+							 	</ui:decorate>
+ 							</td>
+ 						</tr>
+ 					</table>
+ 				</p:tab>
+ 				<p:tab title="Localities">
+ 				
+ 				</p:tab>
+ 			</p:tabView>
  			
  		</ui:define>
  	</ui:decorate>
