@@ -21,6 +21,7 @@ public class GlobalIdentifier {
 	private Period existencePeriod;
 	private Location birthLocation;
 	private Location deathLocation;
+	private Boolean usable = RandomHelper.getInstance().getBoolean();
 
 	private Date creationDate = RandomHelper.getInstance().getDate();
 	private String owner = RandomHelper.getInstance().getAlphabetic(5);

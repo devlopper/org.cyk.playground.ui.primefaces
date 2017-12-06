@@ -52,6 +52,10 @@ public class Person extends AbstractIdentified {
 		person.getGlobalIdentifier().setName(randomPerson.getFirstname());
 		person.setLastnames(randomPerson.getLastname());
 		person.getGlobalIdentifier().setImage(new File(randomPerson.getHeadOnlyPhoto()));
+		person.getGlobalIdentifier().setUsable(RandomHelper.getInstance().getBoolean());
+		//person.getGlobalIdentifier().setCreationDate(RandomHelper.getInstance().getDate());
+		person.setNationality(RandomHelper.getInstance().getElement(Country.COLLECTION));
+		//person.getGlobalIdentifier().setOwner(RandomHelper.getInstance().getAlphabetic(5));
 		return person;
 	}
 	

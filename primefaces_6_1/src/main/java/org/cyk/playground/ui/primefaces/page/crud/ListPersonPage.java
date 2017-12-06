@@ -22,6 +22,7 @@ public class ListPersonPage extends ListWindow implements Serializable {
 		public DataTable() {
 			super(Person.class);
 			//columns
+			addColumn("photo", "globalIdentifier.image");
 			addColumn("code", "globalIdentifier.code");
 			addColumn("name", "globalIdentifier.name");
 			addColumn("lastnames", "lastnames");

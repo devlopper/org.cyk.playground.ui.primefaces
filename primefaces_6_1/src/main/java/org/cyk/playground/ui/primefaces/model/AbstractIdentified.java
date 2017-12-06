@@ -18,6 +18,11 @@ public abstract class AbstractIdentified {
 		globalIdentifier.setName(name);
 		return this;
 	}
+	
+	public AbstractIdentified setUsable(Boolean usable) {
+		globalIdentifier.setUsable(usable);
+		return this;
+	}
 
 	public String getCode() {
 		return globalIdentifier.getCode();
@@ -27,9 +32,15 @@ public abstract class AbstractIdentified {
 		return globalIdentifier.getName();
 	}
 	
+	public Boolean getUsable() {
+		return globalIdentifier.getUsable();
+	}
+	
 	@Override
 	public String toString() {
 		return getName();
 	}
+	
+	
 	
 }
