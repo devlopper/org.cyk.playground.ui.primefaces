@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Named @ViewScoped @Getter @Setter
-public class DataTablesLoadPage extends Window implements Serializable {
+public class DataTablesLazyPage extends Window implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private DataTable personDataTable1,personDataTable2,personDataTable3,personDataTable4;
