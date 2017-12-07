@@ -11,6 +11,11 @@ public class ClassHelper implements Serializable {
     	private static final long serialVersionUID = 1L;
 		
     	@Override
+    	public String getIdentifierFieldName(Class<?> aClass) {
+    		return "globalIdentifier.code";
+    	}
+    	
+    	@Override
     	public Boolean isHierarchy(Class<?> aClass) {
     		return org.cyk.utility.common.helper.ClassHelper.getInstance().isInstanceOf(AbstractIdentifiedTree.class, aClass);
     	}

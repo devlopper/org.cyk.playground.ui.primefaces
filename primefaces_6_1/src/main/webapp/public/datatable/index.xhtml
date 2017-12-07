@@ -17,8 +17,18 @@
 			
 			<!--p:dataTable var="row" value="#{dataTablesPage.personDataTable.propertiesMap.value}" >
 				<p:column headerText="Image">
-					#{dataTablesPage.personDataTable.getColumn('globalIdentifier.image').getCell(row).propertiesMap.value.propertiesMap.value.getContentType()}
-					<p:graphicImage value="#{dataTablesPage.personDataTable.getColumn('globalIdentifier.image').getCell(row).propertiesMap.value.propertiesMap.value}" stream="false" />
+					#{dataTablesPage.personDataTable.getColumn('globalIdentifier.image').getCell(row).propertiesMap.value.propertiesMap}
+					<p:graphicImage value="#{dataTablesPage.personDataTable.getColumn('globalIdentifier.image').getCell(row).propertiesMap.value.propertiesMap.value}" 
+						stream="false" height="#{dataTablesPage.personDataTable.getColumn('globalIdentifier.image').getCell(row).propertiesMap.value.propertiesMap.height}" 
+						width="#{dataTablesPage.personDataTable.getColumn('globalIdentifier.image').getCell(row).propertiesMap.value.propertiesMap.width}"/>
+				</p:column>
+				<p:column headerText="Image">
+					
+					<ui:decorate template="#{primefacesResourcesManager.outputLinkDefaultTemplate}">
+						<ui:param name="outputLink" 
+						value="#{dataTablesPage.personDataTable.getColumn('nationality').getCell(row).propertiesMap.value.propertiesMap.outputLinkComponent}" />
+					</ui:decorate>	
+					
 				</p:column>
 			</p:dataTable-->
  			

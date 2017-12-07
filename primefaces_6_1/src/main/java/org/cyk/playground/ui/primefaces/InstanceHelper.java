@@ -105,6 +105,8 @@ public class InstanceHelper implements Serializable {
 				return (T) LocalityType.get((String)identifier);
 			if(Locality.class.equals(aClass))
 				return (T) Locality.get((String)identifier);
+			if(Country.class.equals(aClass))
+				return (T) Country.get((String)identifier);
 			return super.getByIdentifier(aClass, identifier);
 		}
 		

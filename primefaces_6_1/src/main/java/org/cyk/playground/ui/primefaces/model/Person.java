@@ -17,10 +17,11 @@ import lombok.experimental.Accessors;
 @Getter @Setter @Accessors(chain=true)
 public class Person extends AbstractIdentified {
 
-	public static final List<Person> COLLECTION = new ArrayList<>();
+	public static final List<Person> COLLECTION;
 	static {
-		create("P001", "Komenan", "Yao Christian","image001.png");
-		create("P002", "Gnangnan", "Sandrine Méliane","image002.png");
+		COLLECTION = (List<Person>) instanciateManyRandomly(20);
+		//create("P001", "Komenan", "Yao Christian","image001.png");
+		//create("P002", "Gnangnan", "Sandrine Méliane","image002.png");
 	}
 	
 	private String lastnames;
@@ -53,9 +54,8 @@ public class Person extends AbstractIdentified {
 		person.setLastnames(randomPerson.getLastname());
 		person.getGlobalIdentifier().setImage(new File(randomPerson.getHeadOnlyPhoto()));
 		person.getGlobalIdentifier().setUsable(RandomHelper.getInstance().getBoolean());
-		//person.getGlobalIdentifier().setCreationDate(RandomHelper.getInstance().getDate());
 		person.setNationality(RandomHelper.getInstance().getElement(Country.COLLECTION));
-		//person.getGlobalIdentifier().setOwner(RandomHelper.getInstance().getAlphabetic(5));
+		person.getGlobalIdentifier().setDescription(RandomHelper.getInstance().getLines(2, 5, 3, 10));
 		return person;
 	}
 	

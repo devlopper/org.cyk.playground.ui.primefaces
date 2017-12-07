@@ -39,5 +39,12 @@ public class Country extends AbstractIdentified {
 	public Country setCode(String code) {
 		return (Country) super.setCode(code);
 	}
+	
+	public static Country get(String code) {
+		for(Country country : COLLECTION)
+			if(country.getCode().equals(code))
+				return country;
+		return null;
+	}
 
 }
