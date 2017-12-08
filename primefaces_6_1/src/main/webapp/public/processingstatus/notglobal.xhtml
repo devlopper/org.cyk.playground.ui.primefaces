@@ -15,23 +15,6 @@
  			<p:commandButton value="Known Duration" action="#{processingStatusPage.knownDuration}" />
  			<p:commandButton value="Unknown Elements" action="#{processingStatusPage.unknownElements}" />
  			<p:commandButton value="Known Elements" action="#{processingStatusPage.knownElements}" />
-			<p:separator/>
-			
-			<table border="1">
-				<tr style="vertical-align: top;">
-					<td>
-						<p:outputPanel styleClass="p1">
-							Form 1
-							<ui:decorate template="#{primefacesResourcesManager.getTemplate(processingStatusPage.form1)}">
-						 		<ui:param name="form" value="#{processingStatusPage.form1}" />
-						 	</ui:decorate>
-						</p:outputPanel>
-					</td>
-					<td>
-					
-					</td>
-				</tr>
-			</table>
 			
  		</ui:define>
  	</ui:decorate>

@@ -1,4 +1,4 @@
-package org.cyk.playground.ui.primefaces.page;
+package org.cyk.playground.ui.primefaces.page.datatable;
 
 import java.io.Serializable;
 
@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Named @ViewScoped @Getter @Setter
-public class DataTableConsultPage extends Window implements Serializable {
+public class DataTableEditPage extends Window implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -19,7 +19,7 @@ public class DataTableConsultPage extends Window implements Serializable {
 	@Override
 	protected void initialisation() {
 		super.initialisation();
-		getPropertiesMap().setTitle("Consult page");
+		getPropertiesMap().setTitle("Edit page");
 		
 		
 	}

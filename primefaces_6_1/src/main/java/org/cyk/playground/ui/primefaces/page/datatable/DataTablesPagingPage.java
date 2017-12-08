@@ -1,4 +1,4 @@
-package org.cyk.playground.ui.primefaces.page;
+package org.cyk.playground.ui.primefaces.page.datatable;
 
 import java.io.Serializable;
 import java.util.Collection;

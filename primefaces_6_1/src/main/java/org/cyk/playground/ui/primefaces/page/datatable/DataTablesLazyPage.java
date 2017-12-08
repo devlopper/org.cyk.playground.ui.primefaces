@@ -1,4 +1,4 @@
-package org.cyk.playground.ui.primefaces.page;
+package org.cyk.playground.ui.primefaces.page.datatable;
 
 import java.io.Serializable;
 import java.util.List;
@@ -50,24 +50,23 @@ public class DataTablesLazyPage extends Window implements Serializable {
 		return dataTable;
 	}
 	
-	public static class LazyDataModel<T extends AbstractIdentified> extends org.primefaces.model.LazyDataModel<DataTable.Row> implements Serializable {
+	public static class LazyDataModel<T extends AbstractIdentified> extends org.cyk.ui.web.primefaces.resources.LazyDataModel<T> implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
-		private Component component;
-		
 		public LazyDataModel(Component component) {
-			this.component = component;
+			super(component);
+		}
+		
+		@SuppressWarnings("unchecked")
+		@Override
+		protected List<T> __load__(int first, int pageSize, String sortField, SortOrder sortOrder,Map<String, Object> filters) {
+			return (List<T>) PERSONS.subList(first, first + pageSize > PERSONS.size() ? PERSONS.size() -1 : first + pageSize);
 		}
 		
 		@Override
-		public List<DataTable.Row> load(int first, int pageSize, String sortField,SortOrder sortOrder, Map<String, Object> filters) {
-			@SuppressWarnings("unchecked")
-			List<T> p = (List<T>) PERSONS.subList(first, first + pageSize > PERSONS.size() ? PERSONS.size() -1 : first + pageSize);
-			setRowCount(PERSONS.size());
-			return (List<DataTable.Row>) DataTable.Row.instanciateMany(p,component,null);
+		protected Integer __count__(int first, int pageSize, String sortField, SortOrder sortOrder,Map<String, Object> filters) {
+			return PERSONS.size();
 		}
-		
-		
 		
 	}
 }
