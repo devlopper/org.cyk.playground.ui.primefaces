@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+ 	<ui:decorate template="#{dataTablesSortPage.propertiesMap.template}">
+ 		<ui:param name="page" value="#{dataTablesSortPage}" />
+ 		<ui:define name="centerCenterContent">
+ 			
+ 			<table>
+ 				<tr style="vertical-align: top;">
+ 					<td>
+ 						Not paged
+ 					</td>
+ 					<td>
+ 						Paged
+ 					</td>
+ 				</tr>
+ 				<tr style="vertical-align: top;">
+ 					<td>
+ 						<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesSortPage.personDataTableNotPaged)}">
+							<ui:param name="dataTable" value="#{dataTablesSortPage.personDataTableNotPaged}" />
+						</ui:decorate>
+ 					</td>
+ 					<td>
+ 						<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesSortPage.personDataTablePaged)}">
+							<ui:param name="dataTable" value="#{dataTablesSortPage.personDataTablePaged}" />
+						</ui:decorate>
+ 					</td>
+ 				</tr>
+ 			</table>
+ 			
+ 			
+ 			
+ 		</ui:define>
+ 	</ui:decorate>
+ 	
+</html>
