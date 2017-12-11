@@ -2,6 +2,7 @@ package org.cyk.playground.ui.primefaces.page.datatable;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.utility.common.userinterface.collection.DataTable;
@@ -24,16 +25,45 @@ public class DataTablesFilterPage extends Window implements Serializable {
 	protected void initialisation() {
 		super.initialisation();
 		getPropertiesMap().setTitle("Data tables Filter");
-		/*
-		personDataTableNotPaged = createDataTable(Person.class,new String[]{"globalIdentifier.code","globalIdentifier.name","lastnames"},page,Boolean.FALSE);
+		
+		final String[] fieldNames = new String[]{"globalIdentifier.code","globalIdentifier.name","lastnames"};
+		
+		personDataTableNotPaged = DataTable.instanciateOne(Person.class, fieldNames, Person.COLLECTION, null, null);
+		personDataTablePaged = DataTable.instanciateOne(Person.class, fieldNames, Person.COLLECTION, page, null);
+		personDataTableLazy = DataTable.instanciateOne(Person.class, fieldNames, null, page, Boolean.TRUE);
+		personDataTableLazy.getPropertiesMap().setValue(new DataTablesLazyPage.LazyDataModel<Person>(personDataTableLazy){
+			private static final long serialVersionUID = 1L;
+			
+			@Override
+			protected Boolean isFilterable(Map<String, Object> filters) {
+				return Boolean.TRUE;
+			}
+			
+			@Override
+			protected List<Person> filter(List<Person> collection, Map<String, Object> filters) {
+				return Person.filter(collection, filters);
+			}
+			
+			@Override
+			protected Boolean isPageable(Integer first, Integer size) {
+				return Boolean.TRUE;
+			}
+		});
+		
 		personDataTableNotPaged.getColumn("__orderNumber__").getPropertiesMap().setFilterable(Boolean.TRUE);
 		personDataTableNotPaged.getColumn("globalIdentifier.code").getPropertiesMap().setFilterable(Boolean.TRUE);
 		personDataTableNotPaged.getColumn("globalIdentifier.name").getPropertiesMap().setFilterable(Boolean.TRUE);
 		personDataTableNotPaged.getColumn("lastnames").getPropertiesMap().setFilterable(Boolean.TRUE);
 		
-		personDataTablePaged = DataTablesPagingPage.createDataTable(Person.class,new String[]{"globalIdentifier.code","globalIdentifier.name","lastnames"},page,Person.COLLECTION);
-		*/
-		personDataTableLazy = DataTablesLazyPage.createDataTable(Person.class,new String[]{"globalIdentifier.code","globalIdentifier.name","lastnames"},page);
+		personDataTablePaged.getColumn("__orderNumber__").getPropertiesMap().setFilterable(Boolean.TRUE);
+		personDataTablePaged.getColumn("globalIdentifier.code").getPropertiesMap().setFilterable(Boolean.TRUE);
+		personDataTablePaged.getColumn("globalIdentifier.name").getPropertiesMap().setFilterable(Boolean.TRUE);
+		personDataTablePaged.getColumn("lastnames").getPropertiesMap().setFilterable(Boolean.TRUE);
+		
+		personDataTableLazy.getColumn("__orderNumber__").getPropertiesMap().setFilterable(Boolean.TRUE);
+		personDataTableLazy.getColumn("globalIdentifier.code").getPropertiesMap().setFilterable(Boolean.TRUE);
+		personDataTableLazy.getColumn("globalIdentifier.name").getPropertiesMap().setFilterable(Boolean.TRUE);
+		personDataTableLazy.getColumn("lastnames").getPropertiesMap().setFilterable(Boolean.TRUE);
 	}
 	
 	/*

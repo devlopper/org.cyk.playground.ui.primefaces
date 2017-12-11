@@ -44,14 +44,6 @@ public class DataTablesSortPage extends Window implements Serializable {
 			}
 		});
 		
-		/*
-		personDataTableNotPaged = createDataTable(Person.class,new String[]{"globalIdentifier.code","globalIdentifier.name","lastnames"},page,Boolean.FALSE);
-		personDataTableNotPaged.getColumn("__orderNumber__").getPropertiesMap().setSortable(Boolean.TRUE);
-		personDataTableNotPaged.getColumn("globalIdentifier.code").getPropertiesMap().setSortable(Boolean.TRUE);
-		personDataTableNotPaged.getColumn("globalIdentifier.name").getPropertiesMap().setSortable(Boolean.TRUE);
-		personDataTableNotPaged.getColumn("lastnames").getPropertiesMap().setSortable(Boolean.TRUE);
-		*/
-		
 		personDataTableNotPaged.getColumn("__orderNumber__").getPropertiesMap().setSortable(Boolean.TRUE);
 		personDataTableNotPaged.getColumn("globalIdentifier.code").getPropertiesMap().setSortable(Boolean.TRUE);
 		personDataTableNotPaged.getColumn("globalIdentifier.name").getPropertiesMap().setSortable(Boolean.TRUE);

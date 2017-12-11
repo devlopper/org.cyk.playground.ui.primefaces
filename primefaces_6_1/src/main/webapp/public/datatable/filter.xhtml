@@ -19,12 +19,16 @@
  					<td>
  						Paged
  					</td>
+ 					<td>
+ 						Lazy
+ 					</td>
  				</tr>
  				<tr style="vertical-align: top;">
  					<td>
- 						<!--ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesFilterPage.personDataTableNotPaged)}">
+ 						<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesFilterPage.personDataTableNotPaged)}">
 							<ui:param name="dataTable" value="#{dataTablesFilterPage.personDataTableNotPaged}" />
-						</ui:decorate-->
+						</ui:decorate>
+						<!--
 						<p:dataTable var="row" value="#{dataTablesFilterPage.personDataTableNotPaged.propertiesMap.value}" rowIndexVar="index"
 							filteredValue="#{dataTablesFilterPage.filterValues}"
 						>
@@ -32,14 +36,14 @@
 							<p:column headerText="#" filterable="true" filterBy="#{dataTablesFilterPage.personDataTableNotPaged.getColumn('__orderNumber__').getCell(row).propertiesMap.filterBy}">
 								#{dataTablesFilterPage.personDataTableNotPaged.getColumn('__orderNumber__').getCell(row).propertiesMap.value.propertiesMap.value}
 							</p:column>
-							<!--
+							
 							<p:column headerText="Code" filterable="true" filterBy="#{row['propertiesMap'].value.globalIdentifier.code}">
 								#{dataTablesFilterPage.personDataTableNotPaged.getColumn('globalIdentifier.code').getCell(row).propertiesMap.value.propertiesMap.value}
 							</p:column>
 							<p:column headerText="Name" filterable="true" filterBy="#{row['propertiesMap'].value['globalIdentifier']['name']}">
 								#{dataTablesFilterPage.personDataTableNotPaged.getColumn('globalIdentifier.name').getCell(row).propertiesMap.value.propertiesMap.value}
 							</p:column>
-							-->
+							
 							<p:columns var="column" value="#{dataTablesFilterPage.personDataTableNotPaged.propertiesMap.columns.propertiesMap.value}"
 								headerText="#{column.propertiesMap.headerText}" filterable="true" 
 								filterBy="#{dataTablesFilterPage.personDataTableNotPaged.getColumn('__orderNumber__').getCell(row).propertiesMap.filterBy}"
@@ -49,10 +53,16 @@
 							
 							
 						</p:dataTable>
+						-->
  					</td>
  					<td>
  						<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesFilterPage.personDataTablePaged)}">
 							<ui:param name="dataTable" value="#{dataTablesFilterPage.personDataTablePaged}" />
+						</ui:decorate>
+ 					</td>
+ 					<td>
+ 						<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesFilterPage.personDataTableLazy)}">
+							<ui:param name="dataTable" value="#{dataTablesFilterPage.personDataTableLazy}" />
 						</ui:decorate>
  					</td>
  				</tr>
