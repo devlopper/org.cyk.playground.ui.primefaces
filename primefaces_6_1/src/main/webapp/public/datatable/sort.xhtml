@@ -19,16 +19,39 @@
  					<td>
  						Paged
  					</td>
+ 					<td>
+ 						Lazy
+ 					</td>
  				</tr>
  				<tr style="vertical-align: top;">
  					<td>
  						<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesSortPage.personDataTableNotPaged)}">
 							<ui:param name="dataTable" value="#{dataTablesSortPage.personDataTableNotPaged}" />
 						</ui:decorate>
+						<!--p:dataTable var="row" value="#{dataTablesSortPage.personDataTableNotPaged.propertiesMap.value}" >
+							<p:column headerText="#" sortable="true" sortBy="#{dataTablesSortPage.personDataTableNotPaged.getColumn('__orderNumber__').getCell(row).propertiesMap.value.propertiesMap.value}">
+								#{dataTablesSortPage.personDataTableNotPaged.getColumn('__orderNumber__').getCell(row).propertiesMap.value.propertiesMap.value}
+							</p:column>
+							<p:column headerText="Code" sortable="true" sortBy="#{row['propertiesMap'].value.globalIdentifier.code}">
+								#{dataTablesSortPage.personDataTableNotPaged.getColumn('globalIdentifier.code').getCell(row).propertiesMap.value.propertiesMap.value}
+								/
+								#{dataTablesSortPage.personDataTableNotPaged.getColumn('globalIdentifier.code').propertiesMap.fieldName}
+								/
+								#{row['propertiesMap'].value.globalIdentifier.code}
+							</p:column>
+							<p:column headerText="Name" sortable="true" sortBy="#{row['propertiesMap'].value['globalIdentifier']['name']}">
+								#{dataTablesSortPage.personDataTableNotPaged.getColumn('globalIdentifier.name').getCell(row).propertiesMap.value.propertiesMap.value}
+							</p:column>
+						</p:dataTable-->
  					</td>
  					<td>
  						<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesSortPage.personDataTablePaged)}">
 							<ui:param name="dataTable" value="#{dataTablesSortPage.personDataTablePaged}" />
+						</ui:decorate>
+ 					</td>
+ 					<td>
+ 						<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesSortPage.personDataTableLazy)}">
+							<ui:param name="dataTable" value="#{dataTablesSortPage.personDataTableLazy}" />
 						</ui:decorate>
  					</td>
  				</tr>

@@ -21,8 +21,6 @@ import lombok.Setter;
 public class DataTablesLazyPage extends Window implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private static final List<Person> PERSONS = (List<Person>) Person.instanciateManyRandomly(200);
-	
 	private DataTable personDataTable;
 	private Integer page = 5;
 	
@@ -35,13 +33,13 @@ public class DataTablesLazyPage extends Window implements Serializable {
 		
 	}
 	
-	private <T extends AbstractIdentified> DataTable createDataTable(Class<T> aClass,String[] fieldNames,Integer page){
+	public static <T extends AbstractIdentified> DataTable createDataTable(Class<T> aClass,String[] fieldNames,Integer page){
 		DataTable dataTable = new DataTable();
 		
 		dataTable.setActionOnClass(aClass);
 		dataTable.addColumnsByFieldNames(fieldNames);
 		dataTable.getPropertiesMap().setRows(page);
-		dataTable.getPropertiesMap().setPaginator(page != null);
+		dataTable.getPropertiesMap().setPaginator(Boolean.TRUE);
 		dataTable.getPropertiesMap().setLazy(Boolean.TRUE);
 		dataTable.prepare();
 		dataTable.build();
@@ -59,13 +57,13 @@ public class DataTablesLazyPage extends Window implements Serializable {
 		
 		@SuppressWarnings("unchecked")
 		@Override
-		protected List<T> __load__(int first, int pageSize, String sortField, SortOrder sortOrder,Map<String, Object> filters) {
-			return (List<T>) PERSONS.subList(first, first + pageSize > PERSONS.size() ? PERSONS.size() -1 : first + pageSize);
+		protected List<T> __getInstances__(int first, int pageSize, String sortField, SortOrder sortOrder,Map<String, Object> filters) {
+			return (List<T>) Person.COLLECTION;
 		}
 		
 		@Override
 		protected Integer __count__(int first, int pageSize, String sortField, SortOrder sortOrder,Map<String, Object> filters) {
-			return PERSONS.size();
+			return Person.COLLECTION.size();
 		}
 		
 	}

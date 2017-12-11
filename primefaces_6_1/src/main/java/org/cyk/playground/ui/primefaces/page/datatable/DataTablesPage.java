@@ -47,7 +47,5 @@ public class DataTablesPage extends Window implements Serializable {
 		personDataTable.build();
 		
 	}
-	
-	
-	
+		
 }

@@ -43,7 +43,7 @@ public class DataTablesPagingPage extends Window implements Serializable {
 		hundredPersonsPaginated = createDataTable(Person.class, fieldNames, page,PERSONS_100);
 	}
 	
-	private <T extends AbstractIdentified> DataTable createDataTable(Class<T> aClass,String[] fieldNames,Integer page,final Collection<T> collection){
+	public static <T extends AbstractIdentified> DataTable createDataTable(Class<T> aClass,String[] fieldNames,Integer page,final Collection<T> collection){
 		DataTable dataTable = new DataTable();
 		
 		dataTable.setActionOnClass(aClass);

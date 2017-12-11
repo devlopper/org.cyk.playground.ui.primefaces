@@ -19,7 +19,7 @@ public class Person extends AbstractIdentified {
 
 	public static final List<Person> COLLECTION;
 	static {
-		COLLECTION = (List<Person>) instanciateManyRandomly(20);
+		COLLECTION = (List<Person>) instanciateManyRandomly(200);
 		//create("P001", "Komenan", "Yao Christian","image001.png");
 		//create("P002", "Gnangnan", "Sandrine Méliane","image002.png");
 	}
@@ -76,4 +76,5 @@ public class Person extends AbstractIdentified {
 	public static Person get(String code) {
 		return get(code,COLLECTION);
 	}
+	
 }

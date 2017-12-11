@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+ 	<ui:decorate template="#{dataTablesFilterPage.propertiesMap.template}">
+ 		<ui:param name="page" value="#{dataTablesFilterPage}" />
+ 		<ui:define name="centerCenterContent">
+ 			
+ 			<table>
+ 				<tr style="vertical-align: top;">
+ 					<td>
+ 						Not paged
+ 					</td>
+ 					<td>
+ 						Paged
+ 					</td>
+ 				</tr>
+ 				<tr style="vertical-align: top;">
+ 					<td>
+ 						<!--ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesFilterPage.personDataTableNotPaged)}">
+							<ui:param name="dataTable" value="#{dataTablesFilterPage.personDataTableNotPaged}" />
+						</ui:decorate-->
+						<p:dataTable var="row" value="#{dataTablesFilterPage.personDataTableNotPaged.propertiesMap.value}" rowIndexVar="index"
+							filteredValue="#{dataTablesFilterPage.filterValues}"
+						>
+							
+							<p:column headerText="#" filterable="true" filterBy="#{dataTablesFilterPage.personDataTableNotPaged.getColumn('__orderNumber__').getCell(row).propertiesMap.filterBy}">
+								#{dataTablesFilterPage.personDataTableNotPaged.getColumn('__orderNumber__').getCell(row).propertiesMap.value.propertiesMap.value}
+							</p:column>
+							<!--
+							<p:column headerText="Code" filterable="true" filterBy="#{row['propertiesMap'].value.globalIdentifier.code}">
+								#{dataTablesFilterPage.personDataTableNotPaged.getColumn('globalIdentifier.code').getCell(row).propertiesMap.value.propertiesMap.value}
+							</p:column>
+							<p:column headerText="Name" filterable="true" filterBy="#{row['propertiesMap'].value['globalIdentifier']['name']}">
+								#{dataTablesFilterPage.personDataTableNotPaged.getColumn('globalIdentifier.name').getCell(row).propertiesMap.value.propertiesMap.value}
+							</p:column>
+							-->
+							<p:columns var="column" value="#{dataTablesFilterPage.personDataTableNotPaged.propertiesMap.columns.propertiesMap.value}"
+								headerText="#{column.propertiesMap.headerText}" filterable="true" 
+								filterBy="#{dataTablesFilterPage.personDataTableNotPaged.getColumn('__orderNumber__').getCell(row).propertiesMap.filterBy}"
+							>
+								#{column.getCell(row).propertiesMap.value.propertiesMap.value}
+							</p:columns>
+							
+							
+						</p:dataTable>
+ 					</td>
+ 					<td>
+ 						<ui:decorate template="#{primefacesResourcesManager.getTemplate(dataTablesFilterPage.personDataTablePaged)}">
+							<ui:param name="dataTable" value="#{dataTablesFilterPage.personDataTablePaged}" />
+						</ui:decorate>
+ 					</td>
+ 				</tr>
+ 			</table>
+ 			
+ 			
+ 			
+ 		</ui:define>
+ 	</ui:decorate>
+ 	
+</html>
