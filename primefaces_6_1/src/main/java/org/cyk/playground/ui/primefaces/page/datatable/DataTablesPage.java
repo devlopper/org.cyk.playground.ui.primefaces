@@ -39,7 +39,7 @@ public class DataTablesPage extends Window implements Serializable {
 		personDataTable.setOnPrepareAddColumnAction(Boolean.TRUE);
 		personDataTable.setOnPrepareCallLoad(Boolean.TRUE);
 		
-		personDataTable.setActionOnClass(Person.class);
+		personDataTable.getPropertiesMap().setActionOnClass(Person.class);
 		personDataTable.addColumnsByFieldNames("globalIdentifier.image","globalIdentifier.code","globalIdentifier.name","lastnames","globalIdentifier.usable"
 				,"globalIdentifier.creationDate","globalIdentifier.description","nationality");
 		

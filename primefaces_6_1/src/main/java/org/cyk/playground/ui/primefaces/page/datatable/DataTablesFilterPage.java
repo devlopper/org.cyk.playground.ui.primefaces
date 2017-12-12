@@ -4,15 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import org.cyk.playground.ui.primefaces.model.Person;
-import org.cyk.utility.common.userinterface.Component;
+import org.cyk.utility.common.helper.JavaScriptHelper;
 import org.cyk.utility.common.userinterface.collection.DataTable;
 import org.cyk.utility.common.userinterface.command.Command;
 import org.cyk.utility.common.userinterface.container.window.Window;
-import org.cyk.utility.common.userinterface.input.InputText;
-
-import lombok.Getter;
-import lombok.Setter;
 
 //@javax.inject.Named @javax.faces.view.ViewScoped 
 @javax.faces.bean.ManagedBean @javax.faces.bean.ViewScoped
@@ -68,12 +67,13 @@ public class DataTablesFilterPage extends Window implements Serializable {
 		personDataTableLazy.getColumn("globalIdentifier.name").getPropertiesMap().setFilterable(Boolean.TRUE);
 		personDataTableLazy.getColumn("lastnames").getPropertiesMap().setFilterable(Boolean.TRUE);
 		
-		InputText input = (InputText) personDataTableLazy.getPropertiesMap().getFilterInputComponent();
+		//InputText input = (InputText) personDataTableLazy.getPropertiesMap().getFilterInputComponent();
+		//input.getPropertiesMap().setTemplate("/org.cyk.ui.web.primefaces.resources/template/decorate/input/text/oneline/inputTextWithoutValue.xhtml");
 		//input.getPropertiesMap().setOnKeyUp("PF('"+personDataTableLazy.getPropertiesMap().getWidgetVar()+"').filter()");
 		
 		Command command = (Command) personDataTableLazy.getPropertiesMap().getFilterCommandComponent();
 		command.getPropertiesMap().setType("button");
-		command.getPropertiesMap().setOnClick("PF('"+personDataTableLazy.getPropertiesMap().getWidgetVar()+"').filter()");
+		command.getPropertiesMap().setOnClick(JavaScriptHelper.Primefaces.getInstance().getMethodCallFilter(personDataTableLazy));
 	}
 	
 	/*

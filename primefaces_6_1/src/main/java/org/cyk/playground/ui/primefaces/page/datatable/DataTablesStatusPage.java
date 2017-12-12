@@ -46,7 +46,7 @@ public class DataTablesStatusPage extends Window implements Serializable {
 	private <T extends AbstractIdentified> DataTable createDataTable(Class<T> aClass,String[] fieldNames,Integer page,Boolean global,Boolean asynchron){
 		DataTable dataTable = new DataTable();
 		
-		dataTable.setActionOnClass(aClass);
+		dataTable.getPropertiesMap().setActionOnClass(aClass);
 		dataTable.addColumnsByFieldNames(fieldNames);
 		dataTable.getPropertiesMap().setRows(page);
 		dataTable.getPropertiesMap().setPaginator(Boolean.TRUE);

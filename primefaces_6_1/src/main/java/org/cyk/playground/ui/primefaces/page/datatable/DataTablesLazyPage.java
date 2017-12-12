@@ -36,7 +36,7 @@ public class DataTablesLazyPage extends Window implements Serializable {
 	public static <T extends AbstractIdentified> DataTable createDataTable(Class<T> aClass,String[] fieldNames,Integer page){
 		DataTable dataTable = new DataTable();
 		
-		dataTable.setActionOnClass(aClass);
+		dataTable.getPropertiesMap().setActionOnClass(aClass);
 		dataTable.addColumnsByFieldNames(fieldNames);
 		dataTable.getPropertiesMap().setRows(page);
 		dataTable.getPropertiesMap().setPaginator(Boolean.TRUE);

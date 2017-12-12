@@ -5,11 +5,10 @@ import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import org.cyk.playground.ui.primefaces.model.LocationType;
-import org.cyk.utility.common.userinterface.container.window.ListWindow;
-
 import lombok.Getter;
 import lombok.Setter;
+
+import org.cyk.utility.common.userinterface.container.window.ListWindow;
 
 @Named @ViewScoped @Getter @Setter
 public class ListLocationTypePage extends ListWindow implements Serializable {
@@ -19,14 +18,11 @@ public class ListLocationTypePage extends ListWindow implements Serializable {
 	public static class DataTable extends org.cyk.utility.common.userinterface.collection.DataTable implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
-		public DataTable() {
-			super(LocationType.class);
-			//columns
+		@Override
+		protected void __prepare__() {
+			super.__prepare__();
 			addColumn("code", "globalIdentifier.code");
 			addColumn("name", "globalIdentifier.name");
-			
-			//rows
-			addManyRow(LocationType.COLLECTION);
 		}
 		
 	}

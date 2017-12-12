@@ -8,7 +8,6 @@ import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
 
-import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.utility.common.userinterface.container.window.ListWindow;
 
 @Named @ViewScoped @Getter @Setter
@@ -19,8 +18,9 @@ public class ListPersonPage extends ListWindow implements Serializable {
 	public static class DataTable extends org.cyk.utility.common.userinterface.collection.DataTable implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
-		public DataTable() {
-			super(Person.class);
+		@Override
+		protected void __prepare__() {
+			super.__prepare__();
 			//columns
 			addColumn("photo", "globalIdentifier.image");
 			addColumn("code", "globalIdentifier.code");
@@ -28,8 +28,6 @@ public class ListPersonPage extends ListWindow implements Serializable {
 			addColumn("lastnames", "lastnames");
 			addColumn("sex", "sex");
 			addColumn("nationality", "nationality");
-			//rows
-			//addManyRow(Person.COLLECTION);
 		}
 		
 	}

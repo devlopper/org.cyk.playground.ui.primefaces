@@ -46,7 +46,7 @@ public class DataTablesPagingPage extends Window implements Serializable {
 	public static <T extends AbstractIdentified> DataTable createDataTable(Class<T> aClass,String[] fieldNames,Integer page,final Collection<T> collection){
 		DataTable dataTable = new DataTable();
 		
-		dataTable.setActionOnClass(aClass);
+		dataTable.getPropertiesMap().setActionOnClass(aClass);
 		dataTable.addColumnsByFieldNames(fieldNames);
 		dataTable.getPropertiesMap().setRows(page);
 		dataTable.getPropertiesMap().setPaginator(page != null);
