@@ -2,7 +2,6 @@ package org.cyk.playground.ui.primefaces.page.datatable;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -15,7 +14,6 @@ import org.cyk.utility.common.userinterface.Component;
 import org.cyk.utility.common.userinterface.collection.DataTable;
 import org.cyk.utility.common.userinterface.container.window.Window;
 import org.cyk.utility.common.userinterface.event.Event;
-import org.primefaces.model.SortOrder;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -81,9 +79,9 @@ public class DataTablesStatusPage extends Window implements Serializable {
 		}
 		
 		@Override
-		protected List<T> __load__(int first, int pageSize, String sortField, SortOrder sortOrder,Map<String, Object> filters) {
+		protected List<T> page(List<T> collection, Integer first, Integer size) {
 			TimeHelper.getInstance().pause(1000 * 3);
-			return super.__load__(first, pageSize, sortField, sortOrder, filters);
+			return super.page(collection, first, size);
 		}
 		
 	}

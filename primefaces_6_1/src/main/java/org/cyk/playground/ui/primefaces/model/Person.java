@@ -106,8 +106,16 @@ public class Person extends AbstractIdentified {
 	public static List<Person> filter(Collection<Person> persons,Map<String,Object> map){
 		List<Person> temp = null;
 		List<Person> filtered = new ArrayList<Person>();
-		for(Map.Entry<String, Object> entry : map.entrySet())
-			if("globalIdentifier.code".equals(entry.getKey())){
+		for(Map.Entry<String, Object> entry : map.entrySet()){
+			if("globalFilter".equals(entry.getKey())){
+				temp = new ArrayList<Person>(temp == null ? persons : filtered);
+				filtered = new ArrayList<Person>();
+				for(Person person : temp)
+					if(person.getGlobalIdentifier().getCode().contains((String)entry.getValue()) 
+							|| person.getGlobalIdentifier().getName().contains((String)entry.getValue())
+							|| person.getLastnames().contains((String)entry.getValue()))
+						filtered.add(person);
+			}else if("globalIdentifier.code".equals(entry.getKey())){
 				temp = new ArrayList<Person>(temp == null ? persons : filtered);
 				filtered = new ArrayList<Person>();
 				for(Person person : temp)
@@ -126,6 +134,9 @@ public class Person extends AbstractIdentified {
 					if(person.getLastnames().contains((String)entry.getValue()))
 						filtered.add(person);
 			}
-		return (List<Person>) (temp == null ? persons : filtered);
+			
+		}
+		filtered = (List<Person>) (temp == null ? persons : filtered);
+		return filtered;
 	}
 }

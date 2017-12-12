@@ -61,10 +61,5 @@ public class DataTablesLazyPage extends Window implements Serializable {
 			return (List<T>) Person.COLLECTION;
 		}
 		
-		@Override
-		protected Integer __count__(int first, int pageSize, String sortField, SortOrder sortOrder,Map<String, Object> filters) {
-			return Person.COLLECTION.size();
-		}
-		
 	}
 }
