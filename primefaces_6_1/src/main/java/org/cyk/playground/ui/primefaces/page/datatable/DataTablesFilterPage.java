@@ -2,16 +2,13 @@ package org.cyk.playground.ui.primefaces.page.datatable;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
+
+import org.cyk.playground.ui.primefaces.model.Person;
+import org.cyk.utility.common.userinterface.collection.DataTable;
+import org.cyk.utility.common.userinterface.container.window.Window;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import org.cyk.playground.ui.primefaces.model.Person;
-import org.cyk.utility.common.helper.JavaScriptHelper;
-import org.cyk.utility.common.userinterface.collection.DataTable;
-import org.cyk.utility.common.userinterface.command.Command;
-import org.cyk.utility.common.userinterface.container.window.Window;
 
 //@javax.inject.Named @javax.faces.view.ViewScoped 
 @javax.faces.bean.ManagedBean @javax.faces.bean.ViewScoped
@@ -37,16 +34,6 @@ public class DataTablesFilterPage extends Window implements Serializable {
 			private static final long serialVersionUID = 1L;
 			
 			@Override
-			protected Boolean isFilterable(Map<String, Object> filters) {
-				return Boolean.TRUE;
-			}
-			
-			@Override
-			protected List<Person> filter(List<Person> collection, Map<String, Object> filters) {
-				return Person.filter(collection, filters);
-			}
-			
-			@Override
 			protected Boolean isPageable(Integer first, Integer size) {
 				return Boolean.TRUE;
 			}
@@ -70,10 +57,11 @@ public class DataTablesFilterPage extends Window implements Serializable {
 		//InputText input = (InputText) personDataTableLazy.getPropertiesMap().getFilterInputComponent();
 		//input.getPropertiesMap().setTemplate("/org.cyk.ui.web.primefaces.resources/template/decorate/input/text/oneline/inputTextWithoutValue.xhtml");
 		//input.getPropertiesMap().setOnKeyUp("PF('"+personDataTableLazy.getPropertiesMap().getWidgetVar()+"').filter()");
-		
+		/*
 		Command command = (Command) personDataTableLazy.getPropertiesMap().getFilterCommandComponent();
 		command.getPropertiesMap().setType("button");
 		command.getPropertiesMap().setOnClick(JavaScriptHelper.Primefaces.getInstance().getMethodCallFilter(personDataTableLazy));
+		*/
 	}
 	
 	/*

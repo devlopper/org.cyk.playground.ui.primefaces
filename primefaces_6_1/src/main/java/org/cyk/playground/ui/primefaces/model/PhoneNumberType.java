@@ -1,7 +1,9 @@
 package org.cyk.playground.ui.primefaces.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -31,6 +33,46 @@ public class PhoneNumberType extends AbstractIdentified {
 			if(phoneNumberType.getCode().equals(code))
 				return phoneNumberType;
 		return null;
+	}
+	
+	/**/
+	
+	public static List<PhoneNumberType> filter(Collection<PhoneNumberType> phoneNumberTypes,Map<String,Object> map){
+		List<PhoneNumberType> temp = null;
+		List<PhoneNumberType> filtered = new ArrayList<PhoneNumberType>();
+		for(Map.Entry<String, Object> entry : map.entrySet()){
+			if("globalFilter".equals(entry.getKey())){
+				temp = new ArrayList<PhoneNumberType>(temp == null ? phoneNumberTypes : filtered);
+				filtered = new ArrayList<PhoneNumberType>();
+				for(PhoneNumberType phoneNumberType : temp)
+					if(phoneNumberType.getGlobalIdentifier().getCode().contains((String)entry.getValue()) 
+							|| phoneNumberType.getGlobalIdentifier().getName().contains((String)entry.getValue())
+							|| phoneNumberType.getGlobalIdentifier().getOwner().contains((String)entry.getValue())
+							)
+						filtered.add(phoneNumberType);
+			}else if("globalIdentifier.code".equals(entry.getKey())){
+				temp = new ArrayList<PhoneNumberType>(temp == null ? phoneNumberTypes : filtered);
+				filtered = new ArrayList<PhoneNumberType>();
+				for(PhoneNumberType phoneNumberType : temp)
+					if(phoneNumberType.getGlobalIdentifier().getCode().contains((String)entry.getValue()))
+						filtered.add(phoneNumberType);
+			}else if("globalIdentifier.name".equals(entry.getKey())){
+				temp = new ArrayList<PhoneNumberType>(temp == null ? phoneNumberTypes : filtered);
+				filtered = new ArrayList<PhoneNumberType>();
+				for(PhoneNumberType phoneNumberType : temp)
+					if(phoneNumberType.getGlobalIdentifier().getName().contains((String)entry.getValue()))
+						filtered.add(phoneNumberType);
+			}else if("globalIdentifier.owner".equals(entry.getKey())){
+				temp = new ArrayList<PhoneNumberType>(temp == null ? phoneNumberTypes : filtered);
+				filtered = new ArrayList<PhoneNumberType>();
+				for(PhoneNumberType phoneNumberType : temp)
+					if(phoneNumberType.getGlobalIdentifier().getOwner().contains((String)entry.getValue()))
+						filtered.add(phoneNumberType);
+			}
+			
+		}
+		filtered = (List<PhoneNumberType>) (temp == null ? phoneNumberTypes : filtered);
+		return filtered;
 	}
 
 }

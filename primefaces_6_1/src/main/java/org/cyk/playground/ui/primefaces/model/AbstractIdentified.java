@@ -11,7 +11,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @Accessors(chain=true)
-public abstract class AbstractIdentified {
+public abstract class AbstractIdentified implements Comparable<AbstractIdentified> {
 
 	private GlobalIdentifier globalIdentifier = new GlobalIdentifier();
 
@@ -83,6 +83,11 @@ public abstract class AbstractIdentified {
 			return filter;
 		}
 
+	}
+	
+	@Override
+	public int compareTo(AbstractIdentified o) {
+		return globalIdentifier.getName().compareTo(o.getGlobalIdentifier().getName());
 	}
 	
 }

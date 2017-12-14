@@ -3,15 +3,18 @@ package org.cyk.playground.ui.primefaces.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.cyk.playground.ui.primefaces.ContextListener;
+import org.cyk.utility.common.helper.CriteriaHelper;
 import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.helper.FilterHelper;
 import org.cyk.utility.common.helper.RandomHelper;
+import org.cyk.utility.common.helper.StringHelper;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -87,9 +90,11 @@ public class Person extends AbstractIdentified {
 		private static final long serialVersionUID = -1498269103849317057L;
 
 		protected GlobalIdentifier.Filter globalIdentifier = new GlobalIdentifier.Filter();
+		protected CriteriaHelper.Criteria.String lastnames;
 		
 		public Filter() {
 			addCriterias(globalIdentifier);
+			lastnames = instanciateCriteria(CriteriaHelper.Criteria.String.class).setLocation(StringHelper.Location.INSIDE);
 		}
 		
 		public Filter(Filter criterias) {
@@ -103,40 +108,33 @@ public class Person extends AbstractIdentified {
 		}
 	}
 	
-	public static List<Person> filter(Collection<Person> persons,Map<String,Object> map){
-		List<Person> temp = null;
+	public static List<Person> filter(Filter filter,Collection<Person> persons){
+		Map<String,Object> map = new HashMap<>();
+		
+		map.put("globalIdentifier.code", filter.getGlobalIdentifier().getCode().getPreparedValue());
+		map.put("globalIdentifier.name", filter.getGlobalIdentifier().getName().getPreparedValue());
+		map.put("lastnames", filter.getLastnames().getPreparedValue());
+		
 		List<Person> filtered = new ArrayList<Person>();
-		for(Map.Entry<String, Object> entry : map.entrySet()){
-			if("globalFilter".equals(entry.getKey())){
-				temp = new ArrayList<Person>(temp == null ? persons : filtered);
-				filtered = new ArrayList<Person>();
-				for(Person person : temp)
-					if(person.getGlobalIdentifier().getCode().contains((String)entry.getValue()) 
-							|| person.getGlobalIdentifier().getName().contains((String)entry.getValue())
-							|| person.getLastnames().contains((String)entry.getValue()))
-						filtered.add(person);
-			}else if("globalIdentifier.code".equals(entry.getKey())){
-				temp = new ArrayList<Person>(temp == null ? persons : filtered);
-				filtered = new ArrayList<Person>();
-				for(Person person : temp)
-					if(person.getGlobalIdentifier().getCode().contains((String)entry.getValue()))
-						filtered.add(person);
-			}else if("globalIdentifier.name".equals(entry.getKey())){
-				temp = new ArrayList<Person>(temp == null ? persons : filtered);
-				filtered = new ArrayList<Person>();
-				for(Person person : temp)
-					if(person.getGlobalIdentifier().getName().contains((String)entry.getValue()))
-						filtered.add(person);
-			}else if("lastnames".equals(entry.getKey())){
-				temp = new ArrayList<Person>(temp == null ? persons : filtered);
-				filtered = new ArrayList<Person>();
-				for(Person person : temp)
-					if(person.getLastnames().contains((String)entry.getValue()))
-						filtered.add(person);
-			}
-			
+		for(Person person : persons){
+			for(Map.Entry<String, Object> entry : map.entrySet()){
+				if("globalIdentifier.code".equals(entry.getKey()) && person.getGlobalIdentifier().getCode().contains((String)entry.getValue())){
+					filtered.add(person);
+					break;
+				}else if("globalIdentifier.name".equals(entry.getKey()) && person.getGlobalIdentifier().getName().contains((String)entry.getValue())){
+					filtered.add(person);
+					break;
+				}else if("lastnames".equals(entry.getKey()) && person.getLastnames().contains((String)entry.getValue())){
+					filtered.add(person);
+					break;
+				}
+			}	
 		}
-		filtered = (List<Person>) (temp == null ? persons : filtered);
+		
 		return filtered;
+	}
+	
+	public static List<Person> filter(Filter filter){
+		return filter(filter,COLLECTION);
 	}
 }

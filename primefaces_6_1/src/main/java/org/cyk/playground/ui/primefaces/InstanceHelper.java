@@ -19,6 +19,7 @@ import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.Constant.Action;
 import org.cyk.utility.common.computation.DataReadConfiguration;
 import org.cyk.utility.common.helper.FilterHelper;
+import org.cyk.utility.common.helper.FilterHelper.Filter;
 
 public class InstanceHelper implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -84,10 +85,23 @@ public class InstanceHelper implements Serializable {
 								list.add(locationType);
 					}
 					return (Collection<T>) list;
-				}		
+				}else if(Person.class.equals(aClass))
+					return (Collection<T>) Person.filter((Person.Filter)filter);
+			
 			}
 			
 			return super.get(aClass,filter, dataReadConfiguration);
+		}
+		
+		@Override
+		public <T> Long count(Class<T> aClass, Filter<T> filter, DataReadConfiguration dataReadConfiguration) {
+			if(filter==null){
+				
+			}else{
+				if(Person.class.equals(aClass))
+					return new Long(Person.filter((Person.Filter)filter).size());
+			}
+			return super.count(aClass, filter, dataReadConfiguration);
 		}
 		
 		@SuppressWarnings("unchecked")

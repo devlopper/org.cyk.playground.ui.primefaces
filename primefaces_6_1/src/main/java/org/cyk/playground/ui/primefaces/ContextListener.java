@@ -46,6 +46,7 @@ public class ContextListener extends ServletContextListener implements Serializa
 		ClassHelper.getInstance().map(FileHelper.Listener.class, FileAdapter.class);
 		ClassHelper.getInstance().map(ClassHelper.Listener.class, org.cyk.playground.ui.primefaces.ClassHelper.Listener.class);
 		ClassHelper.getInstance().map(Menu.Builder.Adapter.Default.class,MenuBuilder.class);
+		ClassHelper.getInstance().map(Component.Listener.class,ComponentAdapter.class);
 		ClassHelper.getInstance().map(EditWindow.FormMaster.ClassLocator.class, EditFormMasterClassLocator.class);
 		ClassHelper.getInstance().map(ConsultWindow.FormMaster.ClassLocator.class, ConsultFormMasterClassLocator.class);
 		ClassHelper.getInstance().map(ListWindow.DataTable.ClassLocator.class, ListDataTableClassLocator.class);

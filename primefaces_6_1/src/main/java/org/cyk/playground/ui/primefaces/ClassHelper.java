@@ -20,6 +20,11 @@ public class ClassHelper implements Serializable {
     		return org.cyk.utility.common.helper.ClassHelper.getInstance().isInstanceOf(AbstractIdentifiedTree.class, aClass);
     	}
     	
+    	/*@Override
+    	public Boolean isIdentified(Class<?> aClass) {
+    		return org.cyk.utility.common.helper.ClassHelper.getInstance().isInstanceOf(AbstractIdentified.class, aClass);
+    	}*/
+    	
     }
 	
 	

@@ -5,10 +5,10 @@ import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.cyk.utility.common.userinterface.container.window.ListWindow;
+
 import lombok.Getter;
 import lombok.Setter;
-
-import org.cyk.utility.common.userinterface.container.window.ListWindow;
 
 @Named @ViewScoped @Getter @Setter
 public class ListPersonPage extends ListWindow implements Serializable {
@@ -28,6 +28,7 @@ public class ListPersonPage extends ListWindow implements Serializable {
 			addColumn("lastnames", "lastnames");
 			addColumn("sex", "sex");
 			addColumn("nationality", "nationality");
+			
 		}
 		
 	}

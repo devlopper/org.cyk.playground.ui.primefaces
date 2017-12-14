@@ -38,7 +38,7 @@ public class EditPersonPage extends EditWindow implements Serializable {
 			detail.add("sex").addBreak();
 			detail.setFieldsObjectFromMaster("globalIdentifier");
 			detail.add("description").addBreak();
-			detail.add("otherDetails");
+			//detail.add("otherDetails");
 			return this;
 		}
 		
