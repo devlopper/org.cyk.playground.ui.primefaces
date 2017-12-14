@@ -19,6 +19,7 @@ public class ComponentAdapter extends org.cyk.ui.web.primefaces.resources.Compon
 		Object object = super.build(component);
 		if(component instanceof DataTable){
 			if(Person.class.equals(component.getPropertiesMap().getActionOnClass()) && Boolean.TRUE.equals(component.getPropertiesMap().getLazy())){
+				System.out.println("ComponentAdapter.build()");
 				component.getPropertiesMap().setValue(new LazyDataModel<Person>(component){
 					private static final long serialVersionUID = 1L;
 					

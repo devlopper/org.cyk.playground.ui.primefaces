@@ -30,14 +30,14 @@ public class DataTablesFilterPage extends Window implements Serializable {
 		personDataTableNotPaged = DataTable.instanciateOne(Person.class, fieldNames, Person.COLLECTION, null, null);
 		personDataTablePaged = DataTable.instanciateOne(Person.class, fieldNames, Person.COLLECTION, page, null);
 		personDataTableLazy = DataTable.instanciateOne(Person.class, fieldNames, null, page, Boolean.TRUE);
-		personDataTableLazy.getPropertiesMap().setValue(new DataTablesLazyPage.LazyDataModel<Person>(personDataTableLazy){
+		/*personDataTableLazy.getPropertiesMap().setValue(new DataTablesLazyPage.LazyDataModel<Person>(personDataTableLazy){
 			private static final long serialVersionUID = 1L;
 			
 			@Override
 			protected Boolean isPageable(Integer first, Integer size) {
 				return Boolean.TRUE;
 			}
-		});
+		});*/
 		
 		//personDataTableNotPaged.getColumn("__orderNumber__").getPropertiesMap().setFilterable(Boolean.TRUE);
 		personDataTableNotPaged.getColumn("globalIdentifier.code").getPropertiesMap().setFilterable(Boolean.TRUE);
