@@ -30,14 +30,6 @@ public class DataTablesFilterPage extends Window implements Serializable {
 		personDataTableNotPaged = DataTable.instanciateOne(Person.class, fieldNames, Person.COLLECTION, null, null);
 		personDataTablePaged = DataTable.instanciateOne(Person.class, fieldNames, Person.COLLECTION, page, null);
 		personDataTableLazy = DataTable.instanciateOne(Person.class, fieldNames, null, page, Boolean.TRUE);
-		/*personDataTableLazy.getPropertiesMap().setValue(new DataTablesLazyPage.LazyDataModel<Person>(personDataTableLazy){
-			private static final long serialVersionUID = 1L;
-			
-			@Override
-			protected Boolean isPageable(Integer first, Integer size) {
-				return Boolean.TRUE;
-			}
-		});*/
 		
 		//personDataTableNotPaged.getColumn("__orderNumber__").getPropertiesMap().setFilterable(Boolean.TRUE);
 		personDataTableNotPaged.getColumn("globalIdentifier.code").getPropertiesMap().setFilterable(Boolean.TRUE);
@@ -54,33 +46,7 @@ public class DataTablesFilterPage extends Window implements Serializable {
 		personDataTableLazy.getColumn("globalIdentifier.name").getPropertiesMap().setFilterable(Boolean.TRUE);
 		personDataTableLazy.getColumn("lastnames").getPropertiesMap().setFilterable(Boolean.TRUE);
 		
-		//InputText input = (InputText) personDataTableLazy.getPropertiesMap().getFilterInputComponent();
-		//input.getPropertiesMap().setTemplate("/org.cyk.ui.web.primefaces.resources/template/decorate/input/text/oneline/inputTextWithoutValue.xhtml");
-		//input.getPropertiesMap().setOnKeyUp("PF('"+personDataTableLazy.getPropertiesMap().getWidgetVar()+"').filter()");
-		/*
-		Command command = (Command) personDataTableLazy.getPropertiesMap().getFilterCommandComponent();
-		command.getPropertiesMap().setType("button");
-		command.getPropertiesMap().setOnClick(JavaScriptHelper.Primefaces.getInstance().getMethodCallFilter(personDataTableLazy));
-		*/
 	}
 	
-	/*
-	private <T extends AbstractIdentified> DataTable createDataTable(Class<T> aClass,String[] fieldNames,Integer page,Boolean lazy){
-		DataTable dataTable = new DataTable();
-		
-		dataTable.setActionOnClass(aClass);
-		dataTable.addColumnsByFieldNames(fieldNames);
-		if(lazy)
-			dataTable.getPropertiesMap().setRows(page);
-		dataTable.getPropertiesMap().setPaginator(lazy);
-		dataTable.getPropertiesMap().setLazy(lazy);
-		dataTable.prepare();
-		dataTable.build();
-		if(Boolean.TRUE.equals(lazy))
-			dataTable.getPropertiesMap().setValue(new DataTablesLazyPage.LazyDataModel<T>(dataTable));
-		else
-			dataTable.addManyRow(Person.COLLECTION);
-		return dataTable;
-	}*/
 	
 }

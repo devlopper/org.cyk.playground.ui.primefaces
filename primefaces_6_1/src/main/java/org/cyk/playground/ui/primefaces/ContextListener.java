@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebListener;
 import org.cyk.playground.ui.primefaces.model.File;
 import org.cyk.playground.ui.primefaces.model.GlobalIdentifier;
 import org.cyk.playground.ui.primefaces.model.Location;
+import org.cyk.playground.ui.primefaces.model.OrderItem;
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
 import org.cyk.ui.web.primefaces.resources.ServletContextListener;
@@ -133,6 +134,11 @@ public class ContextListener extends ServletContextListener implements Serializa
 					return InputChoiceOneCombo.class;
 			}else if(object instanceof Location){
 				if(field.getName().equals("type"))
+					return InputChoiceOneCombo.class;
+			}else if(object instanceof OrderItem){
+				if(field.getName().equals("article"))
+					return InputChoiceOneCombo.class;
+				if(field.getName().equals("order"))
 					return InputChoiceOneCombo.class;
 			}
 			return super.getClass(detail, object, field);
