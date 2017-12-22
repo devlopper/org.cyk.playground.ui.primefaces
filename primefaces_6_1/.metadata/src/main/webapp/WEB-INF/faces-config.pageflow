@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15138557656100" configfile="/playground-primefaces-6_1/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="2866" id="pf15138558402921" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15138558402922 pf15138558402923 pf15138558402924 pf15138558402925 pf15138558402926 pf15138558402927 pf15138558402928 pf15138558402929 pf151385584029210 pf151385584029211 pf151385584029212 pf151385584029213 pf151385584029214 pf151385584029215 pf151385584029216 pf151385584029217 pf151385584029218 pf151385584029219 pf151385584029220 pf151385584029221 pf151385584029222" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/navigation/2.jsf" x="338" y="178" id="pf151385584029223" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15138558402922" path="/public/navigation/2.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/navigation/3.jsf" x="338" y="562" id="pf151385584029224" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15138558402923" path="/public/navigation/3.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/navigation/4.jsf" x="338" y="946" id="pf151385584029225" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf15138558402924" path="/public/navigation/4.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/datatable/edit.jsf" x="338" y="1330" id="pf151385584030226" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf15138558402925" path="/public/datatable/edit.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/datatable/consult.jsf" x="338" y="1714" id="pf151385584030227" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf15138558402926" path="/public/datatable/consult.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/crud/person/list.jsf" x="338" y="2098" id="pf151385584030228" referenceLink="//@navigationRule.0/@navigationCase.5/@toViewId|" inlinks="pf15138558402927" path="/public/crud/person/list.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/crud/person/edit.jsf" x="338" y="2482" id="pf151385584030229" referenceLink="//@navigationRule.0/@navigationCase.6/@toViewId|" inlinks="pf15138558402928" path="/public/crud/person/edit.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/crud/person/consult.jsf" x="338" y="2866" id="pf151385584030230" referenceLink="//@navigationRule.0/@navigationCase.8/@toViewId|" inlinks="pf15138558402929 pf151385584029210" path="/public/crud/person/consult.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/crud/locationtype/list.jsf" x="338" y="3250" id="pf151385584030231" referenceLink="//@navigationRule.0/@navigationCase.9/@toViewId|" inlinks="pf151385584029211" path="/public/crud/locationtype/list.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/crud/locationtype/edit.jsf" x="338" y="3634" id="pf151385584030232" referenceLink="//@navigationRule.0/@navigationCase.10/@toViewId|" inlinks="pf151385584029212" path="/public/crud/locationtype/edit.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/crud/locationtype/consult.jsf" x="338" y="4018" id="pf151385584030233" referenceLink="//@navigationRule.0/@navigationCase.12/@toViewId|" inlinks="pf151385584029213 pf151385584029214" path="/public/crud/locationtype/consult.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/crud/location/list.jsf" x="338" y="4402" id="pf151385584030234" referenceLink="//@navigationRule.0/@navigationCase.17/@toViewId|" inlinks="pf151385584029215" path="/public/crud/location/list.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/crud/location/edit.jsf" x="338" y="4786" id="pf151385584030235" referenceLink="//@navigationRule.0/@navigationCase.18/@toViewId|" inlinks="pf151385584029216" path="/public/crud/location/edit.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/crud/location/consult.jsf" x="338" y="5170" id="pf151385584030236" referenceLink="//@navigationRule.0/@navigationCase.20/@toViewId|" inlinks="pf151385584029217 pf151385584029218" path="/public/crud/location/consult.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/crud/order/list.jsf" id="pf151385584030237" referenceLink="//@navigationRule.0/@navigationCase.17/@toViewId|" inlinks="pf151385584029219" path="/public/crud/order/list.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/crud/order/edit.jsf" id="pf151385584030238" referenceLink="//@navigationRule.0/@navigationCase.18/@toViewId|" inlinks="pf151385584029220" path="/public/crud/order/edit.jsf"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/crud/order/consult.jsf" id="pf151385584030239" referenceLink="//@navigationRule.0/@navigationCase.20/@toViewId|" inlinks="pf151385584029221 pf151385584029222" path="/public/crud/order/consult.jsf"/>
+  <links id="pf15138558402922" target="pf151385584029223" source="pf15138558402921" outcome="gotogivenprevious" redirect="true"/>
+  <links id="pf15138558402923" target="pf151385584029224" source="pf15138558402921" outcome="gotospecificprevious" redirect="true"/>
+  <links id="pf15138558402924" target="pf151385584029225" source="pf15138558402921" outcome="gotopage4" redirect="true"/>
+  <links id="pf15138558402925" target="pf151385584030226" source="pf15138558402921" outcome="datatableedit" redirect="true"/>
+  <links id="pf15138558402926" target="pf151385584030227" source="pf15138558402921" outcome="datatableconsult" redirect="true"/>
+  <links id="pf15138558402927" target="pf151385584030228" source="pf15138558402921" outcome="personListView" redirect="true"/>
+  <links id="pf15138558402928" target="pf151385584030229" source="pf15138558402921" outcome="personEditView" redirect="true"/>
+  <links id="pf15138558402929" target="pf151385584030230" source="pf15138558402921" outcome="personConsultView" redirect="true"/>
+  <links id="pf151385584029210" target="pf151385584030230" source="pf15138558402921" outcome="personReadView" redirect="true"/>
+  <links id="pf151385584029211" target="pf151385584030231" source="pf15138558402921" outcome="locationTypeListView" redirect="true"/>
+  <links id="pf151385584029212" target="pf151385584030232" source="pf15138558402921" outcome="locationTypeEditView" redirect="true"/>
+  <links id="pf151385584029213" target="pf151385584030233" source="pf15138558402921" outcome="locationTypeConsultView" redirect="true"/>
+  <links id="pf151385584029214" target="pf151385584030233" source="pf15138558402921" outcome="locationTypeReadView" redirect="true"/>
+  <links id="pf151385584029215" target="pf151385584030234" source="pf15138558402921" outcome="locationListView" redirect="true"/>
+  <links id="pf151385584029216" target="pf151385584030235" source="pf15138558402921" outcome="locationEditView" redirect="true"/>
+  <links id="pf151385584029217" target="pf151385584030236" source="pf15138558402921" outcome="locationConsultView" redirect="true"/>
+  <links id="pf151385584029218" target="pf151385584030236" source="pf15138558402921" outcome="locationReadView" redirect="true"/>
+  <links id="pf151385584029219" target="pf151385584030237" source="pf15138558402921" outcome="orderListView" redirect="true"/>
+  <links id="pf151385584029220" target="pf151385584030238" source="pf15138558402921" outcome="orderEditView" redirect="true"/>
+  <links id="pf151385584029221" target="pf151385584030239" source="pf15138558402921" outcome="orderConsultView" redirect="true"/>
+  <links id="pf151385584029222" target="pf151385584030239" source="pf15138558402921" outcome="orderReadView" redirect="true"/>
+</pageflow:Pageflow>

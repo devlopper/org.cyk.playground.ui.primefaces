@@ -202,10 +202,13 @@ public class InstanceHelper implements Serializable {
 				else if(Constant.Action.DELETE.equals(action))
 					Article.COLLECTION.remove((Article)instance);
 			}else if(instance instanceof Order){
-				if(Constant.Action.CREATE.equals(action))
+				if(Constant.Action.CREATE.equals(action)){
 					Order.COLLECTION.add((Order)instance);
-				else if(Constant.Action.DELETE.equals(action))
+					OrderItem.COLLECTION.addAll(((Order)instance).getOrderItems().getElements());
+				}else if(Constant.Action.DELETE.equals(action)){
 					Order.COLLECTION.remove((Order)instance);
+					OrderItem.COLLECTION.removeAll(((Order)instance).getOrderItems().getElements());
+				}
 			}
 			return super.act(action, instance);
 		}
