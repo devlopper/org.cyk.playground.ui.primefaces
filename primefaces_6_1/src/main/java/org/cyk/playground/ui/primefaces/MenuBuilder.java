@@ -11,6 +11,9 @@ import org.cyk.playground.ui.primefaces.model.Order;
 import org.cyk.playground.ui.primefaces.model.OrderItem;
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.playground.ui.primefaces.model.PhoneNumberType;
+import org.cyk.playground.ui.primefaces.model.movement.MovementAction;
+import org.cyk.playground.ui.primefaces.model.movement.MovementCollection;
+import org.cyk.playground.ui.primefaces.model.movement.MovementCollectionItem;
 import org.cyk.utility.common.userinterface.command.Menu;
 
 public class MenuBuilder extends org.cyk.ui.web.primefaces.resources.MenuBuilder implements Serializable {
@@ -89,7 +92,7 @@ public class MenuBuilder extends org.cyk.ui.web.primefaces.resources.MenuBuilder
 		;
 		
 		menu.addNode("ui.menu.controlpanel.identifiables.manage.order")
-			.addNodeActionListMany(Order.class,OrderItem.class,Article.class)
+			.addNodeActionListMany(Order.class,OrderItem.class,Article.class,MovementAction.class,MovementCollection.class,MovementCollectionItem.class)
 		;
 		
 		menu.addNode("ui.menu.controlpanel.identifiables.manage.contact")

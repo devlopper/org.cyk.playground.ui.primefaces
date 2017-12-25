@@ -95,27 +95,6 @@
 			<redirect />
 		</navigation-case>
 		
-		<navigation-case>
-			<from-outcome>orderListView</from-outcome>
-			<to-view-id>/public/crud/order/list.jsf</to-view-id>
-			<redirect />
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>orderEditView</from-outcome>
-			<to-view-id>/public/crud/order/edit.jsf</to-view-id>
-			<redirect />
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>orderConsultView</from-outcome>
-			<to-view-id>/public/crud/order/consult.jsf</to-view-id>
-			<redirect />
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>orderReadView</from-outcome>
-			<to-view-id>/public/crud/order/consult.jsf</to-view-id>
-			<redirect />
-		</navigation-case>
-		
 	</navigation-rule>
 	
 </faces-config>

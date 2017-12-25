@@ -87,7 +87,9 @@ public abstract class AbstractIdentified implements Comparable<AbstractIdentifie
 	
 	@Override
 	public int compareTo(AbstractIdentified o) {
-		return globalIdentifier.getName().compareTo(o.getGlobalIdentifier().getName());
+		if(globalIdentifier.getName()!=null)
+			return globalIdentifier.getName().compareTo(o.getGlobalIdentifier().getName());
+		return 0;
 	}
 	
 }

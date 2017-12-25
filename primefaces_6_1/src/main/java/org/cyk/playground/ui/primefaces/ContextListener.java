@@ -13,6 +13,8 @@ import org.cyk.playground.ui.primefaces.model.GlobalIdentifier;
 import org.cyk.playground.ui.primefaces.model.Location;
 import org.cyk.playground.ui.primefaces.model.OrderItem;
 import org.cyk.playground.ui.primefaces.model.Person;
+import org.cyk.playground.ui.primefaces.model.movement.MovementCollection;
+import org.cyk.playground.ui.primefaces.model.movement.MovementCollectionItem;
 import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
 import org.cyk.ui.web.primefaces.resources.ServletContextListener;
 import org.cyk.utility.common.helper.ClassHelper;
@@ -109,6 +111,10 @@ public class ContextListener extends ServletContextListener implements Serializa
 				return Arrays.asList("code","name","description","otherDetails");
 			if(object instanceof Person)
 				return Arrays.asList("lastnames","sex","nationality");
+			if(object instanceof MovementCollection)
+				return Arrays.asList("value");
+			if(object instanceof MovementCollectionItem)
+				return Arrays.asList("value");
 			return super.getFieldNames(form, object);
 		}
 		
@@ -150,6 +156,15 @@ public class ContextListener extends ServletContextListener implements Serializa
 				if(input.getField().getName().equals("code")){
 					input.getPropertiesMap().setRequired(Boolean.TRUE);
 				}	
+			}else if(input.getObject() instanceof MovementCollectionItem){
+				if(input.getField().getName().equals("movementCollection")){
+					//input.getPropertiesMap().setRequired(Boolean.TRUE);
+					//input.getPropertiesMap().setReadableOnly(Boolean.TRUE);
+				}
+				if(input.getField().getName().equals("previousCumul")){
+					//input.getPropertiesMap().setRequired(Boolean.TRUE);
+					//input.getPropertiesMap().setReadableOnly(Boolean.TRUE);
+				}	
 			}
 			
 		}
@@ -172,6 +187,43 @@ public class ContextListener extends ServletContextListener implements Serializa
 			return value;
 		}
 
+	}
+	
+	public static class OutputAdapter extends org.cyk.ui.web.primefaces.resources.OutputAdapter {
+		private static final long serialVersionUID = 1L;
+		/*
+		@Override
+		public Class<? extends Output> getClass(Detail detail, Object object, Field field) {
+			if(object instanceof GlobalIdentifier){
+				if(field.getName().equals("code"))
+					return InputText.class;
+				if(field.getName().equals("image"))
+					return InputFile.class;
+				if(field.getName().equals("name"))
+					return InputText.class;
+				if(field.getName().equals("description"))
+					return InputTextarea.class;
+				if(field.getName().equals("otherDetails"))
+					return InputEditor.class;
+			}else if(object instanceof Person){
+				if(field.getName().equals("lastnames"))
+					return InputText.class;
+				if(field.getName().equals("sex"))
+					return InputChoiceOneRadio.class;
+				if(field.getName().equals("nationality"))
+					return InputChoiceOneCombo.class;
+			}else if(object instanceof Location){
+				if(field.getName().equals("type"))
+					return InputChoiceOneCombo.class;
+			}else if(object instanceof OrderItem){
+				if(field.getName().equals("article"))
+					return InputChoiceOneCombo.class;
+				if(field.getName().equals("order"))
+					return InputChoiceOneCombo.class;
+			}
+			return super.getClass(detail, object, field);
+		}
+		*/
 	}
 	
 	public static class FileAdapter extends FileHelper.Listener.Adapter.Default {

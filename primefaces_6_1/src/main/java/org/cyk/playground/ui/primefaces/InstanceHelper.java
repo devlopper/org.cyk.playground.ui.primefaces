@@ -17,10 +17,15 @@ import org.cyk.playground.ui.primefaces.model.Order;
 import org.cyk.playground.ui.primefaces.model.OrderItem;
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.playground.ui.primefaces.model.PhoneNumberType;
+import org.cyk.playground.ui.primefaces.model.movement.MovementAction;
+import org.cyk.playground.ui.primefaces.model.movement.MovementCollection;
+import org.cyk.playground.ui.primefaces.model.movement.MovementCollectionItem;
 import org.cyk.playground.ui.primefaces.page.InputsPage;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.Constant.Action;
 import org.cyk.utility.common.computation.DataReadConfiguration;
+import org.cyk.utility.common.helper.ClassHelper;
+import org.cyk.utility.common.helper.FieldHelper;
 import org.cyk.utility.common.helper.FilterHelper;
 import org.cyk.utility.common.helper.FilterHelper.Filter;
 
@@ -43,33 +48,10 @@ public class InstanceHelper implements Serializable {
 			if(filter==null){
 				if(InputsPage.MyType.class.equals(aClass))
 					return (Collection<T>) InputsPage.MyType.COLLECTION;
-				if(Country.class.equals(aClass)){
-					return (Collection<T>) Country.COLLECTION;
-				}	
-				if(LocationType.class.equals(aClass)){
-					return (Collection<T>) LocationType.COLLECTION;
-				}	
-				if(PhoneNumberType.class.equals(aClass)){
-					return (Collection<T>) PhoneNumberType.COLLECTION;
-				}	
-				if(LocalityType.class.equals(aClass)){
-					return (Collection<T>) LocalityType.COLLECTION;
-				}	
-				if(Locality.class.equals(aClass)){
-					return (Collection<T>) Locality.COLLECTION;
-				}	
-				if(Person.class.equals(aClass)){
-					return (Collection<T>) Person.COLLECTION;
-				}	
-				if(Order.class.equals(aClass)){
-					return (Collection<T>) Order.COLLECTION;
-				}	
-				if(OrderItem.class.equals(aClass)){
-					return (Collection<T>) OrderItem.COLLECTION;
-				}	
-				if(Article.class.equals(aClass)){
-					return (Collection<T>) Article.COLLECTION;
-				}	
+				
+				if(ClassHelper.getInstance().isInstanceOf(AbstractIdentified.class, aClass))
+					return (Collection<T>) FieldHelper.getInstance().readStatic(FieldHelper.getInstance().get(aClass, "COLLECTION"));
+				
 			}else {
 				if(InputsPage.MyType.class.equals(aClass))
 					return (Collection<T>) InputsPage.MyType.COLLECTION;
@@ -105,6 +87,12 @@ public class InstanceHelper implements Serializable {
 					return (Collection<T>) OrderItem.filter((OrderItem.Filter)filter);
 				else if(Article.class.equals(aClass))
 					return (Collection<T>) Article.filter((Article.Filter)filter);
+				else if(MovementAction.class.equals(aClass))
+					return (Collection<T>) MovementAction.filter((MovementAction.Filter)filter);
+				else if(MovementCollection.class.equals(aClass))
+					return (Collection<T>) MovementCollection.filter((MovementCollection.Filter)filter);
+				else if(MovementCollectionItem.class.equals(aClass))
+					return (Collection<T>) MovementCollectionItem.filter((MovementCollectionItem.Filter)filter);
 			
 			}
 			
@@ -124,6 +112,13 @@ public class InstanceHelper implements Serializable {
 					return new Long(OrderItem.filter((OrderItem.Filter)filter).size());
 				if(Article.class.equals(aClass))
 					return new Long(Article.filter((Article.Filter)filter).size());
+				
+				if(MovementAction.class.equals(aClass))
+					return new Long(MovementAction.filter((MovementAction.Filter)filter).size());
+				if(MovementCollection.class.equals(aClass))
+					return new Long(MovementCollection.filter((MovementCollection.Filter)filter).size());
+				if(MovementCollectionItem.class.equals(aClass))
+					return new Long(MovementCollectionItem.filter((MovementCollectionItem.Filter)filter).size());
 			}
 			return super.count(aClass, filter, dataReadConfiguration);
 		}
@@ -151,6 +146,14 @@ public class InstanceHelper implements Serializable {
 				return (T) OrderItem.get((String)identifier);
 			if(Article.class.equals(aClass))
 				return (T) Article.get((String)identifier);
+			
+			if(MovementAction.class.equals(aClass))
+				return (T) MovementAction.get((String)identifier);
+			if(MovementCollection.class.equals(aClass))
+				return (T) MovementCollection.get((String)identifier);
+			if(MovementCollectionItem.class.equals(aClass))
+				return (T) MovementCollectionItem.get((String)identifier);
+			
 			return super.getByIdentifier(aClass, identifier);
 		}
 		
@@ -209,6 +212,16 @@ public class InstanceHelper implements Serializable {
 					Order.COLLECTION.remove((Order)instance);
 					OrderItem.COLLECTION.removeAll(((Order)instance).getOrderItems().getElements());
 				}
+			}else if(instance instanceof MovementCollection){
+				if(Constant.Action.CREATE.equals(action))
+					MovementCollection.COLLECTION.add((MovementCollection)instance);
+				else if(Constant.Action.DELETE.equals(action))
+					MovementCollection.COLLECTION.remove((MovementCollection)instance);
+			}else if(instance instanceof MovementCollectionItem){
+				if(Constant.Action.CREATE.equals(action))
+					MovementCollectionItem.COLLECTION.add((MovementCollectionItem)instance);
+				else if(Constant.Action.DELETE.equals(action))
+					MovementCollectionItem.COLLECTION.remove((MovementCollectionItem)instance);
 			}
 			return super.act(action, instance);
 		}
