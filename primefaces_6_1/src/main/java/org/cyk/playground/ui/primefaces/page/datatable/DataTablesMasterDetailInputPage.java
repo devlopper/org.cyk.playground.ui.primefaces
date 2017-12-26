@@ -72,7 +72,7 @@ public class DataTablesMasterDetailInputPage extends Window implements Serializa
 							OrderItem orderItem = (OrderItem)row.getPropertiesMap().getValue();
 							amountOutputText.getPropertiesMap().setValue( orderItem.getArticle().getUnitPrice()
 									.multiply( NumberHelper.getInstance().get(BigDecimal.class,cell.getInput().getValue()))
-									.subtract( NumberHelper.getInstance().get(BigDecimal.class,orderItem.getReduce(),BigDecimal.ZERO) ) );
+									.subtract( NumberHelper.getInstance().get(BigDecimal.class,orderItem.getReduction(),BigDecimal.ZERO) ) );
 						}
 					});
 				}else if("reduce".equals(column.getPropertiesMap().getFieldName())){

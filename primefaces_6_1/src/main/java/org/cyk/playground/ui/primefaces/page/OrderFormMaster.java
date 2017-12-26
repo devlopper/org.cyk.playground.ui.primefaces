@@ -3,6 +3,7 @@ package org.cyk.playground.ui.primefaces.page;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.cyk.playground.ui.primefaces.model.Article;
 import org.cyk.playground.ui.primefaces.model.Order;
 import org.cyk.playground.ui.primefaces.model.OrderItem;
@@ -10,9 +11,11 @@ import org.cyk.ui.web.primefaces.resources.page.controlpanel.IdentifiableEditPag
 import org.cyk.utility.common.helper.CollectionHelper;
 import org.cyk.utility.common.helper.NumberHelper;
 import org.cyk.utility.common.helper.RandomHelper;
+import org.cyk.utility.common.helper.StringHelper;
 import org.cyk.utility.common.userinterface.collection.DataTable;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.event.Event;
+import org.cyk.utility.common.userinterface.output.OutputText;
 
 public class OrderFormMaster extends IdentifiableEditPage.FormMaster implements Serializable {
 	private static final long serialVersionUID = -6211058744595898478L;
@@ -22,7 +25,7 @@ public class OrderFormMaster extends IdentifiableEditPage.FormMaster implements 
 		super.__prepare__();
 		Form.Detail detail = getDetail();
 		detail.setFieldsObjectFromMaster();
-		detail.add("amount");
+		detail.addReadOnly("amount");
 		
 		/**/
 		DataTable dataTable = instanciateDataTable(OrderItem.class,Article.class,new DataTable.Cell.Listener.Adapter.Default(){
@@ -30,34 +33,31 @@ public class OrderFormMaster extends IdentifiableEditPage.FormMaster implements 
 			public DataTable.Cell instanciateOne(DataTable.Column column, DataTable.Row row) {
 				final DataTable.Cell cell = super.instanciateOne(column, row);
 				
-				if("quantity".equals(column.getPropertiesMap().getFieldName())){
-					Event.instanciateBuilder(cell, new String[]{"amount"}, new Event.CommandAdapter(){
+				if(ArrayUtils.contains(new String[]{"quantity","reduction"},column.getPropertiesMap().getFieldName())){
+					Event.instanciateOne(cell, new String[]{"amount"},new String[]{"amount"}, new Event.CommandAdapter(){
 						private static final long serialVersionUID = 1L;
 						protected void ____execute____() {
 							OrderItem orderItem = (OrderItem) getEventPropertyCellRowValue();
 							computeAmount(orderItem);
+							((OutputText)((DataTable)cell.getColumn().getPropertiesMap().getDataTable()).getColumn("amount").getPropertiesMap().getFooter())
+								.getPropertiesMap().setValue(orderItem.getOrder().getAmount());
 						}
-					},null,"blur").execute();
-				}else if("reduce".equals(column.getPropertiesMap().getFieldName())){
-					Event.instanciateBuilder(cell, new String[]{"amount"}, new Event.CommandAdapter(){
-						private static final long serialVersionUID = 1L;
-						protected void ____execute____() {
-							OrderItem orderItem = (OrderItem) getEventPropertyCellRowValue();
-							computeAmount(orderItem);
-						}
-					},null,"blur").execute();
+					});
 				}
 				return cell;
 			}
 		}
-		,Boolean.TRUE,"article.unitPrice","quantity","reduce","amount");
+		,Boolean.TRUE,"article.unitPrice","quantity","reduction","amount");
 		
 		dataTable.getColumn("article.unitPrice").setCellValueType(DataTable.Cell.ValueType.TEXT);
 		dataTable.getColumn("amount").setCellValueType(DataTable.Cell.ValueType.TEXT);
+		//((OutputText)dataTable.getColumn("amount").getPropertiesMap().getFooter()).getPropertiesMap().setValue(StringHelper.getInstance().get("total", new Object[]{}));
 		dataTable.setOnPrepareAddColumnAction(true);
 		dataTable.prepare();
 		dataTable.build();
-		//System.out.println( ((Command)orderItemDataTable1.getPropertiesMap().getAddCommandComponent()).getPropertiesMap() );
+		
+		//((DataTable.Columns)dataTable.getPropertiesMap().getColumns()).getPropertiesMap().setFooterRendered(Boolean.FALSE);
+		
 		((CollectionHelper.Instance<Object>)dataTable.getPropertiesMap().getRowsCollectionInstance()).addListener(
 			new CollectionHelper.Instance.Listener.Adapter<Object>(){
 				private static final long serialVersionUID = 1L;
@@ -71,18 +71,30 @@ public class OrderFormMaster extends IdentifiableEditPage.FormMaster implements 
 					
 				}
 				
+				public void removeOne(CollectionHelper.Instance<Object> instance, Object element) {
+					
+				}
+				
 			}
 			);
 	}
 	
 	private void computeAmount(OrderItem orderItem){
+		if(orderItem.getAmount()!=null)
+			orderItem.getOrder().setAmount(orderItem.getOrder().getAmount().subtract(orderItem.getAmount()));
+		
 		if(orderItem.getQuantity() == null)
 			orderItem.setAmount(null);
 		else
 			orderItem.setAmount(orderItem.getArticle().getUnitPrice()
 				.multiply( NumberHelper.getInstance().get(BigDecimal.class,orderItem.getQuantity()))
-				.subtract( NumberHelper.getInstance().get(BigDecimal.class,orderItem.getReduce(),BigDecimal.ZERO))
+				.subtract( NumberHelper.getInstance().get(BigDecimal.class,orderItem.getReduction(),BigDecimal.ZERO))
 				);
+		
+		if(orderItem.getOrder().getAmount()==null)
+			orderItem.getOrder().setAmount(orderItem.getAmount());
+		else
+			orderItem.getOrder().setAmount(orderItem.getOrder().getAmount().add(orderItem.getAmount()));
 	}
 	
 }

@@ -25,7 +25,7 @@ public class OrderItem extends AbstractIdentified {
 	
 	private Order order;
 	private Article article;
-	private BigDecimal quantity,reduce,amount;
+	private BigDecimal quantity,reduction,amount;
 	
 	@Override
 	public String toString() {
