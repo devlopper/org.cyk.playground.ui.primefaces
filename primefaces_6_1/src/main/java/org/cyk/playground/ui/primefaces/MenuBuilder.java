@@ -79,6 +79,7 @@ public class MenuBuilder extends org.cyk.ui.web.primefaces.resources.MenuBuilder
 				menuNode1.addOneChild(menuNode);
 			}
 			*/
+			//menu.getPropertiesMap().setStyle("height : 445px;overflow : scroll;");
 		}
 		
 		return menu;
