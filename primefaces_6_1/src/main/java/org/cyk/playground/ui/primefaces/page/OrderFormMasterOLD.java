@@ -17,7 +17,7 @@ import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.event.Event;
 import org.cyk.utility.common.userinterface.output.OutputText;
 
-public class OrderFormMaster extends IdentifiableEditPage.FormMaster implements Serializable {
+public class OrderFormMasterOLD extends IdentifiableEditPage.FormMaster implements Serializable {
 	private static final long serialVersionUID = -6211058744595898478L;
 	
 	@Override

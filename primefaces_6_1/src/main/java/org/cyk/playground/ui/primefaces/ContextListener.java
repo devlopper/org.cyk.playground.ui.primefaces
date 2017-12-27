@@ -8,6 +8,7 @@ import java.util.Collection;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.annotation.WebListener;
 
+import org.cyk.playground.ui.primefaces.model.AbstractIdentified;
 import org.cyk.playground.ui.primefaces.model.File;
 import org.cyk.playground.ui.primefaces.model.GlobalIdentifier;
 import org.cyk.playground.ui.primefaces.model.Location;
@@ -17,6 +18,8 @@ import org.cyk.playground.ui.primefaces.model.movement.MovementCollection;
 import org.cyk.playground.ui.primefaces.model.movement.MovementCollectionItem;
 import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
 import org.cyk.ui.web.primefaces.resources.ServletContextListener;
+import org.cyk.ui.web.primefaces.resources.page.controlpanel.IdentifiableEditPage;
+import org.cyk.ui.web.primefaces.resources.page.controlpanel.IdentifiableListPage;
 import org.cyk.utility.common.helper.ClassHelper;
 import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.helper.InstanceHelper;
@@ -52,7 +55,13 @@ public class ContextListener extends ServletContextListener implements Serializa
 		ClassHelper.getInstance().map(Component.Listener.class,ComponentAdapter.class);
 		ClassHelper.getInstance().map(EditWindow.FormMaster.ClassLocator.class, EditFormMasterClassLocator.class);
 		ClassHelper.getInstance().map(ConsultWindow.FormMaster.ClassLocator.class, ConsultFormMasterClassLocator.class);
+		
 		ClassHelper.getInstance().map(ListWindow.DataTable.ClassLocator.class, ListDataTableClassLocator.class);
+		
+		ClassHelper.getInstance().map(IdentifiableEditPage.FormMaster.class, FormMaster.class);
+		ClassHelper.getInstance().map(IdentifiableListPage.DataTable.class, DataTable.class);
+		
+		ClassHelper.IDENTIFIABLE_BASE_CLASSES.add(AbstractIdentified.class);
 		
 		/*Form.Master.setClass(Person.class, Constant.Action.CREATE, EditPersonPage.FormMaster.class);
 		Form.Master.setClass(Person.class, Constant.Action.READ, EditPersonPage.FormMaster.class);
