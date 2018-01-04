@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.cyk.utility.common.helper.CollectionHelper;
 import org.cyk.utility.common.helper.FilterHelper;
 import org.cyk.utility.common.helper.RandomHelper;
 
@@ -20,7 +21,7 @@ public class OrderItem extends AbstractIdentified {
 
 	public static final List<OrderItem> COLLECTION;
 	static {
-		COLLECTION = (List<OrderItem>) instanciateManyRandomly(5);
+		COLLECTION = (List<OrderItem>) instanciateManyRandomly(10);
 	}
 	
 	private Order order;
@@ -42,6 +43,8 @@ public class OrderItem extends AbstractIdentified {
 		orderItem.getGlobalIdentifier().setDescription(RandomHelper.getInstance().getLines(2, 5, 3, 10));
 		orderItem.setOrder(RandomHelper.getInstance().getElement(Order.COLLECTION));
 		orderItem.setArticle(RandomHelper.getInstance().getElement(Article.COLLECTION));
+		orderItem.setQuantity(new BigDecimal(RandomHelper.getInstance().getInteger(1, 20)));
+		orderItem.setReduction(new BigDecimal(RandomHelper.getInstance().getInteger(1, 10000)));
 		orderItem.setAmount(new BigDecimal(RandomHelper.getInstance().getInteger(1, 10000)));
 		return orderItem;
 	}
@@ -87,23 +90,24 @@ public class OrderItem extends AbstractIdentified {
 		}
 	}
 	
-	public static List<OrderItem> filter(Filter filter,Collection<OrderItem> persons){
+	public static List<OrderItem> filter(Filter filter,Collection<OrderItem> orderItems){
 		Map<String,Object> map = new HashMap<>();
 		
 		map.put("globalIdentifier.code", filter.getGlobalIdentifier().getCode().getPreparedValue());
 		map.put("globalIdentifier.name", filter.getGlobalIdentifier().getName().getPreparedValue());
 		
 		List<OrderItem> filtered = new ArrayList<OrderItem>();
-		for(OrderItem person : persons){
-			for(Map.Entry<String, Object> entry : map.entrySet()){
-				if("globalIdentifier.code".equals(entry.getKey()) && person.getGlobalIdentifier().getCode().contains((String)entry.getValue())){
-					filtered.add(person);
-					break;
-				}else if("globalIdentifier.name".equals(entry.getKey()) && person.getGlobalIdentifier().getName().contains((String)entry.getValue())){
-					filtered.add(person);
-					break;
-				}
-			}	
+		for(OrderItem orderItem : orderItems){
+			if(CollectionHelper.getInstance().isEmpty(filter.getMasters()) || CollectionHelper.getInstance().contains(filter.getMasters(), orderItem.getOrder()))
+				for(Map.Entry<String, Object> entry : map.entrySet()){
+					if("globalIdentifier.code".equals(entry.getKey()) && orderItem.getGlobalIdentifier().getCode().contains((String)entry.getValue())){
+						filtered.add(orderItem);
+						break;
+					}else if("globalIdentifier.name".equals(entry.getKey()) && orderItem.getGlobalIdentifier().getName().contains((String)entry.getValue())){
+						filtered.add(orderItem);
+						break;
+					}
+				}	
 		}
 		
 		return filtered;

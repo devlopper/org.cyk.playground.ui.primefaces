@@ -11,12 +11,13 @@ import org.cyk.ui.web.primefaces.resources.page.controlpanel.IdentifiableEditPag
 import org.cyk.utility.common.helper.CollectionHelper;
 import org.cyk.utility.common.helper.NumberHelper;
 import org.cyk.utility.common.helper.RandomHelper;
+import org.cyk.utility.common.userinterface.RequestHelper;
 import org.cyk.utility.common.userinterface.collection.DataTable;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.event.Event;
 import org.cyk.utility.common.userinterface.output.OutputText;
 
-public class FormMaster extends IdentifiableEditPage.FormMaster implements Serializable {
+public class IdentifiableEditPageFormMaster extends IdentifiableEditPage.FormMaster implements Serializable {
 	private static final long serialVersionUID = -6211058744595898478L;
 	
 	@SuppressWarnings("unchecked")
@@ -80,6 +81,9 @@ public class FormMaster extends IdentifiableEditPage.FormMaster implements Seria
 				}
 				);
 		}else if(OrderItem.class.equals(getPropertiesMap().getActionOnClass())){
+			((OrderItem)detail.getMaster().getObject()).setOrder(RequestHelper.getInstance().getParameterAsInstance(Order.class));
+			((OrderItem)detail.getMaster().getObject()).setArticle(RequestHelper.getInstance().getParameterAsInstance(Article.class));
+			
 			detail.add("order").addBreak();
 			detail.add("article").addBreak();
 			detail.add("quantity").addBreak();

@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.cyk.playground.ui.primefaces.model.AbstractIdentified;
 import org.cyk.playground.ui.primefaces.model.GlobalIdentifier;
+import org.cyk.utility.common.helper.CollectionHelper;
 import org.cyk.utility.common.helper.FilterHelper;
 import org.cyk.utility.common.helper.RandomHelper;
 
@@ -91,23 +92,24 @@ public class MovementCollectionItem extends AbstractIdentified {
 		}
 	}
 	
-	public static List<MovementCollectionItem> filter(Filter filter,Collection<MovementCollectionItem> persons){
+	public static List<MovementCollectionItem> filter(Filter filter,Collection<MovementCollectionItem> movementCollectionItems){
 		Map<String,Object> map = new HashMap<>();
 		
 		map.put("globalIdentifier.code", filter.getGlobalIdentifier().getCode().getPreparedValue());
 		map.put("globalIdentifier.name", filter.getGlobalIdentifier().getName().getPreparedValue());
 		
 		List<MovementCollectionItem> filtered = new ArrayList<MovementCollectionItem>();
-		for(MovementCollectionItem person : persons){
-			for(Map.Entry<String, Object> entry : map.entrySet()){
-				if("globalIdentifier.code".equals(entry.getKey()) && person.getGlobalIdentifier().getCode().contains((String)entry.getValue())){
-					filtered.add(person);
-					break;
-				}else if("globalIdentifier.name".equals(entry.getKey()) && person.getGlobalIdentifier().getName().contains((String)entry.getValue())){
-					filtered.add(person);
-					break;
-				}
-			}	
+		for(MovementCollectionItem movementCollectionItem : movementCollectionItems){
+			if(CollectionHelper.getInstance().isEmpty(filter.getMasters()) || CollectionHelper.getInstance().contains(filter.getMasters(), movementCollectionItem.getMovementCollection()))
+				for(Map.Entry<String, Object> entry : map.entrySet()){
+					if("globalIdentifier.code".equals(entry.getKey()) && movementCollectionItem.getGlobalIdentifier().getCode().contains((String)entry.getValue())){
+						filtered.add(movementCollectionItem);
+						break;
+					}else if("globalIdentifier.name".equals(entry.getKey()) && movementCollectionItem.getGlobalIdentifier().getName().contains((String)entry.getValue())){
+						filtered.add(movementCollectionItem);
+						break;
+					}
+				}	
 		}
 		
 		return filtered;

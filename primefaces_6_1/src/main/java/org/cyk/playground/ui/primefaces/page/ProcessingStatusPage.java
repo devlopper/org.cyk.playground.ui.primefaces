@@ -44,7 +44,7 @@ public class ProcessingStatusPage extends Window implements Serializable {
 		
 		form1 = new Form.Master();
 		form1.setParent(this);
-		form1.setAction(Constant.Action.CREATE);
+		form1._setPropertyAction(Constant.Action.CREATE);
 		form1.setObject(new PhoneNumberType());
 		form1.getDetail().setFieldsObjectFromMaster();
 		form1.getDetail().add("globalIdentifier.code");

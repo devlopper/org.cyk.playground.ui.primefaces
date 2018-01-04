@@ -85,20 +85,20 @@ public class Order extends AbstractIdentified {
 		}
 	}
 	
-	public static List<Order> filter(Filter filter,Collection<Order> persons){
+	public static List<Order> filter(Filter filter,Collection<Order> orders){
 		Map<String,Object> map = new HashMap<>();
 		
 		map.put("globalIdentifier.code", filter.getGlobalIdentifier().getCode().getPreparedValue());
 		map.put("globalIdentifier.name", filter.getGlobalIdentifier().getName().getPreparedValue());
 		
 		List<Order> filtered = new ArrayList<Order>();
-		for(Order person : persons){
+		for(Order order : orders){
 			for(Map.Entry<String, Object> entry : map.entrySet()){
-				if("globalIdentifier.code".equals(entry.getKey()) && person.getGlobalIdentifier().getCode().contains((String)entry.getValue())){
-					filtered.add(person);
+				if("globalIdentifier.code".equals(entry.getKey()) && order.getGlobalIdentifier().getCode().contains((String)entry.getValue())){
+					filtered.add(order);
 					break;
-				}else if("globalIdentifier.name".equals(entry.getKey()) && person.getGlobalIdentifier().getName().contains((String)entry.getValue())){
-					filtered.add(person);
+				}else if("globalIdentifier.name".equals(entry.getKey()) && order.getGlobalIdentifier().getName().contains((String)entry.getValue())){
+					filtered.add(order);
 					break;
 				}
 			}	

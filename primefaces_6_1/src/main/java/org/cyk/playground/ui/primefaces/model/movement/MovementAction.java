@@ -21,10 +21,19 @@ import lombok.experimental.Accessors;
 @Getter @Setter @Accessors(chain=true)
 public class MovementAction extends AbstractIdentified {
 
+	public static MovementAction IN = instanciateOneRandomly("Entrée");
+	public static MovementAction OUT = instanciateOneRandomly("Sortie");
+	
 	private static final String[] NAMES = {"Entrée","Sortie"};
 	public static final List<MovementAction> COLLECTION;
 	static {
-		COLLECTION = (List<MovementAction>) instanciateManyRandomly(20);
+		//COLLECTION = (List<MovementAction>) instanciateManyRandomly(20);
+		IN.setCode("IN");
+		OUT.setCode("OUT");
+		
+		COLLECTION = new ArrayList<MovementAction>();
+		COLLECTION.add(IN);
+		COLLECTION.add(OUT);
 	}
 	
 	private BigDecimal unitPrice;

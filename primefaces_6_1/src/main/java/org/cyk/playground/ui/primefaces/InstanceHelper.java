@@ -1,6 +1,7 @@
 package org.cyk.playground.ui.primefaces;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -225,7 +226,31 @@ public class InstanceHelper implements Serializable {
 			}
 			return super.act(action, instance);
 		}
-		
+	
+		@Override
+		public <T> T computeChanges(T instance) {
+			super.computeChanges(instance);
+			if(instance instanceof MovementCollectionItem){
+				MovementCollectionItem movementCollectionItem = (MovementCollectionItem) instance;
+				if(movementCollectionItem.getMovementCollection() == null)
+					movementCollectionItem.setPreviousCumul(null);
+				else
+					movementCollectionItem.setPreviousCumul(movementCollectionItem.getMovementCollection().getValue());
+				
+				BigDecimal cumul;
+				if(movementCollectionItem.getMovementCollection() == null || movementCollectionItem.getMovementAction() == null || movementCollectionItem.getValue() == null){
+					cumul = null;
+				}else{
+					cumul = movementCollectionItem.getMovementCollection().getValue();
+					if(movementCollectionItem.getMovementAction().getName().equals("Entrée"))
+						cumul = cumul.add(movementCollectionItem.getValue());
+					else
+						cumul = cumul.subtract(movementCollectionItem.getValue());
+				}
+				movementCollectionItem.setCumul(cumul);
+			}
+			return instance;
+		}
     }
 	
 	public static class Label extends org.cyk.utility.common.helper.InstanceHelper.Stringifier.Label.Adapter.Default implements Serializable {
