@@ -30,9 +30,9 @@ public class IdentifiableConsultPageFormMaster extends IdentifiableConsultPage.F
 			detail.addReadOnly("amount");
 			
 			/**/
-			DataTable dataTable = instanciateDataTable(OrderItem.class,null,null,Boolean.TRUE,"order","article.globalIdentifier.name","article.unitPrice","quantity","reduction","amount");
-			dataTable.setOnPrepareAddMenu(Boolean.TRUE);
-			dataTable.setOnPrepareAddColumnAction(true);
+			DataTable dataTable = instanciateDataTable(OrderItem.class,null,null,Boolean.TRUE/*,"order","article.globalIdentifier.name","article.unitPrice","quantity","reduction","amount"*/);
+			dataTable.getPropertiesMap().setOnPrepareAddMenu(Boolean.TRUE);
+			dataTable.getPropertiesMap().setOnPrepareAddColumnAction(true);
 			dataTable.prepare();
 			dataTable.build();
 			
@@ -53,10 +53,10 @@ public class IdentifiableConsultPageFormMaster extends IdentifiableConsultPage.F
 			detail.addReadOnly("value");
 			
 			/**/
-			DataTable dataTable = instanciateDataTable(MovementCollectionItem.class,null,null,Boolean.TRUE,"movementCollection","movementAction","value","previousCumul","cumul");
-			dataTable.setOnPrepareAddMenu(Boolean.TRUE);
-			dataTable.setOnPrepareAddColumnAction(true);
-			dataTable.setOnPrepareAddMenuAddCommand(Boolean.FALSE);
+			DataTable dataTable = instanciateDataTable(MovementCollectionItem.class,null,null,Boolean.TRUE/*,"movementCollection","movementAction","value","previousCumul","cumul"*/);
+			dataTable.getPropertiesMap().setOnPrepareAddMenu(Boolean.TRUE);
+			dataTable.getPropertiesMap().setOnPrepareAddColumnAction(true);
+			dataTable.getPropertiesMap().setOnPrepareAddMenuAddCommand(Boolean.FALSE);
 			
 			MovementAction movementAction = MovementAction.IN;
 			dataTable.addMainMenuNode(movementAction.getName(), IconHelper.Icon.FontAwesome.PLUS, UniformResourceLocatorHelper.getInstance()

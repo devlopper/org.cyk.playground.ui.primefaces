@@ -16,14 +16,14 @@ public class ClassHelper implements Serializable {
     	}
     	
     	@Override
+    	public String getNameFieldName(Class<?> aClass) {
+    		return "globalIdentifier.name";
+    	}
+    	
+    	@Override
     	public Boolean isHierarchy(Class<?> aClass) {
     		return org.cyk.utility.common.helper.ClassHelper.getInstance().isInstanceOf(AbstractIdentifiedTree.class, aClass);
     	}
-    	
-    	/*@Override
-    	public Boolean isIdentified(Class<?> aClass) {
-    		return org.cyk.utility.common.helper.ClassHelper.getInstance().isInstanceOf(AbstractIdentified.class, aClass);
-    	}*/
     	
     }
 	

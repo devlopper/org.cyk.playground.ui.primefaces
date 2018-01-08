@@ -38,11 +38,11 @@ public class OrderItem extends AbstractIdentified {
 	public static OrderItem instanciateOneRandomly(){
 		OrderItem orderItem = new OrderItem();
 		orderItem.setGlobalIdentifier(new GlobalIdentifier());
+		orderItem.setArticle(RandomHelper.getInstance().getElement(Article.COLLECTION));
 		orderItem.getGlobalIdentifier().setCode(RandomHelper.getInstance().getAlphabetic(5));
-		orderItem.getGlobalIdentifier().setName(RandomHelper.getInstance().getAlphabetic(15));
+		orderItem.getGlobalIdentifier().setName(orderItem.getArticle().getName());
 		orderItem.getGlobalIdentifier().setDescription(RandomHelper.getInstance().getLines(2, 5, 3, 10));
 		orderItem.setOrder(RandomHelper.getInstance().getElement(Order.COLLECTION));
-		orderItem.setArticle(RandomHelper.getInstance().getElement(Article.COLLECTION));
 		orderItem.setQuantity(new BigDecimal(RandomHelper.getInstance().getInteger(1, 20)));
 		orderItem.setReduction(new BigDecimal(RandomHelper.getInstance().getInteger(1, 10000)));
 		orderItem.setAmount(new BigDecimal(RandomHelper.getInstance().getInteger(1, 10000)));

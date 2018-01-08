@@ -55,7 +55,7 @@ public class IdentifiableEditPageFormMaster extends IdentifiableEditPage.FormMas
 			dataTable.getColumn("article.unitPrice").setCellValueType(DataTable.Cell.ValueType.TEXT);
 			dataTable.getColumn("amount").setCellValueType(DataTable.Cell.ValueType.TEXT);
 			//((OutputText)dataTable.getColumn("amount").getPropertiesMap().getFooter()).getPropertiesMap().setValue(StringHelper.getInstance().get("total", new Object[]{}));
-			dataTable.setOnPrepareAddColumnAction(true);
+			dataTable.getPropertiesMap().setOnPrepareAddColumnAction(true);
 			dataTable.prepare();
 			dataTable.build();
 			

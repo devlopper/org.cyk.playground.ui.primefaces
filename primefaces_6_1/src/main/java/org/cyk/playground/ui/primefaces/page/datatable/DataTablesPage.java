@@ -34,9 +34,9 @@ public class DataTablesPage extends Window implements Serializable {
 			}
 		};
 		
-		personDataTable.setOnPrepareAddMenu(Boolean.TRUE);
-		personDataTable.setOnPrepareAddColumnOrderNumber(Boolean.TRUE);
-		personDataTable.setOnPrepareAddColumnAction(Boolean.TRUE);
+		personDataTable.getPropertiesMap().setOnPrepareAddMenu(Boolean.TRUE);
+		personDataTable.getPropertiesMap().setOnPrepareAddColumnOrderNumber(Boolean.TRUE);
+		personDataTable.getPropertiesMap().setOnPrepareAddColumnAction(Boolean.TRUE);
 		personDataTable.setOnPrepareCallLoad(Boolean.TRUE);
 		
 		personDataTable.getPropertiesMap().setActionOnClass(Person.class);

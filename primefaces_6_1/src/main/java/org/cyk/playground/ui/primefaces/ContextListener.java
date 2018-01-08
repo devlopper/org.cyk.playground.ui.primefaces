@@ -28,6 +28,7 @@ import org.cyk.utility.common.helper.MapHelper;
 import org.cyk.utility.common.helper.UniformResourceLocatorHelper;
 import org.cyk.utility.common.security.Shiro;
 import org.cyk.utility.common.userinterface.Component;
+import org.cyk.utility.common.userinterface.collection.DataTable;
 import org.cyk.utility.common.userinterface.command.Menu;
 import org.cyk.utility.common.userinterface.container.Form.Detail;
 import org.cyk.utility.common.userinterface.container.window.ConsultWindow;
@@ -54,12 +55,14 @@ public class ContextListener extends ServletContextListener implements Serializa
 		ClassHelper.getInstance().map(ClassHelper.Listener.class, org.cyk.playground.ui.primefaces.ClassHelper.Listener.class);
 		ClassHelper.getInstance().map(Menu.Builder.Adapter.Default.class,MenuBuilder.class);
 		ClassHelper.getInstance().map(Component.Listener.class,ComponentAdapter.class);
-		ClassHelper.getInstance().map(EditWindow.FormMaster.ClassLocator.class, EditFormMasterClassLocator.class);
-		ClassHelper.getInstance().map(ConsultWindow.FormMaster.ClassLocator.class, ConsultFormMasterClassLocator.class);
 		
+		ClassHelper.getInstance().map(DataTable.Listener.class, org.cyk.playground.ui.primefaces.DataTable.Listener.class);
+		
+		ClassHelper.getInstance().map(EditWindow.FormMaster.ClassLocator.class, EditFormMasterClassLocator.class);
+		ClassHelper.getInstance().map(ConsultWindow.FormMaster.ClassLocator.class, ConsultFormMasterClassLocator.class);		
 		ClassHelper.getInstance().map(ListWindow.DataTable.ClassLocator.class, ListDataTableClassLocator.class);
 		
-		ClassHelper.getInstance().map(IdentifiableListPage.DataTable.class, DataTable.class);
+		ClassHelper.getInstance().map(IdentifiableListPage.DataTable.class, IdentifiableListPageDataTable.class);
 		ClassHelper.getInstance().map(IdentifiableEditPage.FormMaster.class, IdentifiableEditPageFormMaster.class);
 		ClassHelper.getInstance().map(IdentifiableConsultPage.FormMaster.class, IdentifiableConsultPageFormMaster.class);
 		
