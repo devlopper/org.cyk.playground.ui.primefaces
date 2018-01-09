@@ -11,7 +11,6 @@ import java.util.Map;
 import org.cyk.playground.ui.primefaces.model.AbstractIdentified;
 import org.cyk.playground.ui.primefaces.model.GlobalIdentifier;
 import org.cyk.utility.common.helper.CollectionHelper;
-import org.cyk.utility.common.helper.FilterHelper;
 import org.cyk.utility.common.helper.RandomHelper;
 
 import lombok.Getter;
@@ -70,21 +69,7 @@ public class MovementCollection extends AbstractIdentified {
 	public static class Filter extends AbstractIdentified.Filter<MovementCollection> implements Serializable {
 		private static final long serialVersionUID = -1498269103849317057L;
 
-		protected GlobalIdentifier.Filter globalIdentifier = new GlobalIdentifier.Filter();
 		
-		public Filter() {
-			addCriterias(globalIdentifier);
-		}
-		
-		public Filter(Filter criterias) {
-			super(criterias);
-		}
-		
-		@Override
-		public FilterHelper.Filter<MovementCollection> set(String string) {
-			globalIdentifier.set(string);
-			return super.set(string);
-		}
 	}
 	
 	public static List<MovementCollection> filter(Filter filter,Collection<MovementCollection> persons){

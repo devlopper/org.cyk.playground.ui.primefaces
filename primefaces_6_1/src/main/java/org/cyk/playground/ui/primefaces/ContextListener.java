@@ -34,6 +34,7 @@ import org.cyk.utility.common.userinterface.container.Form.Detail;
 import org.cyk.utility.common.userinterface.container.window.ConsultWindow;
 import org.cyk.utility.common.userinterface.container.window.EditWindow;
 import org.cyk.utility.common.userinterface.container.window.ListWindow;
+import org.cyk.utility.common.userinterface.hierarchy.Hierarchy;
 import org.cyk.utility.common.userinterface.input.Input;
 import org.cyk.utility.common.userinterface.input.InputEditor;
 import org.cyk.utility.common.userinterface.input.InputFile;
@@ -57,6 +58,7 @@ public class ContextListener extends ServletContextListener implements Serializa
 		ClassHelper.getInstance().map(Component.Listener.class,ComponentAdapter.class);
 		
 		ClassHelper.getInstance().map(DataTable.Listener.class, org.cyk.playground.ui.primefaces.DataTable.Listener.class);
+		ClassHelper.getInstance().map(Hierarchy.Listener.class, org.cyk.playground.ui.primefaces.Hierarchy.Listener.class);
 		
 		ClassHelper.getInstance().map(EditWindow.FormMaster.ClassLocator.class, EditFormMasterClassLocator.class);
 		ClassHelper.getInstance().map(ConsultWindow.FormMaster.ClassLocator.class, ConsultFormMasterClassLocator.class);		

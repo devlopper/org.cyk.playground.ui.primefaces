@@ -12,7 +12,6 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.cyk.playground.ui.primefaces.ContextListener;
 import org.cyk.utility.common.helper.CriteriaHelper;
 import org.cyk.utility.common.helper.FileHelper;
-import org.cyk.utility.common.helper.FilterHelper;
 import org.cyk.utility.common.helper.RandomHelper;
 import org.cyk.utility.common.helper.StringHelper;
 
@@ -89,23 +88,12 @@ public class Person extends AbstractIdentified {
 	public static class Filter extends AbstractIdentified.Filter<Person> implements Serializable {
 		private static final long serialVersionUID = -1498269103849317057L;
 
-		protected GlobalIdentifier.Filter globalIdentifier = new GlobalIdentifier.Filter();
 		protected CriteriaHelper.Criteria.String lastnames;
 		
 		public Filter() {
-			addCriterias(globalIdentifier);
 			lastnames = instanciateCriteria(CriteriaHelper.Criteria.String.class).setLocation(StringHelper.Location.INSIDE);
 		}
 		
-		public Filter(Filter criterias) {
-			super(criterias);
-		}
-		
-		@Override
-		public FilterHelper.Filter<Person> set(String string) {
-			globalIdentifier.set(string);
-			return super.set(string);
-		}
 	}
 	
 	public static List<Person> filter(Filter filter,Collection<Person> persons){

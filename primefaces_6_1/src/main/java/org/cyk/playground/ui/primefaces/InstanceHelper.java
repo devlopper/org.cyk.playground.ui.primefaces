@@ -94,6 +94,8 @@ public class InstanceHelper implements Serializable {
 					return (Collection<T>) MovementCollection.filter((MovementCollection.Filter)filter);
 				else if(MovementCollectionItem.class.equals(aClass))
 					return (Collection<T>) MovementCollectionItem.filter((MovementCollectionItem.Filter)filter);
+				else if(LocalityType.class.equals(aClass))
+					return (Collection<T>) LocalityType.filter((LocalityType.Filter)filter);
 			
 			}
 			
@@ -113,6 +115,8 @@ public class InstanceHelper implements Serializable {
 					return new Long(OrderItem.filter((OrderItem.Filter)filter).size());
 				if(Article.class.equals(aClass))
 					return new Long(Article.filter((Article.Filter)filter).size());
+				if(LocalityType.class.equals(aClass))
+					return new Long(LocalityType.filter((LocalityType.Filter)filter).size());
 				
 				if(MovementAction.class.equals(aClass))
 					return new Long(MovementAction.filter((MovementAction.Filter)filter).size());
@@ -194,7 +198,7 @@ public class InstanceHelper implements Serializable {
 				if(Constant.Action.CREATE.equals(action))
 					LocalityType.COLLECTION.add((LocalityType)instance);
 				else if(Constant.Action.DELETE.equals(action))
-					LocalityType.COLLECTION.remove((LocalityType)instance);
+					LocalityType.remove((LocalityType)instance);
 			}else if(instance instanceof Locality){
 				if(Constant.Action.CREATE.equals(action))
 					Locality.COLLECTION.add((Locality)instance);
