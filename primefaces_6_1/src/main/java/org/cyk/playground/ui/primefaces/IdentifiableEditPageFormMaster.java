@@ -7,6 +7,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.cyk.playground.ui.primefaces.model.Article;
 import org.cyk.playground.ui.primefaces.model.Order;
 import org.cyk.playground.ui.primefaces.model.OrderItem;
+import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.ui.web.primefaces.resources.page.controlpanel.IdentifiableEditPage;
 import org.cyk.utility.common.helper.CollectionHelper;
 import org.cyk.utility.common.helper.NumberHelper;
@@ -27,7 +28,18 @@ public class IdentifiableEditPageFormMaster extends IdentifiableEditPage.FormMas
 		Form.Detail detail = getDetail();
 		detail.setFieldsObjectFromMaster();
 		
-		if(Order.class.equals(getPropertiesMap().getActionOnClass())){
+		if(Person.class.equals(getPropertiesMap().getActionOnClass())){
+			detail.setFieldsObjectFromMaster("globalIdentifier");
+			detail.add("code");
+			detail.add("image",1,3).addBreak();
+			detail.add("name").addBreak();
+			detail.setFieldsObjectFromMaster();
+			detail.add("lastnames").addBreak();
+			detail.add("nationality");
+			detail.add("sex").addBreak();
+			detail.setFieldsObjectFromMaster("globalIdentifier");
+			detail.add("description").addBreak();
+		}else if(Order.class.equals(getPropertiesMap().getActionOnClass())){
 			detail.addReadOnly("amount");
 			
 			/**/

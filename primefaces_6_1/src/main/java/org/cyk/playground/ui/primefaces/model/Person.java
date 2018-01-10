@@ -61,6 +61,7 @@ public class Person extends AbstractIdentified {
 		person.getGlobalIdentifier().setUsable(RandomHelper.getInstance().getBoolean());
 		person.setNationality(RandomHelper.getInstance().getElement(Country.COLLECTION));
 		person.getGlobalIdentifier().setDescription(RandomHelper.getInstance().getLines(2, 5, 3, 10));
+		person.setSex(randomPerson.getIsMale() ? Sex.MALE : Sex.FEMALE);
 		return person;
 	}
 	

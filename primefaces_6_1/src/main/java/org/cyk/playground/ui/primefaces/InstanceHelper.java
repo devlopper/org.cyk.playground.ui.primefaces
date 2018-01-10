@@ -68,18 +68,6 @@ public class InstanceHelper implements Serializable {
 								list.add(country);
 					}
 					return (Collection<T>) list;
-				}else if(LocationType.class.equals(aClass)){
-					List<LocationType> list;
-					String query = (String)filter.getCriterias().get(0).getPreparedValue();
-					if(StringUtils.isBlank(query))
-						list =  LocationType.COLLECTION;
-					else{
-						list = new ArrayList<>();
-						for(LocationType locationType : LocationType.COLLECTION)
-							if(StringUtils.containsIgnoreCase(locationType.getCode(), query) || StringUtils.containsIgnoreCase(locationType.getName(), query))
-								list.add(locationType);
-					}
-					return (Collection<T>) list;
 				}else if(Person.class.equals(aClass))
 					return (Collection<T>) Person.filter((Person.Filter)filter);
 				else if(Order.class.equals(aClass))
@@ -96,6 +84,12 @@ public class InstanceHelper implements Serializable {
 					return (Collection<T>) MovementCollectionItem.filter((MovementCollectionItem.Filter)filter);
 				else if(LocalityType.class.equals(aClass))
 					return (Collection<T>) LocalityType.filter((LocalityType.Filter)filter);
+				else if(LocationType.class.equals(aClass))
+					return (Collection<T>) LocationType.filter((LocationType.Filter)filter);
+				else if(Location.class.equals(aClass))
+					return (Collection<T>) Location.filter((Location.Filter)filter);
+				else if(PhoneNumberType.class.equals(aClass))
+					return (Collection<T>) PhoneNumberType.filter((PhoneNumberType.Filter)filter);
 			
 			}
 			
@@ -117,6 +111,12 @@ public class InstanceHelper implements Serializable {
 					return new Long(Article.filter((Article.Filter)filter).size());
 				if(LocalityType.class.equals(aClass))
 					return new Long(LocalityType.filter((LocalityType.Filter)filter).size());
+				if(PhoneNumberType.class.equals(aClass))
+					return new Long(PhoneNumberType.filter((PhoneNumberType.Filter)filter).size());
+				if(LocationType.class.equals(aClass))
+					return new Long(LocationType.filter((LocationType.Filter)filter).size());
+				if(Location.class.equals(aClass))
+					return new Long(Location.filter((Location.Filter)filter).size());
 				
 				if(MovementAction.class.equals(aClass))
 					return new Long(MovementAction.filter((MovementAction.Filter)filter).size());

@@ -1,6 +1,7 @@
 package org.cyk.playground.ui.primefaces;
 
 import org.cyk.playground.ui.primefaces.model.Person;
+import org.cyk.playground.ui.primefaces.model.PhoneNumberType;
 import org.cyk.utility.common.helper.ClassHelper;
 import org.cyk.utility.common.helper.FilterHelper;
 import org.cyk.utility.common.userinterface.Component;
@@ -24,6 +25,7 @@ public class ClassLocatorUnitTest extends AbstractUnitTest {
 	@Test
 	public void getFilterClass(){
 		assertEquals(Person.Filter.class, FilterHelper.Filter.ClassLocator.getInstance().locate(Person.class));
+		assertEquals(PhoneNumberType.Filter.class, FilterHelper.Filter.ClassLocator.getInstance().locate(PhoneNumberType.class));
 	}
 
 }

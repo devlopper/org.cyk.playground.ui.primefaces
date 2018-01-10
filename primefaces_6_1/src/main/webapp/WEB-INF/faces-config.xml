@@ -32,16 +32,11 @@
 			<redirect />
 		</navigation-case>
 	
-		<navigation-case>
-			<from-outcome>personListView</from-outcome>
-			<to-view-id>/public/crud/person/list.jsf</to-view-id>
-			<redirect />
-		</navigation-case>
-		<navigation-case>
+		<!--navigation-case>
 			<from-outcome>personEditView</from-outcome>
 			<to-view-id>/public/crud/person/edit.jsf</to-view-id>
 			<redirect />
-		</navigation-case>
+		</navigation-case-->
 		<navigation-case>
 			<from-outcome>personConsultView</from-outcome>
 			<to-view-id>/public/crud/person/consult.jsf</to-view-id>
@@ -52,7 +47,7 @@
 			<to-view-id>/public/crud/person/consult.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
-		
+		<!--
 		<navigation-case>
 			<from-outcome>locationTypeListView</from-outcome>
 			<to-view-id>/public/crud/locationtype/list.jsf</to-view-id>
@@ -94,7 +89,7 @@
 			<to-view-id>/public/crud/location/consult.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
-		
+		-->
 	</navigation-rule>
 	
 </faces-config>

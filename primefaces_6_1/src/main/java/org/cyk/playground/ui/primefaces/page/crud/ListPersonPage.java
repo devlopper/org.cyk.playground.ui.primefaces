@@ -23,8 +23,6 @@ public class ListPersonPage extends ListWindow implements Serializable {
 			super.__prepare__();
 			//columns
 			addColumn("photo", "globalIdentifier.image");
-			addColumn("code", "globalIdentifier.code");
-			addColumn("name", "globalIdentifier.name");
 			addColumn("lastnames", "lastnames");
 			addColumn("sex", "sex");
 			addColumn("nationality", "nationality");
