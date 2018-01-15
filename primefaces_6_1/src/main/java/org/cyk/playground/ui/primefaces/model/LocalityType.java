@@ -47,6 +47,18 @@ public class LocalityType extends AbstractIdentifiedTree<LocalityType> {
 		return null;
 	}
 	
+	public static Collection<LocalityType> getRoots(){
+		return getByParent(null);
+	}
+	
+	public static Collection<LocalityType> getByParent(LocalityType parent){
+		Collection<LocalityType> localityTypes = new ArrayList<>();
+		for(LocalityType index : COLLECTION)
+			if(index.getParent() == parent)
+				localityTypes.add(index);
+		return localityTypes;
+	}
+	
 	public static List<LocalityType> filter(Filter filter,Collection<LocalityType> localityTypes){
 		Map<String,Object> map = new HashMap<>();
 		

@@ -36,6 +36,24 @@ public class InstanceHelper implements Serializable {
 	public static class Listener extends org.cyk.ui.web.api.resources.helper.InstanceHelper.Listener{
     	private static final long serialVersionUID = 1L;
 		
+    	@SuppressWarnings("unchecked")
+		@Override
+    	public <T> Collection<T> getHierarchyRoots(Class<T> aClass) {
+    		if(LocalityType.class.equals(aClass)){
+    			return (Collection<T>) LocalityType.getRoots();
+    		}
+    		return super.getHierarchyRoots(aClass);
+    	}
+    	
+    	@SuppressWarnings("unchecked")
+    	@Override
+    	public <T> Collection<T> getHierarchyChildren(Object parent) {
+    		if(parent instanceof LocalityType){
+    			return (Collection<T>) LocalityType.getByParent((LocalityType) parent);
+    		}
+    		return super.getHierarchyChildren(parent);
+    	}
+    	
     	@Override
     	public Object getIdentifier(Object instance) {
     		if(instance instanceof AbstractIdentified)

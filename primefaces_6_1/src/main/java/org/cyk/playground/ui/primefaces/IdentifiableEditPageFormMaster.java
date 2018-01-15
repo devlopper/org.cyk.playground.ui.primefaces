@@ -21,6 +21,23 @@ import org.cyk.utility.common.userinterface.output.OutputText;
 public class IdentifiableEditPageFormMaster extends IdentifiableEditPage.FormMaster implements Serializable {
 	private static final long serialVersionUID = -6211058744595898478L;
 	
+	@Override
+	protected void ____add____() {
+		if(Person.class.equals(getPropertiesMap().getActionOnClass())){
+			getDetail().setFieldsObjectFromMaster("globalIdentifier");
+			getDetail().add("code");
+			getDetail().add("image",1,3).addBreak();
+			getDetail().add("name").addBreak();
+			getDetail().setFieldsObjectFromMaster();
+			getDetail().add("lastnames").addBreak();
+			getDetail().add("nationality");
+			getDetail().add("sex").addBreak();
+			getDetail().setFieldsObjectFromMaster("globalIdentifier");
+			getDetail().add("description").addBreak();
+		}else
+			super.____add____();
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void __prepare__() {
@@ -29,16 +46,7 @@ public class IdentifiableEditPageFormMaster extends IdentifiableEditPage.FormMas
 		detail.setFieldsObjectFromMaster();
 		
 		if(Person.class.equals(getPropertiesMap().getActionOnClass())){
-			detail.setFieldsObjectFromMaster("globalIdentifier");
-			detail.add("code");
-			detail.add("image",1,3).addBreak();
-			detail.add("name").addBreak();
-			detail.setFieldsObjectFromMaster();
-			detail.add("lastnames").addBreak();
-			detail.add("nationality");
-			detail.add("sex").addBreak();
-			detail.setFieldsObjectFromMaster("globalIdentifier");
-			detail.add("description").addBreak();
+			
 		}else if(Order.class.equals(getPropertiesMap().getActionOnClass())){
 			detail.addReadOnly("amount");
 			
