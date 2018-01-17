@@ -9,6 +9,8 @@ import org.cyk.playground.ui.primefaces.model.Order;
 import org.cyk.playground.ui.primefaces.model.OrderItem;
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.ui.web.primefaces.resources.page.controlpanel.IdentifiableEditPage;
+import org.cyk.utility.common.Constant;
+import org.cyk.utility.common.Constant.Action;
 import org.cyk.utility.common.helper.CollectionHelper;
 import org.cyk.utility.common.helper.NumberHelper;
 import org.cyk.utility.common.helper.RandomHelper;
@@ -80,26 +82,27 @@ public class IdentifiableEditPageFormMaster extends IdentifiableEditPage.FormMas
 			dataTable.build();
 			
 			//((DataTable.Columns)dataTable.getPropertiesMap().getColumns()).getPropertiesMap().setFooterRendered(Boolean.FALSE);
-			
-			((CollectionHelper.Instance<Object>)dataTable.getPropertiesMap().getRowsCollectionInstance()).addListener(
-				new CollectionHelper.Instance.Listener.Adapter<Object>(){
-					private static final long serialVersionUID = 1L;
-					
-					public void addOne(CollectionHelper.Instance<Object> instance, Object element, Object source, Object sourceObject) {
-						DataTable.Row row = (DataTable.Row) element;
-						OrderItem orderItem = (OrderItem) row.getPropertiesMap().getValue();
-						orderItem.setCode(RandomHelper.getInstance().getAlphabetic(3));
-						orderItem.setName(RandomHelper.getInstance().getAlphabetic(3));
-						orderItem.setOrder((Order) getObject());
+			if(Constant.Action.isCreateOrUpdate((Action) getPropertiesMap().getAction())){
+				((CollectionHelper.Instance<Object>)dataTable.getPropertiesMap().getRowsCollectionInstance()).addListener(
+					new CollectionHelper.Instance.Listener.Adapter<Object>(){
+						private static final long serialVersionUID = 1L;
+						
+						public void addOne(CollectionHelper.Instance<Object> instance, Object element, Object source, Object sourceObject) {
+							DataTable.Row row = (DataTable.Row) element;
+							OrderItem orderItem = (OrderItem) row.getPropertiesMap().getValue();
+							orderItem.setCode(RandomHelper.getInstance().getAlphabetic(3));
+							orderItem.setName(RandomHelper.getInstance().getAlphabetic(3));
+							orderItem.setOrder((Order) getObject());
+							
+						}
+						
+						public void removeOne(CollectionHelper.Instance<Object> instance, Object element) {
+							
+						}
 						
 					}
-					
-					public void removeOne(CollectionHelper.Instance<Object> instance, Object element) {
-						
-					}
-					
-				}
-				);
+					);
+			}
 		}else if(OrderItem.class.equals(getPropertiesMap().getActionOnClass())){
 			((OrderItem)detail.getMaster().getObject()).setOrder(RequestHelper.getInstance().getParameterAsInstance(Order.class));
 			((OrderItem)detail.getMaster().getObject()).setArticle(RequestHelper.getInstance().getParameterAsInstance(Article.class));

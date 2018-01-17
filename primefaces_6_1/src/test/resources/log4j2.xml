@@ -10,7 +10,9 @@
 			<AppenderRef ref="Console" />
 		</Logger-->
 		
-		
+		<Logger name="org.cyk.ui.web.primefaces.resources.page.controlpanel.IdentifiableEditPage" level="trace">
+			<AppenderRef ref="Console" />
+		</Logger>
 		
 		<Root level="trace">
 			<!--AppenderRef ref="Console"/-->

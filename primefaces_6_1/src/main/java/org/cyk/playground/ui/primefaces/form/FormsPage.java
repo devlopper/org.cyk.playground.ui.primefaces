@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.cyk.utility.common.Constant.Action;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.window.Window;
 import org.cyk.utility.common.userinterface.input.InputText;
@@ -28,7 +29,7 @@ public class FormsPage extends Window implements Serializable {
 		super.initialisation();
 		getPropertiesMap().setTitle("Forms");
 		
-		form = new Form.Master(this,dataModel,action,SubmitCommandActionAdapter.class).setLabelFromIdentifier("myformlabel");
+		form = new Form.Master(this,dataModel,(Action) getPropertiesMap().getAction(),SubmitCommandActionAdapter.class).setLabelFromIdentifier("myformlabel");
 		
 		createModel();
 		

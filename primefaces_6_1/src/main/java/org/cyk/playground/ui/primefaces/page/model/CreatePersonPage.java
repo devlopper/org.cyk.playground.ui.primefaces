@@ -8,6 +8,7 @@ import javax.inject.Named;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.cyk.playground.ui.primefaces.model.Person;
+import org.cyk.utility.common.Constant.Action;
 import org.cyk.utility.common.userinterface.Layout;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.window.Window;
@@ -28,7 +29,7 @@ public class CreatePersonPage extends Window implements Serializable {
 		Person person = new Person();
 		//person.getGlobalIdentifier().setImage(new File(FileHelper.getInstance().get(ContextListener.class, "image001.png")));
 		//System.out.println("CreatePersonPage.initialisation() : "+person.getGlobalIdentifier().getImage());
-		form = new Form.Master(this,person,action,SubmitCommandActionAdapter.class);
+		form = new Form.Master(this,person,(Action) getPropertiesMap().getAction(),SubmitCommandActionAdapter.class);
 		
 		Form.Detail detail = form.getDetail();
 		detail.getLayout().setType(Layout.Type.ADAPTIVE);
