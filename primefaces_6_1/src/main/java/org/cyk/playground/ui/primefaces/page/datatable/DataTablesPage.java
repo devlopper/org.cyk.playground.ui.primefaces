@@ -5,13 +5,12 @@ import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.cyk.playground.ui.primefaces.model.Person;
-import org.cyk.utility.common.userinterface.Component;
 import org.cyk.utility.common.userinterface.collection.DataTable;
 import org.cyk.utility.common.userinterface.container.window.Window;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Named @ViewScoped @Getter @Setter
 public class DataTablesPage extends Window implements Serializable {
@@ -28,7 +27,7 @@ public class DataTablesPage extends Window implements Serializable {
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public Component load() {
+			public DataTable load() {
 				addManyRow(Person.COLLECTION);
 				return this;
 			}

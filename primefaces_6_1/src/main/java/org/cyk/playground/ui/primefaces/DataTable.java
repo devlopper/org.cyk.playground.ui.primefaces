@@ -7,6 +7,8 @@ import java.util.List;
 import org.cyk.playground.ui.primefaces.model.Order;
 import org.cyk.playground.ui.primefaces.model.OrderItem;
 import org.cyk.playground.ui.primefaces.model.Person;
+import org.cyk.playground.ui.primefaces.model.movement.MovementCollection;
+import org.cyk.playground.ui.primefaces.model.movement.MovementCollectionItem;
 import org.cyk.utility.common.Constant;
 
 public class DataTable {
@@ -29,6 +31,13 @@ public class DataTable {
 				if(!(dataTable.getPropertiesMap().getMaster() instanceof Order))
 					fieldNames.add("order");
 				fieldNames.addAll(Arrays.asList("article.unitPrice","quantity","reduction","amount"));
+			}else if(MovementCollection.class.equals(dataTable.getPropertiesMap().getActionOnClass())){
+				if(Constant.Action.LIST.equals(dataTable.getPropertiesMap().getAction()))
+					fieldNames.add("value");
+			}else if(MovementCollectionItem.class.equals(dataTable.getPropertiesMap().getActionOnClass())){
+				if(!(dataTable.getPropertiesMap().getMaster() instanceof MovementCollection))
+					fieldNames.add("movementCollection");
+				fieldNames.addAll(Arrays.asList("movementCollection","movementAction","value"));
 			}
 		}
 		

@@ -1,19 +1,21 @@
 package org.cyk.playground.ui.primefaces;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.Arrays;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.cyk.playground.ui.primefaces.model.Article;
 import org.cyk.playground.ui.primefaces.model.Order;
 import org.cyk.playground.ui.primefaces.model.OrderItem;
 import org.cyk.playground.ui.primefaces.model.Person;
+import org.cyk.playground.ui.primefaces.model.movement.MovementCollectionItem;
 import org.cyk.ui.web.primefaces.resources.page.controlpanel.IdentifiableEditPage;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.Constant.Action;
 import org.cyk.utility.common.helper.CollectionHelper;
-import org.cyk.utility.common.helper.NumberHelper;
+import org.cyk.utility.common.helper.CollectionHelper.Instance;
 import org.cyk.utility.common.helper.RandomHelper;
+import org.cyk.utility.common.userinterface.Component;
 import org.cyk.utility.common.userinterface.RequestHelper;
 import org.cyk.utility.common.userinterface.collection.DataTable;
 import org.cyk.utility.common.userinterface.container.Form;
@@ -59,28 +61,35 @@ public class IdentifiableEditPageFormMaster extends IdentifiableEditPage.FormMas
 					final DataTable.Cell cell = super.instanciateOne(column, row);
 					
 					if(ArrayUtils.contains(new String[]{"quantity","reduction"},column.getPropertiesMap().getFieldName())){
-						Event.instanciateOne(cell, new String[]{"amount"},new String[]{"amount"}, new Event.CommandAdapter(){
-							private static final long serialVersionUID = 1L;
-							protected void ____execute____() {
-								OrderItem orderItem = (OrderItem) getEventPropertyCellRowValue();
-								computeAmount(orderItem);
-								((OutputText)((DataTable)cell.getColumn().getPropertiesMap().getDataTable()).getColumn("amount").getPropertiesMap().getFooter())
-									.getPropertiesMap().setValue(orderItem.getOrder().getAmount());
-							}
-						});
+						Event.instanciateOne(cell, new String[]{"amount"},new String[]{"amount"});
 					}
 					return cell;
 				}
 			}
-			,Boolean.TRUE,"article.unitPrice","quantity","reduction","amount");
+			,Boolean.TRUE);
+			dataTable.addColumnListener(new CollectionHelper.Instance.Listener.Adapter<Component>(){
+				private static final long serialVersionUID = 1L;
+
+				@Override
+				public void addOne(Instance<Component> instance, Component element, Object source,Object sourceObject) {
+					super.addOne(instance, element, source, sourceObject);
+					if(element instanceof DataTable.Column){
+						DataTable.Column column = (DataTable.Column)element;
+						if("article.unitPrice".equals(column.getPropertiesMap().getFieldName()))
+							column.setCellValueType(DataTable.Cell.ValueType.TEXT);
+						if("amount".equals(column.getPropertiesMap().getFieldName()))
+							column.setCellValueType(DataTable.Cell.ValueType.TEXT);
+					}
+				}
+			});
 			
-			dataTable.getColumn("article.unitPrice").setCellValueType(DataTable.Cell.ValueType.TEXT);
-			dataTable.getColumn("amount").setCellValueType(DataTable.Cell.ValueType.TEXT);
-			//((OutputText)dataTable.getColumn("amount").getPropertiesMap().getFooter()).getPropertiesMap().setValue(StringHelper.getInstance().get("total", new Object[]{}));
-			dataTable.getPropertiesMap().setOnPrepareAddColumnAction(true);
+			dataTable.getPropertiesMap().setOnPrepareAddColumnAction(Boolean.TRUE);
+			dataTable.getPropertyRowPropertiesPropertyRemoveCommandProperties().setUpdatedFieldNames(Arrays.asList("amount"));
+			dataTable.getPropertyRowPropertiesPropertyRemoveCommandProperties().setUpdatedColumnFieldNames(Arrays.asList("amount"));
 			dataTable.prepare();
 			dataTable.build();
-			
+						
+			((OutputText)dataTable.getColumn("amount").getPropertiesMap().getFooter()).getPropertiesMap().setValue(((Order)detail.getMaster().getObject()).getAmount());
 			//((DataTable.Columns)dataTable.getPropertiesMap().getColumns()).getPropertiesMap().setFooterRendered(Boolean.FALSE);
 			if(Constant.Action.isCreateOrUpdate((Action) getPropertiesMap().getAction())){
 				((CollectionHelper.Instance<Object>)dataTable.getPropertiesMap().getRowsCollectionInstance()).addListener(
@@ -93,12 +102,7 @@ public class IdentifiableEditPageFormMaster extends IdentifiableEditPage.FormMas
 							orderItem.setCode(RandomHelper.getInstance().getAlphabetic(3));
 							orderItem.setName(RandomHelper.getInstance().getAlphabetic(3));
 							orderItem.setOrder((Order) getObject());
-							
-						}
-						
-						public void removeOne(CollectionHelper.Instance<Object> instance, Object element) {
-							
-						}
+						}		
 						
 					}
 					);
@@ -111,25 +115,18 @@ public class IdentifiableEditPageFormMaster extends IdentifiableEditPage.FormMas
 			detail.add("article").addBreak();
 			detail.add("quantity").addBreak();
 			detail.add("amount").addBreak();	
+		}else if(MovementCollectionItem.class.equals(getPropertiesMap().getActionOnClass())){
+			detail.add("movementCollection").addBreak();
+			detail.addReadOnly("previousCumul").addBreak();
+			detail.add("movementAction").addBreak();
+			detail.add("value").addBreak();
+			detail.addReadOnly("cumul").addBreak();
+			
+			detail.addEvent("movementCollection", new String[]{"previousCumul","cumul"});
+			detail.addEvent("movementAction", new String[]{"cumul"});
+			detail.addEvent("value", new String[]{"cumul"});
 		}
 		
 	}
 	
-	private void computeAmount(OrderItem orderItem){
-		if(orderItem.getAmount()!=null)
-			orderItem.getOrder().setAmount(orderItem.getOrder().getAmount().subtract(orderItem.getAmount()));
-		
-		if(orderItem.getQuantity() == null)
-			orderItem.setAmount(null);
-		else
-			orderItem.setAmount(orderItem.getArticle().getUnitPrice()
-				.multiply( NumberHelper.getInstance().get(BigDecimal.class,orderItem.getQuantity()))
-				.subtract( NumberHelper.getInstance().get(BigDecimal.class,orderItem.getReduction(),BigDecimal.ZERO))
-				);
-		
-		if(orderItem.getOrder().getAmount()==null)
-			orderItem.getOrder().setAmount(orderItem.getAmount());
-		else
-			orderItem.getOrder().setAmount(orderItem.getOrder().getAmount().add(orderItem.getAmount()));
-	}
 }

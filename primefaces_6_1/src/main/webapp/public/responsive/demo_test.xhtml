@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Responsive Demo Test</title>
+    </h:head>
+
+    <h:body>
+    	<p:toolbar>
+    		<p:toolbarGroup>
+    			<h:outputText value="LABEL" />
+    			<p:selectOneMenu>
+    				<f:selectItem itemLabel="Choice1" />
+    				<f:selectItem itemLabel="Choice2" />
+    				<f:selectItem itemLabel="Choice3" />
+    			</p:selectOneMenu>
+    			<p:commandButton value="BUTTON" />
+    		</p:toolbarGroup>
+    		
+    		<p:toolbarGroup>
+    			<p:inputText />
+    			<p:commandButton value="OK" />
+    		</p:toolbarGroup>
+    	</p:toolbar>	
+    	
+    	<p:toolbar styleClass="ui-g">
+    		<p:toolbarGroup styleClass="ui-g-12 ui-md-6 ui-lg-6">
+    			<div class="ui-g-12 ui-md-4 ui-lg-4" style="display: inline-block;border: 1px solid red;">
+    				<h:outputText value="LABEL" />
+    			</div>
+    			
+    			<div class="ui-g-12 ui-md-4 ui-lg-4" style="display: inline-block;">
+	    			<p:selectOneMenu>
+	    				<f:selectItem itemLabel="Choice1" />
+	    				<f:selectItem itemLabel="Choice2" />
+	    				<f:selectItem itemLabel="Choice3" />
+	    			</p:selectOneMenu>
+    			</div>
+    			
+    			<div class="ui-g-12 ui-md-4 ui-lg-4" style="">
+    				<p:commandButton value="BUTTON" />
+    			</div>
+    		</p:toolbarGroup>
+    		
+    		<p:toolbarGroup styleClass="ui-g-12 ui-md-6 ui-lg-6">
+    			<p:inputText />
+    			<p:commandButton value="OK" />
+    		</p:toolbarGroup>
+    	</p:toolbar>	
+    	
+    	<div class="ui-fluid">
+		    <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+		        <p:outputLabel for="input" value="Input"/>
+		        <p:inputText id="input"/>
+		 
+		        <p:outputLabel for="area" value="Textarea"/>
+		        <p:inputTextarea id="area"/>
+		 
+		        <p:outputLabel for="calendar" value="Calendar"/>
+		        <p:calendar id="calendar"/>
+		    </p:panelGrid>		 
+		</div>
+		
+	    <p:panelGrid columns="2" columnClasses="ui-grid-col-1,ui-grid-col-11" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+	        <p:outputLabel for="input" value="Input"/>
+	        <p:inputText id="input"/>
+	 
+	        <p:outputLabel for="area" value="Textarea"/>
+	        <p:inputTextarea id="area"/>
+	 
+	        <p:outputLabel for="calendar" value="Calendar"/>
+	        <p:calendar id="calendar"/>
+	    </p:panelGrid>		 
+		
+    				
+    </h:body>
+
+</html>

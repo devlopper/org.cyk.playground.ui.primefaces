@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Responsive toolbar</title>
+    </h:head>
+
+    <h:body>
+    	<p:toolbar styleClass="ui-g">
+    		<p:toolbarGroup styleClass="ui-toolbar-group-left ui-g-6">
+    			<h:outputText value="LABEL" />
+    			<p:selectOneMenu>
+    				<f:selectItem itemLabel="Choice1" />
+    				<f:selectItem itemLabel="Choice2" />
+    				<f:selectItem itemLabel="Choice3" />
+    			</p:selectOneMenu>
+    			<p:commandButton value="BUTTON" />
+    		</p:toolbarGroup>
+    		
+    		<p:toolbarGroup styleClass="ui-toolbar-group-right ui-g-6">
+    			<div class="ui-g-12">
+    				<p:inputText />
+    			</div>
+    			<div class="ui-g-12">
+    				<p:commandButton value="OK" />
+    			</div>
+    		</p:toolbarGroup>
+    		
+    	</p:toolbar>	
+    		
+		
+    </h:body>
+
+</html>

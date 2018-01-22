@@ -20,7 +20,7 @@ public class Order extends AbstractIdentified {
 
 	public static final List<Order> COLLECTION;
 	static {
-		COLLECTION = (List<Order>) instanciateManyRandomly(3);
+		COLLECTION = (List<Order>) instanciateManyRandomly(new String[]{"ORDER01","ORDER02","ORDER03","ORDERA4F","ORDER05B"});
 	}
 	
 	private BigDecimal amount;
@@ -28,25 +28,25 @@ public class Order extends AbstractIdentified {
 	
 	@Override
 	public String toString() {
-		return getCode();
+		return getCode()+":"+amount;
 	}
 	
 	/**/
 	
-	public static Order instanciateOneRandomly(){
+	public static Order instanciateOneRandomly(String code){
 		Order order = new Order();
 		order.setGlobalIdentifier(new GlobalIdentifier());
-		order.getGlobalIdentifier().setCode("ORD"+RandomHelper.getInstance().getNumeric(5));
+		order.getGlobalIdentifier().setCode(code);
 		order.getGlobalIdentifier().setName(RandomHelper.getInstance().getAlphabetic(15));
 		order.getGlobalIdentifier().setDescription(RandomHelper.getInstance().getLines(2, 5, 3, 10));
 		order.setAmount(new BigDecimal(RandomHelper.getInstance().getInteger(1, 10000)));
 		return order;
 	}
 	
-	public static Collection<Order> instanciateManyRandomly(Integer count){
+	public static Collection<Order> instanciateManyRandomly(String[] codes){
 		Collection<Order> orders = new ArrayList<>();
-		for(Integer index = 0 ; index < count ; index ++)
-			orders.add(instanciateOneRandomly());
+		for(String code : codes)
+			orders.add(instanciateOneRandomly(code));
 		return orders;
 	}
 

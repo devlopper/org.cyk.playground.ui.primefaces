@@ -8,15 +8,14 @@ import javax.inject.Named;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.cyk.utility.common.Constant.Action;
+import org.cyk.ui.api.resources.SubmitCommandActionAdapter;
+import org.cyk.utility.common.Constant;
+import org.cyk.utility.common.helper.ClassHelper;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.container.window.Window;
-import org.cyk.utility.common.userinterface.input.InputText;
-import org.cyk.utility.common.userinterface.input.InputTextarea;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.experimental.Accessors;
 
 @Named @ViewScoped @Getter @Setter
 public class FormsPage extends Window implements Serializable {
@@ -27,12 +26,12 @@ public class FormsPage extends Window implements Serializable {
 	@Override
 	protected void initialisation() {
 		super.initialisation();
-		getPropertiesMap().setTitle("Forms");
 		
-		form = new Form.Master(this,dataModel,(Action) getPropertiesMap().getAction(),SubmitCommandActionAdapter.class).setLabelFromIdentifier("myformlabel");
+		form = new Form.Master(this,dataModel,Constant.Action.CREATE).setLabelFromIdentifier("myformlabel");
 		
-		createModel();
-		
+		//createModel();
+		form.getDetail().add("firstName");
+		form.prepare();
 		form.build();
 		
 		
@@ -40,9 +39,10 @@ public class FormsPage extends Window implements Serializable {
 	
 	private void createModel(){
     	Form.Detail formDetail = form.instanciateDetail(org.cyk.utility.common.userinterface.Layout.Type.ADAPTIVE);
-    	InputText c1 = new InputText();
-    	c1.setLabelFromIdentifier("f1").__setField__(dataModel, "firstName");
-    	InputText c2 = new InputText();
+    	//formDetail.add("firstName");
+    	//InputText c1 = new InputText();
+    	//c1.setLabelFromIdentifier("f1").__setField__(dataModel, "firstName");
+    	/*InputText c2 = new InputText();
     	c2.setLabelFromIdentifier("f2").__setField__(dataModel, "lastName");
     	InputText c3 = new InputText();
     	c3.setLabelFromIdentifier("f3");
@@ -57,9 +57,10 @@ public class FormsPage extends Window implements Serializable {
     	c7.getArea().getWidth().setDistance(2);
     	InputText c8 = new InputText();
     	c8.setLabelFromIdentifier("f8");
+    	*/
+    	//formDetail.layOut(c1);//.layOut(c2).layOutBreak().layOut(c3).layOutBreak().layOut(c4).layOut(c5).layOutBreak().layOut(c6).layOut(c7).layOutBreak().layOut(c8).layOutBreak();		
     	
-    	formDetail.layOut(c1).layOut(c2).layOutBreak().layOut(c3).layOutBreak().layOut(c4).layOut(c5).layOutBreak().layOut(c6).layOut(c7).layOutBreak().layOut(c8).layOutBreak();		
-    }
+	}
 	
 	@Getter @Setter
 	public static class DataModel {
@@ -75,8 +76,8 @@ public class FormsPage extends Window implements Serializable {
 		}
 	}
 	
-	@Getter @Setter @Accessors(chain=true)
-	public static class SubmitCommandActionAdapter extends org.cyk.utility.common.userinterface.container.Form.Master.SubmitCommandActionAdapter implements Serializable{
+	/*@Getter @Setter @Accessors(chain=true)
+	public static class SubmitCommandActionAdapter extends Form.Master.SubmitCommandActionAdapter implements Serializable{
 		private static final long serialVersionUID = 1L;
 
 		@Override
@@ -88,8 +89,8 @@ public class FormsPage extends Window implements Serializable {
 		
 		@Override
 		public Boolean getIsConfirmable() {
-			return Boolean.TRUE;
+			return Boolean.FALSE;
 		}
 		
-	}
+	}*/
 }

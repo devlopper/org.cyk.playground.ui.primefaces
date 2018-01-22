@@ -2,7 +2,6 @@ package org.cyk.playground.ui.primefaces;
 
 import java.io.Serializable;
 
-import org.cyk.playground.ui.primefaces.model.Article;
 import org.cyk.playground.ui.primefaces.model.Order;
 import org.cyk.playground.ui.primefaces.model.OrderItem;
 import org.cyk.playground.ui.primefaces.model.movement.MovementAction;
@@ -11,11 +10,10 @@ import org.cyk.playground.ui.primefaces.model.movement.MovementCollectionItem;
 import org.cyk.ui.web.primefaces.resources.page.controlpanel.IdentifiableConsultPage;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.IconHelper;
-import org.cyk.utility.common.helper.RandomHelper;
 import org.cyk.utility.common.helper.UniformResourceLocatorHelper;
 import org.cyk.utility.common.userinterface.collection.DataTable;
-import org.cyk.utility.common.userinterface.command.Menu;
 import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.output.OutputText;
 
 public class IdentifiableConsultPageFormMaster extends IdentifiableConsultPage.FormMaster implements Serializable {
 	private static final long serialVersionUID = -6211058744595898478L;
@@ -30,20 +28,18 @@ public class IdentifiableConsultPageFormMaster extends IdentifiableConsultPage.F
 			detail.addReadOnly("amount");
 			
 			/**/
-			DataTable dataTable = instanciateDataTable(OrderItem.class,null,null,Boolean.TRUE/*,"order","article.globalIdentifier.name","article.unitPrice","quantity","reduction","amount"*/);
+			DataTable dataTable = instanciateDataTable(OrderItem.class,null,null,Boolean.TRUE);
 			dataTable.getPropertiesMap().setOnPrepareAddMenu(Boolean.TRUE);
-			dataTable.getPropertiesMap().setOnPrepareAddColumnAction(true);
+			dataTable.getPropertiesMap().setOnPrepareAddColumnAction(Boolean.TRUE);
+			dataTable.getPropertiesMap().setOnPrepareAddMenuAddCommand(Boolean.FALSE);
+			dataTable.addMainMenuNode("add article", IconHelper.Icon.FontAwesome.PLUS, UniformResourceLocatorHelper.getInstance()
+					.getStringifier(Constant.Action.CREATE, OrderItem.class).addQueryParameterInstances(detail.getMaster().getObject()))
+					._setLabelPropertyValue("add article")
+					;
 			dataTable.prepare();
 			dataTable.build();
-			
-			Menu menu = (Menu) dataTable.getPropertiesMap().getMainMenu();
-			menu.addNode("add article")._setPropertyUrl(Constant.Action.CREATE, OrderItem.class
-					,Order.class,((Order)detail.getMaster().getObject()).getCode()
-					,Article.class,RandomHelper.getInstance().getElement(Article.COLLECTION).getCode()
-					)
-				._setPropertyIcon(IconHelper.Icon.FontAwesome.PLUS);
-			
-			menu.build();
+			if(((Order)detail.getMaster().getObject()).getAmount() != null)
+				((OutputText)dataTable.getColumn("amount").getPropertiesMap().getFooter()).getPropertiesMap().setValue( ((Order)detail.getMaster().getObject()).getAmount() );
 		}else if(OrderItem.class.equals(getPropertiesMap().getActionOnClass())){
 			detail.add("order").addBreak();
 			detail.add("article").addBreak();

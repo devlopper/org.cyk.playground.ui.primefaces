@@ -10,10 +10,10 @@
  	<ui:decorate template="#{formsPage.propertiesMap.template}">
  		<ui:param name="page" value="#{formsPage}" />
  		<ui:define name="centerCenterContent">
- 			
+ 			<p:log id="log" />
  			<ui:decorate template="#{formsPage.form.propertiesMap.template}">
 		 		<ui:param name="form" value="#{formsPage.form}" />
-		 		<ui:param name="identifier" value="myform"/>
+		 		
 		 	</ui:decorate>
  			
  		</ui:define>

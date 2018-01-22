@@ -26,8 +26,10 @@ import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.Constant.Action;
 import org.cyk.utility.common.computation.DataReadConfiguration;
 import org.cyk.utility.common.helper.ClassHelper;
+import org.cyk.utility.common.helper.CollectionHelper;
 import org.cyk.utility.common.helper.FieldHelper;
 import org.cyk.utility.common.helper.FilterHelper;
+import org.cyk.utility.common.helper.NumberHelper;
 import org.cyk.utility.common.helper.FilterHelper.Filter;
 
 public class InstanceHelper implements Serializable {
@@ -60,6 +62,15 @@ public class InstanceHelper implements Serializable {
     			return ((AbstractIdentified)instance).getGlobalIdentifier().getCode();
     		return super.getIdentifier(instance);
     	}
+    	
+    	/*@Override
+    	public <T> Collection<T> get(Class<T> aClass, Object master) {
+    		if(aClass.equals(OrderItem.class)){
+    			if(master instanceof Order)
+    				return OrderItem.fi
+    		}
+    		return super.get(aClass, master);
+    	}*/
     	
 		@SuppressWarnings("unchecked")
 		@Override
@@ -270,6 +281,34 @@ public class InstanceHelper implements Serializable {
 						cumul = cumul.subtract(movementCollectionItem.getValue());
 				}
 				movementCollectionItem.setCumul(cumul);
+			}else if(instance instanceof OrderItem){
+				OrderItem orderItem = (OrderItem) instance;
+				if(orderItem.getAmount()!=null)
+					orderItem.getOrder().setAmount(orderItem.getOrder().getAmount().subtract(orderItem.getAmount()));
+				
+				if(orderItem.getQuantity() == null)
+					orderItem.setAmount(null);
+				else
+					orderItem.setAmount(orderItem.getArticle().getUnitPrice()
+						.multiply( NumberHelper.getInstance().get(BigDecimal.class,orderItem.getQuantity()))
+						.subtract( NumberHelper.getInstance().get(BigDecimal.class,orderItem.getReduction(),BigDecimal.ZERO))
+						);
+				
+				if(orderItem.getOrder().getAmount()==null)
+					orderItem.getOrder().setAmount(orderItem.getAmount());
+				else
+					orderItem.getOrder().setAmount(orderItem.getOrder().getAmount().add(orderItem.getAmount()));
+			}else if(instance instanceof Order){
+				Order order = (Order) instance;
+				if(CollectionHelper.getInstance().isNotEmpty(order.getOrderItems())){
+					order.setAmount(BigDecimal.ZERO);
+					for(OrderItem index : order.getOrderItems().getElements()){
+						if(index.getAmount()!=null)
+							order.setAmount(order.getAmount().add(index.getAmount()));
+					}
+				}else{
+					order.setAmount(null);
+				}
 			}
 			return instance;
 		}
