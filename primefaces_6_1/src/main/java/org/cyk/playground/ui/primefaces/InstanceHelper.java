@@ -263,7 +263,9 @@ public class InstanceHelper implements Serializable {
 		@Override
 		public <T> T computeChanges(T instance) {
 			super.computeChanges(instance);
-			if(instance instanceof MovementCollectionItem){
+			if(instance instanceof MovementCollection){
+				
+			}else if(instance instanceof MovementCollectionItem){
 				MovementCollectionItem movementCollectionItem = (MovementCollectionItem) instance;
 				if(movementCollectionItem.getMovementCollection() == null)
 					movementCollectionItem.setPreviousCumul(null);

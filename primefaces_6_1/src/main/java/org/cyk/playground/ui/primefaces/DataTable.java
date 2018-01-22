@@ -37,7 +37,7 @@ public class DataTable {
 			}else if(MovementCollectionItem.class.equals(dataTable.getPropertiesMap().getActionOnClass())){
 				if(!(dataTable.getPropertiesMap().getMaster() instanceof MovementCollection))
 					fieldNames.add("movementCollection");
-				fieldNames.addAll(Arrays.asList("movementCollection","movementAction","value"));
+				fieldNames.addAll(Arrays.asList("movementAction","value"));
 			}
 		}
 		

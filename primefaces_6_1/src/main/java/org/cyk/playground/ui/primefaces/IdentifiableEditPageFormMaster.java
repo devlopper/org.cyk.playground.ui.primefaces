@@ -125,6 +125,16 @@ public class IdentifiableEditPageFormMaster extends IdentifiableEditPage.FormMas
 			detail.addEvent("movementCollection", new String[]{"previousCumul","cumul"});
 			detail.addEvent("movementAction", new String[]{"cumul"});
 			detail.addEvent("value", new String[]{"cumul"});
+			
+			//OutputText outputText = 
+			//((Event)detail.getControlByFieldName("movementCollection").getPropertiesMap().getEvent()).getPropertiesMap()
+			//	.setUpdate("@(."+ detail.getControlByFieldName("previousCumul").getPropertiesMap().getIdentifierAsStyleClass() +")");
+			
+			//System.out.println("IdentifiableEditPageFormMaster.__prepare__() : "+((Event)detail.getControlByFieldName("movementCollection").getPropertiesMap().getEvent()).getPropertiesMap()
+			//	.getUpdate());
+			
+			//((Event)detail.getControlByFieldName("movementCollection").getPropertiesMap().getEvent()).getPropertiesMap()
+			//.setUpdate("@(form)");
 		}
 		
 	}
