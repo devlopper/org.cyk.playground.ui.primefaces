@@ -7,7 +7,6 @@ import org.cyk.playground.ui.primefaces.model.OrderItem;
 import org.cyk.playground.ui.primefaces.model.movement.MovementAction;
 import org.cyk.playground.ui.primefaces.model.movement.MovementCollection;
 import org.cyk.playground.ui.primefaces.model.movement.MovementCollectionItem;
-import org.cyk.ui.web.primefaces.resources.page.controlpanel.IdentifiableConsultPage;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.IconHelper;
 import org.cyk.utility.common.helper.UniformResourceLocatorHelper;
@@ -15,7 +14,7 @@ import org.cyk.utility.common.userinterface.collection.DataTable;
 import org.cyk.utility.common.userinterface.container.Form;
 import org.cyk.utility.common.userinterface.output.OutputText;
 
-public class IdentifiableConsultPageFormMaster extends IdentifiableConsultPage.FormMaster implements Serializable {
+public class IdentifiableConsultPageFormMaster extends org.cyk.ui.web.primefaces.resources.page.controlpanel.IdentifiableConsultPage.FormMaster implements Serializable {
 	private static final long serialVersionUID = -6211058744595898478L;
 	
 	@Override
