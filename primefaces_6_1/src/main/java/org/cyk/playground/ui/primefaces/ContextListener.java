@@ -23,7 +23,6 @@ import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.helper.InstanceHelper;
 import org.cyk.utility.common.helper.MapHelper;
 import org.cyk.utility.common.helper.UniformResourceLocatorHelper;
-import org.cyk.utility.common.security.Shiro;
 import org.cyk.utility.common.userinterface.Component;
 import org.cyk.utility.common.userinterface.collection.DataTable;
 import org.cyk.utility.common.userinterface.command.Menu;
@@ -45,8 +44,8 @@ public class ContextListener extends ServletContextListener implements Serializa
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public void contextInitialized(ServletContextEvent servletContextEvent) {
-		super.contextInitialized(servletContextEvent);
+	public void __contextInitialized__(ServletContextEvent servletContextEvent) {
+		super.__contextInitialized__(servletContextEvent);
 	
 		ClassHelper.getInstance().map(Input.Listener.class, InputAdapter.class);
 		ClassHelper.getInstance().map(FileHelper.Listener.class, FileAdapter.class);
@@ -103,10 +102,11 @@ public class ContextListener extends ServletContextListener implements Serializa
 		IniWebEnvironment.INI.setCacheManagerClass(org.apache.shiro.cache.MemoryConstrainedCacheManager.class);
 		*/
 		
-		Shiro.Ini ini = Shiro.Ini.getInstance().clean();
+		/*Shiro.Ini ini = Shiro.Ini.getInstance().clean();
 		ini.addUsers("admin", "123","user1","123","user2","123");
 		ini.addFoldersForUser("private1");
 		ini.addLoginUrl("/public/security/login.jsf");
+		*/
 		//ini.addRoles("admin", "*","schwartz", "lightsaber:*","goodguy", "winnebago:drive:eagle5");
 		
 	}
