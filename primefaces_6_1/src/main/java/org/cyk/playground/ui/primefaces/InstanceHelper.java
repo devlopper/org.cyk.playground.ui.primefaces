@@ -159,7 +159,7 @@ public class InstanceHelper implements Serializable {
 		
 		@SuppressWarnings("unchecked")
 		@Override
-		public <T> T getByIdentifier(Class<T> aClass, Object identifier) {
+		public <T> T getByIdentifier(Class<T> aClass, Object identifier,ClassHelper.Listener.IdentifierType identifierType) {
 			if(Person.class.equals(aClass))
 				return (T) Person.get((String)identifier);
 			if(PhoneNumberType.class.equals(aClass))
@@ -188,7 +188,7 @@ public class InstanceHelper implements Serializable {
 			if(MovementCollectionItem.class.equals(aClass))
 				return (T) MovementCollectionItem.get((String)identifier);
 			
-			return super.getByIdentifier(aClass, identifier);
+			return super.getByIdentifier(aClass, identifier,identifierType);
 		}
 		
 		/*@SuppressWarnings("unchecked")
