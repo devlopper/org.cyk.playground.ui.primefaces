@@ -28,8 +28,6 @@ public class IdentifiableConsultPageFormMaster extends org.cyk.ui.web.primefaces
 			
 			/**/
 			DataTable dataTable = instanciateDataTable(OrderItem.class,null,null,Boolean.TRUE);
-			dataTable.getPropertiesMap().setOnPrepareAddMenu(Boolean.TRUE);
-			dataTable.getPropertiesMap().setOnPrepareAddColumnAction(Boolean.TRUE);
 			dataTable.getPropertiesMap().setOnPrepareAddMenuAddCommand(Boolean.FALSE);
 			dataTable.addMainMenuNode("add article", IconHelper.Icon.FontAwesome.PLUS, UniformResourceLocatorHelper.getInstance()
 					.getStringifier(Constant.Action.CREATE, OrderItem.class).addQueryParameterInstances(detail.getMaster().getObject()))
@@ -49,8 +47,6 @@ public class IdentifiableConsultPageFormMaster extends org.cyk.ui.web.primefaces
 			
 			/**/
 			DataTable dataTable = instanciateDataTable(MovementCollectionItem.class,null,null,Boolean.TRUE/*,"movementCollection","movementAction","value","previousCumul","cumul"*/);
-			dataTable.getPropertiesMap().setOnPrepareAddMenu(Boolean.TRUE);
-			dataTable.getPropertiesMap().setOnPrepareAddColumnAction(true);
 			dataTable.getPropertiesMap().setOnPrepareAddMenuAddCommand(Boolean.FALSE);
 			
 			MovementAction movementAction = MovementAction.IN;

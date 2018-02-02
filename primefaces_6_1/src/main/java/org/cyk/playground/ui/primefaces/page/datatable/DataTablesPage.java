@@ -35,7 +35,6 @@ public class DataTablesPage extends Window implements Serializable {
 		
 		personDataTable.getPropertiesMap().setOnPrepareAddMenu(Boolean.TRUE);
 		personDataTable.getPropertiesMap().setOnPrepareAddColumnOrderNumber(Boolean.TRUE);
-		personDataTable.getPropertiesMap().setOnPrepareAddColumnAction(Boolean.TRUE);
 		personDataTable.setOnPrepareCallLoad(Boolean.TRUE);
 		
 		personDataTable.getPropertiesMap().setActionOnClass(Person.class);

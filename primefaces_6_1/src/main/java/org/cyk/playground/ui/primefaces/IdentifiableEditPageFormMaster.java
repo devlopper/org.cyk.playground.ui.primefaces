@@ -82,7 +82,6 @@ public class IdentifiableEditPageFormMaster extends org.cyk.ui.web.primefaces.re
 				}
 			});
 			
-			dataTable.getPropertiesMap().setOnPrepareAddColumnAction(Boolean.TRUE);
 			dataTable.getPropertyRowPropertiesPropertyRemoveCommandProperties().setUpdatedFieldNames(Arrays.asList("amount"));
 			dataTable.getPropertyRowPropertiesPropertyRemoveCommandProperties().setUpdatedColumnFieldNames(Arrays.asList("amount"));
 			dataTable.prepare();

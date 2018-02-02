@@ -97,7 +97,6 @@ public class DataTablesMasterDetailInputPage extends Window implements Serializa
 		,Boolean.TRUE,"article.unitPrice","quantity","reduce","amount");
 		orderItemDataTable1.getColumn("article.unitPrice").setCellValueType(DataTable.Cell.ValueType.TEXT);
 		orderItemDataTable1.getColumn("amount").setCellValueType(DataTable.Cell.ValueType.TEXT);
-		orderItemDataTable1.getPropertiesMap().setOnPrepareAddColumnAction(true);
 		orderItemDataTable1.prepare();
 		orderItemDataTable1.build();
 		//System.out.println( ((Command)orderItemDataTable1.getPropertiesMap().getAddCommandComponent()).getPropertiesMap() );
