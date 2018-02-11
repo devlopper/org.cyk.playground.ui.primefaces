@@ -50,7 +50,6 @@ public class ContextListener extends ServletContextListener implements Serializa
 		ClassHelper.getInstance().map(Input.Listener.class, InputAdapter.class);
 		ClassHelper.getInstance().map(FileHelper.Listener.class, FileAdapter.class);
 		ClassHelper.getInstance().map(ClassHelper.Listener.class, org.cyk.playground.ui.primefaces.ClassHelper.Listener.class);
-		ClassHelper.getInstance().map(Menu.Builder.class,MenuBuilder.class);
 		ClassHelper.getInstance().map(Component.Listener.class,ComponentAdapter.class);
 		
 		ClassHelper.getInstance().map(DataTable.Listener.class, org.cyk.playground.ui.primefaces.DataTable.Listener.class);
@@ -109,6 +108,11 @@ public class ContextListener extends ServletContextListener implements Serializa
 		*/
 		//ini.addRoles("admin", "*","schwartz", "lightsaber:*","goodguy", "winnebago:drive:eagle5");
 		
+	}
+	
+	@Override
+	protected Class<?> __getMenuBuilderClass__() {
+		return MenuBuilderDyanour.class;
 	}
 
 	/**/
