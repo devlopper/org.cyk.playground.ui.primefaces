@@ -50,11 +50,11 @@ public class Person extends AbstractIdentified {
 		COLLECTION.add(person);
 	}
 	
-	public static Person instanciateOneRandomly(){
+	public static Person instanciateOneRandomly(Integer index){
 		RandomHelper.Person randomPerson = RandomHelper.getInstance().getPerson();
 		Person person = new Person();
 		person.setGlobalIdentifier(new GlobalIdentifier());
-		person.getGlobalIdentifier().setCode(RandomHelper.getInstance().getAlphabetic(5));
+		person.getGlobalIdentifier().setCode("P"+index);
 		person.getGlobalIdentifier().setName(randomPerson.getFirstname());
 		person.setLastnames(randomPerson.getLastname());
 		person.getGlobalIdentifier().setImage(new File(randomPerson.getHeadOnlyPhoto()));
@@ -68,7 +68,7 @@ public class Person extends AbstractIdentified {
 	public static Collection<Person> instanciateManyRandomly(Integer count){
 		Collection<Person> persons = new ArrayList<>();
 		for(Integer index = 0 ; index < count ; index ++)
-			persons.add(instanciateOneRandomly());
+			persons.add(instanciateOneRandomly(index));
 		return persons;
 	}
 
