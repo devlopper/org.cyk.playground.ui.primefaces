@@ -89,18 +89,20 @@ public class NotificationsPage extends Window implements Serializable {
 		manyMessagesDefault(NotificationHelper.Notification.Viewer.Type.DIALOG,Boolean.TRUE);
 	}
 	
+	//La valeur de l'attribut <<p�riode identifiable>> de l'entit� <<mouvement>> doit �tre non nulle.
+	
 	/**/
 	
 	private void oneMessageDefault(NotificationHelper.Notification.Viewer.Type type,Boolean big){
 		NotificationHelper.Notification notification = new NotificationHelper.Notification();
-		notification.setDetails("MyDetails"+generateDetails(big)).setSummary("MySummary"+generateSummary(big)).setSeverityType(SeverityType.ERROR);
+		notification.setDetails("<<MyDetails>>"+generateDetails(big)).setSummary("MySummary"+generateSummary(big)).setSeverityType(SeverityType.ERROR);
 		NotificationHelper.getInstance().getViewer().setInput(notification).setType(type).execute();
 		//notificationDialog.getPropertiesMap().setVisible(CollectionHelper.getInstance().getSize(FacesContext.getCurrentInstance().getMessageList()) > 0);
 	}
 	
 	private void manyMessagesDefault(NotificationHelper.Notification.Viewer.Type type,Boolean big){
 		NotificationHelper.Notification notification = new NotificationHelper.Notification();
-		notification.setDetails("MyDetails1"+generateDetails(big)).setSummary("MySummary1"+generateSummary(big)).setSeverityType(SeverityType.INFO);
+		notification.setDetails("<<MyDetails1>>"+generateDetails(big)).setSummary("<<MySummary1>>"+generateSummary(big)).setSeverityType(SeverityType.INFO);
 		NotificationHelper.getInstance().getViewer().setInput(notification).setType(type).execute();
 		
 		notification = new NotificationHelper.Notification();
