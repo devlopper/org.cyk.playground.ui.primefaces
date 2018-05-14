@@ -10,7 +10,7 @@ import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.ui.web.primefaces.resources.PrimefacesResourcesManager;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.TimeHelper;
-import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.container.form.Form;
 import org.cyk.utility.common.userinterface.container.window.Window;
 
 import lombok.Getter;
@@ -21,10 +21,10 @@ import lombok.experimental.Accessors;
 public class GetFormsPage extends Window implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Form.Master personFormSimple;
-	private Form.Master personFormFull;
-	private Form.Master locationFormSimple;
-	private Form.Master locationFormFull;
+	private Form personFormSimple;
+	private Form personFormFull;
+	private Form locationFormSimple;
+	private Form locationFormFull;
 	
 	@Override
 	protected void initialisation() {
@@ -50,7 +50,7 @@ public class GetFormsPage extends Window implements Serializable {
 	}
 
 	@Getter @Setter @Accessors(chain=true)
-	public static class SubmitCommandActionAdapter extends org.cyk.utility.common.userinterface.container.Form.Master.SubmitCommandActionAdapter implements Serializable{
+	public static class SubmitCommandActionAdapter extends org.cyk.utility.common.userinterface.container.form.Form.SubmitCommandActionAdapter implements Serializable{
 		private static final long serialVersionUID = 1L;
 
 		@Override

@@ -7,7 +7,7 @@ import javax.inject.Named;
 
 import org.cyk.playground.ui.primefaces.model.Locality;
 import org.cyk.playground.ui.primefaces.model.LocalityType;
-import org.cyk.utility.common.userinterface.collection.DataTable;
+import org.cyk.utility.common.userinterface.collection.Column;
 import org.cyk.utility.common.userinterface.container.window.Window;
 import org.cyk.utility.common.userinterface.hierarchy.Hierarchy;
 
@@ -29,7 +29,7 @@ public class HierarchiesPage extends Window implements Serializable {
 		tree.build();
 		
 		table = createTree(Hierarchy.RenderType.TABLE);
-		//DataTable.Columns.add(table, "label1", "value");
+		//Columns.add(table, "label1", "value");
 		table.build();
 		
 		treeLocality = new Hierarchy();
@@ -58,9 +58,9 @@ public class HierarchiesPage extends Window implements Serializable {
 	private Hierarchy createTree(Hierarchy.RenderType renderType){
 		Hierarchy tree = new Hierarchy();
 		tree.setRenderType(renderType);
-		tree.addColumnByFieldName("VALUE", DataTable.Column.CellValueSource.ROW_PROPERTIES_MAP);
-		tree.addColumnByFieldName("STYLE_CLASS", DataTable.Column.CellValueSource.ROW_PROPERTIES_MAP);
-		tree.addColumnByFieldName("CLASS", DataTable.Column.CellValueSource.ROW_PROPERTIES_MAP);
+		tree.addColumnByFieldName("VALUE", Column.CellValueSource.ROW_PROPERTIES_MAP);
+		tree.addColumnByFieldName("STYLE_CLASS", Column.CellValueSource.ROW_PROPERTIES_MAP);
+		tree.addColumnByFieldName("CLASS", Column.CellValueSource.ROW_PROPERTIES_MAP);
 		tree.addNode("1")
 			.addNode("1.1")
 			.getParent().addNode("1.2")

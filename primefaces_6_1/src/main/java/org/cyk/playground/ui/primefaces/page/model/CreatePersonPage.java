@@ -10,7 +10,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.cyk.playground.ui.primefaces.model.Person;
 import org.cyk.utility.common.Constant.Action;
 import org.cyk.utility.common.userinterface.Layout;
-import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.container.form.Form;
+import org.cyk.utility.common.userinterface.container.form.FormDetail;
 import org.cyk.utility.common.userinterface.container.window.Window;
 
 import lombok.Getter;
@@ -29,9 +30,9 @@ public class CreatePersonPage extends Window implements Serializable {
 		Person person = new Person();
 		//person.getGlobalIdentifier().setImage(new File(FileHelper.getInstance().get(ContextListener.class, "image001.png")));
 		//System.out.println("CreatePersonPage.initialisation() : "+person.getGlobalIdentifier().getImage());
-		form = new Form.Master(this,person,(Action) getPropertiesMap().getAction(),SubmitCommandActionAdapter.class);
+		form = new Form(this,person,(Action) getPropertiesMap().getAction(),SubmitCommandActionAdapter.class);
 		
-		Form.Detail detail = form.getDetail();
+		FormDetail detail = form.getDetail();
 		detail.getLayout().setType(Layout.Type.ADAPTIVE);
 		detail.setFieldsObjectFromMaster("globalIdentifier");
 		detail.add("code");
@@ -52,7 +53,7 @@ public class CreatePersonPage extends Window implements Serializable {
 	}
 
 	@Getter @Setter @Accessors(chain=true)
-	public static class SubmitCommandActionAdapter extends org.cyk.utility.common.userinterface.container.Form.Master.SubmitCommandActionAdapter implements Serializable{
+	public static class SubmitCommandActionAdapter extends org.cyk.utility.common.userinterface.container.form.Form.SubmitCommandActionAdapter implements Serializable{
 		private static final long serialVersionUID = 1L;
 
 		@Override

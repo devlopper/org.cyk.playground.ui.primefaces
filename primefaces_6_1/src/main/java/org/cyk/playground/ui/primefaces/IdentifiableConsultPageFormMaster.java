@@ -11,7 +11,7 @@ import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.IconHelper;
 import org.cyk.utility.common.helper.UniformResourceLocatorHelper;
 import org.cyk.utility.common.userinterface.collection.DataTable;
-import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.container.form.FormDetail;
 import org.cyk.utility.common.userinterface.output.OutputText;
 
 public class IdentifiableConsultPageFormMaster extends org.cyk.ui.web.primefaces.resources.page.controlpanel.IdentifiableConsultPage.FormMaster implements Serializable {
@@ -20,7 +20,7 @@ public class IdentifiableConsultPageFormMaster extends org.cyk.ui.web.primefaces
 	@Override
 	protected void __prepare__() {
 		super.__prepare__();
-		Form.Detail detail = getDetail();
+		FormDetail detail = getDetail();
 		detail.setFieldsObjectFromMaster();
 		
 		if(Order.class.equals(getPropertiesMap().getActionOnClass())){

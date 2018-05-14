@@ -8,10 +8,9 @@ import javax.inject.Named;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.cyk.ui.api.resources.SubmitCommandActionAdapter;
 import org.cyk.utility.common.Constant;
-import org.cyk.utility.common.helper.ClassHelper;
-import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.container.form.FormDetail;
+import org.cyk.utility.common.userinterface.container.form.Form;
 import org.cyk.utility.common.userinterface.container.window.Window;
 
 import lombok.Getter;
@@ -27,7 +26,7 @@ public class FormsPage extends Window implements Serializable {
 	protected void initialisation() {
 		super.initialisation();
 		
-		form = new Form.Master(this,dataModel,Constant.Action.CREATE).setLabelFromIdentifier("myformlabel");
+		form = new Form(this,dataModel,Constant.Action.CREATE).setLabelFromIdentifier("myformlabel");
 		
 		//createModel();
 		form.getDetail().add("firstName");
@@ -38,7 +37,7 @@ public class FormsPage extends Window implements Serializable {
 	}
 	
 	private void createModel(){
-    	Form.Detail formDetail = form.instanciateDetail(org.cyk.utility.common.userinterface.Layout.Type.ADAPTIVE);
+		FormDetail formDetail = form.instanciateDetail(org.cyk.utility.common.userinterface.Layout.Type.ADAPTIVE);
     	//formDetail.add("firstName");
     	//InputText c1 = new InputText();
     	//c1.setLabelFromIdentifier("f1").__setField__(dataModel, "firstName");

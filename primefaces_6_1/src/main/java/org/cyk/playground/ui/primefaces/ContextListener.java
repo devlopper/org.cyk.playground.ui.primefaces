@@ -26,7 +26,7 @@ import org.cyk.utility.common.helper.UniformResourceLocatorHelper;
 import org.cyk.utility.common.security.Shiro;
 import org.cyk.utility.common.userinterface.Component;
 import org.cyk.utility.common.userinterface.collection.DataTable;
-import org.cyk.utility.common.userinterface.container.Form.Detail;
+import org.cyk.utility.common.userinterface.container.form.FormDetail;
 import org.cyk.utility.common.userinterface.container.window.ConsultWindow;
 import org.cyk.utility.common.userinterface.container.window.EditWindow;
 import org.cyk.utility.common.userinterface.container.window.ListWindow;
@@ -125,7 +125,7 @@ public class ContextListener extends ServletContextListener implements Serializa
 		private static final long serialVersionUID = 1L;
 		
 		@Override
-		public Collection<String> getFieldNames(Detail form, Object object) {
+		public Collection<String> getFieldNames(FormDetail form, Object object) {
 			if(object instanceof Person)
 				return Arrays.asList("inputTextarea","inputText","inputPassword");
 			if(object instanceof GlobalIdentifier)
@@ -140,7 +140,7 @@ public class ContextListener extends ServletContextListener implements Serializa
 		}
 		
 		@Override
-		public Class<? extends Input<?>> getClass(Detail detail, Object object, Field field) {
+		public Class<? extends Input<?>> getClass(FormDetail detail, Object object, Field field) {
 			if(object instanceof GlobalIdentifier){
 				if(field.getName().equals("code"))
 					return InputText.class;

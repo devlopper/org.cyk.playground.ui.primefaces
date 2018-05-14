@@ -11,7 +11,7 @@ import org.cyk.playground.ui.primefaces.ContextListener;
 import org.cyk.playground.ui.primefaces.model.AllInputs;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.FileHelper;
-import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.container.form.Form;
 import org.cyk.utility.common.userinterface.container.window.Window;
 
 import lombok.Getter;
@@ -40,7 +40,7 @@ public class FormAllInputsPage extends Window implements Serializable {
 	}
 
 	@Getter @Setter @Accessors(chain=true)
-	public static class SubmitCommandActionAdapter extends org.cyk.utility.common.userinterface.container.Form.Master.SubmitCommandActionAdapter implements Serializable{
+	public static class SubmitCommandActionAdapter extends org.cyk.utility.common.userinterface.container.form.Form.SubmitCommandActionAdapter implements Serializable{
 		private static final long serialVersionUID = 1L;
 
 		@Override

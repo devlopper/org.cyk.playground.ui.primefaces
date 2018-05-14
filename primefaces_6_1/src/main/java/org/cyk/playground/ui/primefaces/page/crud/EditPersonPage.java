@@ -7,7 +7,8 @@ import javax.inject.Named;
 
 import org.cyk.utility.common.userinterface.Component;
 import org.cyk.utility.common.userinterface.Layout;
-import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.container.form.FormDetail;
+import org.cyk.utility.common.userinterface.container.form.Form;
 import org.cyk.utility.common.userinterface.container.window.EditWindow;
 
 import lombok.Getter;
@@ -19,14 +20,14 @@ public class EditPersonPage extends EditWindow implements Serializable {
 	private static final long serialVersionUID = 1L;
 		
 	@Getter @Setter @Accessors(chain=true)
-	public static class FormMaster extends Form.Master implements Serializable {
+	public static class FormMaster extends Form implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
 		@Override
 		public Component prepare() {
 			//controls
 			//inputs
-			Form.Detail detail = getDetail();
+			FormDetail detail = getDetail();
 			detail.getLayout().setType(Layout.Type.ADAPTIVE);
 			detail.setFieldsObjectFromMaster("globalIdentifier");
 			detail.add("code");

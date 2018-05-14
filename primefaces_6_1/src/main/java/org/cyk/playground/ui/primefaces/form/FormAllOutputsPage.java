@@ -9,7 +9,7 @@ import org.cyk.playground.ui.primefaces.ContextListener;
 import org.cyk.playground.ui.primefaces.model.AllOutputs;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.FileHelper;
-import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.container.form.Form;
 import org.cyk.utility.common.userinterface.container.window.Window;
 
 import lombok.Getter;

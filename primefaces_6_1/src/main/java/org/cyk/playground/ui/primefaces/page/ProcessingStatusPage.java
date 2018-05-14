@@ -11,7 +11,7 @@ import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.CommandHelper;
 import org.cyk.utility.common.helper.TimeHelper;
 import org.cyk.utility.common.userinterface.command.Command;
-import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.container.form.Form;
 import org.cyk.utility.common.userinterface.container.window.Window;
 
 import lombok.Getter;
@@ -23,7 +23,7 @@ public class ProcessingStatusPage extends Window implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Command commandSend1;
-	private Form.Master form1;
+	private Form form1;
 	
 	@Override
 	protected void initialisation() {
@@ -42,7 +42,7 @@ public class ProcessingStatusPage extends Window implements Serializable {
 			}
 		});
 		
-		form1 = new Form.Master();
+		form1 = new Form();
 		form1.setParent(this);
 		form1._setPropertyAction(Constant.Action.CREATE);
 		form1.setObject(new PhoneNumberType());

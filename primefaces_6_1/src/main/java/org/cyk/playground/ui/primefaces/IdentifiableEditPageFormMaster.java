@@ -16,8 +16,11 @@ import org.cyk.utility.common.helper.CollectionHelper.Instance;
 import org.cyk.utility.common.helper.RandomHelper;
 import org.cyk.utility.common.userinterface.Component;
 import org.cyk.utility.common.userinterface.RequestHelper;
+import org.cyk.utility.common.userinterface.collection.Cell;
+import org.cyk.utility.common.userinterface.collection.Column;
 import org.cyk.utility.common.userinterface.collection.DataTable;
-import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.collection.Row;
+import org.cyk.utility.common.userinterface.container.form.FormDetail;
 import org.cyk.utility.common.userinterface.event.Event;
 import org.cyk.utility.common.userinterface.output.OutputText;
 
@@ -45,7 +48,7 @@ public class IdentifiableEditPageFormMaster extends org.cyk.ui.web.primefaces.re
 	@Override
 	protected void __prepare__() {
 		super.__prepare__();
-		Form.Detail detail = getDetail();
+		FormDetail detail = getDetail();
 		detail.setFieldsObjectFromMaster();
 		
 		if(Person.class.equals(getPropertiesMap().getActionOnClass())){
@@ -54,10 +57,10 @@ public class IdentifiableEditPageFormMaster extends org.cyk.ui.web.primefaces.re
 			detail.addReadOnly("amount");
 			
 			/**/
-			DataTable dataTable = instanciateDataTable(OrderItem.class,Article.class,new DataTable.Cell.Listener.Adapter.Default(){
+			DataTable dataTable = instanciateDataTable(OrderItem.class,Article.class,new Cell.Listener.Adapter.Default(){
 				private static final long serialVersionUID = 1L;
-				public DataTable.Cell instanciateOne(DataTable.Column column, DataTable.Row row) {
-					final DataTable.Cell cell = super.instanciateOne(column, row);
+				public Cell instanciateOne(Column column, Row row) {
+					final Cell cell = super.instanciateOne(column, row);
 					
 					if(ArrayUtils.contains(new String[]{"quantity","reduction"},column.getPropertiesMap().getFieldName())){
 						Event.instanciateOne(cell, new String[]{"amount"},new String[]{"amount"});
@@ -72,12 +75,12 @@ public class IdentifiableEditPageFormMaster extends org.cyk.ui.web.primefaces.re
 				@Override
 				public void addOne(Instance<Component> instance, Component element, Object source,Object sourceObject) {
 					super.addOne(instance, element, source, sourceObject);
-					if(element instanceof DataTable.Column){
-						DataTable.Column column = (DataTable.Column)element;
+					if(element instanceof Column){
+						Column column = (Column)element;
 						if("article.unitPrice".equals(column.getPropertiesMap().getFieldName()))
-							column.setCellValueType(DataTable.Cell.ValueType.TEXT);
+							column.setCellValueType(Cell.ValueType.TEXT);
 						if("amount".equals(column.getPropertiesMap().getFieldName()))
-							column.setCellValueType(DataTable.Cell.ValueType.TEXT);
+							column.setCellValueType(Cell.ValueType.TEXT);
 					}
 				}
 			});
@@ -88,14 +91,14 @@ public class IdentifiableEditPageFormMaster extends org.cyk.ui.web.primefaces.re
 			dataTable.build();
 						
 			((OutputText)dataTable.getColumn("amount").getPropertiesMap().getFooter()).getPropertiesMap().setValue(((Order)detail.getMaster().getObject()).getAmount());
-			//((DataTable.Columns)dataTable.getPropertiesMap().getColumns()).getPropertiesMap().setFooterRendered(Boolean.FALSE);
+			//((Columns)dataTable.getPropertiesMap().getColumns()).getPropertiesMap().setFooterRendered(Boolean.FALSE);
 			if(Constant.Action.isCreateOrUpdate((Action) getPropertiesMap().getAction())){
 				((CollectionHelper.Instance<Object>)dataTable.getPropertiesMap().getRowsCollectionInstance()).addListener(
 					new CollectionHelper.Instance.Listener.Adapter<Object>(){
 						private static final long serialVersionUID = 1L;
 						
 						public void addOne(CollectionHelper.Instance<Object> instance, Object element, Object source, Object sourceObject) {
-							DataTable.Row row = (DataTable.Row) element;
+							Row row = (Row) element;
 							OrderItem orderItem = (OrderItem) row.getPropertiesMap().getValue();
 							orderItem.setCode(RandomHelper.getInstance().getAlphabetic(3));
 							orderItem.setName(RandomHelper.getInstance().getAlphabetic(3));

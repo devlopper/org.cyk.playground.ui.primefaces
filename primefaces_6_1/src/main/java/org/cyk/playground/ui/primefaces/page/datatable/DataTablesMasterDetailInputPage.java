@@ -3,8 +3,6 @@ package org.cyk.playground.ui.primefaces.page.datatable;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import javax.enterprise.context.SessionScoped;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.cyk.playground.ui.primefaces.model.Article;
@@ -12,17 +10,16 @@ import org.cyk.playground.ui.primefaces.model.Order;
 import org.cyk.playground.ui.primefaces.model.OrderItem;
 import org.cyk.utility.common.Constant;
 import org.cyk.utility.common.helper.CollectionHelper;
-import org.cyk.utility.common.helper.CollectionHelper.Instance;
-import org.cyk.utility.common.helper.CommandHelper;
-import org.cyk.utility.common.helper.ClassHelper;
-import org.cyk.utility.common.helper.FieldHelper;
 import org.cyk.utility.common.helper.NumberHelper;
 import org.cyk.utility.common.helper.RandomHelper;
+import org.cyk.utility.common.userinterface.collection.Cell;
+import org.cyk.utility.common.userinterface.collection.Column;
 import org.cyk.utility.common.userinterface.collection.DataTable;
-import org.cyk.utility.common.userinterface.collection.DataTable.Row;
+import org.cyk.utility.common.userinterface.collection.Row;
 import org.cyk.utility.common.userinterface.command.Command;
 import org.cyk.utility.common.userinterface.command.RemoteCommand;
-import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.container.form.Form;
+import org.cyk.utility.common.userinterface.container.form.FormDetail;
 import org.cyk.utility.common.userinterface.container.window.Window;
 import org.cyk.utility.common.userinterface.event.Event;
 import org.cyk.utility.common.userinterface.output.OutputText;
@@ -37,7 +34,7 @@ import lombok.Setter;
 public class DataTablesMasterDetailInputPage extends Window implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Form.Master orderForm;
+	private Form orderForm;
 	private DataTable orderItemDataTable1,orderItemDataTable2,orderItemDataTable3;
 	
 	@SuppressWarnings("unchecked")
@@ -47,8 +44,8 @@ public class DataTablesMasterDetailInputPage extends Window implements Serializa
 		getPropertiesMap().setTitle("Data tables Master Detail Input");
 		
 		//Master form
-		orderForm = new Form.Master(this,new Order(),Constant.Action.CREATE,SubmitCommandActionAdapter.class);
-		Form.Detail detail = orderForm.getDetail();
+		orderForm = new Form(this,new Order(),Constant.Action.CREATE,SubmitCommandActionAdapter.class);
+		FormDetail detail = orderForm.getDetail();
 		if(detail == null)
 			detail = orderForm.instanciateDetail();
 		detail.setFieldsObjectFromMaster("globalIdentifier");
@@ -60,10 +57,10 @@ public class DataTablesMasterDetailInputPage extends Window implements Serializa
 		orderForm.build();
 		
 		//Details
-		orderItemDataTable1 = orderForm.instanciateDataTable(OrderItem.class,Article.class,new DataTable.Cell.Listener.Adapter.Default(){
+		orderItemDataTable1 = orderForm.instanciateDataTable(OrderItem.class,Article.class,new Cell.Listener.Adapter.Default(){
 			private static final long serialVersionUID = 1L;
-			public DataTable.Cell instanciateOne(DataTable.Column column, final DataTable.Row row) {
-				final DataTable.Cell cell = super.instanciateOne(column, row);
+			public Cell instanciateOne(Column column, final Row row) {
+				final Cell cell = super.instanciateOne(column, row);
 				if("quantity".equals(column.getPropertiesMap().getFieldName())){
 					cell.getInput()._setPropertyEvent("blur", null, "@(form)", new Event.CommandAdapter(){
 						protected void ____execute____() {
@@ -95,8 +92,8 @@ public class DataTablesMasterDetailInputPage extends Window implements Serializa
 			}
 		}
 		,Boolean.TRUE,"article.unitPrice","quantity","reduce","amount");
-		orderItemDataTable1.getColumn("article.unitPrice").setCellValueType(DataTable.Cell.ValueType.TEXT);
-		orderItemDataTable1.getColumn("amount").setCellValueType(DataTable.Cell.ValueType.TEXT);
+		orderItemDataTable1.getColumn("article.unitPrice").setCellValueType(Cell.ValueType.TEXT);
+		orderItemDataTable1.getColumn("amount").setCellValueType(Cell.ValueType.TEXT);
 		orderItemDataTable1.prepare();
 		orderItemDataTable1.build();
 		//System.out.println( ((Command)orderItemDataTable1.getPropertiesMap().getAddCommandComponent()).getPropertiesMap() );
@@ -105,7 +102,7 @@ public class DataTablesMasterDetailInputPage extends Window implements Serializa
 				private static final long serialVersionUID = 1L;
 				
 				public void addOne(CollectionHelper.Instance<Object> instance, Object element, Object source, Object sourceObject) {
-					DataTable.Row row = (DataTable.Row) element;
+					Row row = (Row) element;
 					OrderItem orderItem = (OrderItem) row.getPropertiesMap().getValue();
 					orderItem.setQuantity(new BigDecimal(RandomHelper.getInstance().getInteger(1, 5)));
 					
@@ -123,7 +120,7 @@ public class DataTablesMasterDetailInputPage extends Window implements Serializa
 	
 	/**/
 	
-	public static class SubmitCommandActionAdapter extends Form.Master.SubmitCommandActionAdapter {
+	public static class SubmitCommandActionAdapter extends Form.SubmitCommandActionAdapter {
 		private static final long serialVersionUID = 1L;
 		
 		@Override

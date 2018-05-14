@@ -16,7 +16,7 @@ import org.cyk.utility.common.annotation.user.interfaces.InputFile;
 import org.cyk.utility.common.helper.FieldHelper;
 import org.cyk.utility.common.helper.FileHelper;
 import org.cyk.utility.common.helper.FileHelper.File;
-import org.cyk.utility.common.userinterface.container.Form;
+import org.cyk.utility.common.userinterface.container.form.FormDetail;
 import org.cyk.utility.common.userinterface.container.window.Window;
 import org.cyk.utility.common.userinterface.output.OutputFile;
 import org.cyk.utility.common.userinterface.output.OutputText;
@@ -41,8 +41,8 @@ public class OutputsPage extends Window implements Serializable {
 		model.setMyInputText("hello world!!!");
 		model.setMyInputFile(FileHelper.getInstance().get(ContextListener.class, "image001.png"));
 		
-		outputText = (OutputText) OutputText.getListener().get(new Form.Detail(), model, FieldHelper.getInstance().get(Model.class, "myInputText"));
-		outputFile = (OutputFile) OutputText.getListener().get(new Form.Detail(), model, FieldHelper.getInstance().get(Model.class, "myInputFile"));
+		outputText = (OutputText) OutputText.getListener().get(new FormDetail(), model, FieldHelper.getInstance().get(Model.class, "myInputText"));
+		outputFile = (OutputFile) OutputText.getListener().get(new FormDetail(), model, FieldHelper.getInstance().get(Model.class, "myInputFile"));
 		
 		
 	}

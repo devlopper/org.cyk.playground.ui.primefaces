@@ -15,7 +15,7 @@ public class ConsultPersonPage extends ConsultWindow implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	/*@Getter @Setter @Accessors(chain=true)
-	public static class FormMaster extends Form.Master implements Serializable {
+	public static class FormMaster extends Form implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
 		@Override
